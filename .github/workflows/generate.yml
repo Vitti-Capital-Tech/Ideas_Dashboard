@@ -1,0 +1,53 @@
+name: Daily Content Generator
+
+on:
+  schedule:
+    - cron: '0 9 * * *' # Runs daily at 09:00 AM UTC
+  workflow_dispatch: # Allows triggering manually from the Web App
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: Install Dependencies
+        run: |
+          pip install -r requirements.txt
+
+      - name: Create Google Credentials File
+        run: |
+          echo '${{ secrets.GOOGLE_CREDENTIALS }}' > vitti-ideas-e5256b131985.json
+
+      - name: Run CEO Content Generator
+        env:
+          PERPLEXITY_API_KEY: ${{ secrets.PERPLEXITY_API_KEY }}
+          CEO_LINKEDIN_DOC_ID: ${{ secrets.CEO_LINKEDIN_DOC_ID }}
+        run: python generate_ceo_posts.py
+        continue-on-error: true
+
+      - name: Run Raindrop Ideas Generator
+        env:
+          PERPLEXITY_API_KEY: ${{ secrets.PERPLEXITY_API_KEY }}
+          RAINDROP_TOKEN: ${{ secrets.RAINDROP_TOKEN }}
+          IDEAS_DOC_ID: ${{ secrets.IDEAS_DOC_ID }}
+          LINKEDIN_POSTS_DOC_ID: ${{ secrets.LINKEDIN_POSTS_DOC_ID }}
+        run: python generate_raindrop_posts.py
+        continue-on-error: true
+
+      - name: Commit and Push Logs
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          git add logs/ used_bookmarks.txt
+          git commit -m "chore: automated content generation logs" || echo "No changes to commit"
+          git push

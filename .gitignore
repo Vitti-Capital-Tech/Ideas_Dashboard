@@ -1,0 +1,46 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Node & Next.js
+node_modules/
+web/node_modules/
+.next/
+web/.next/
+web/out/
+web/build/
+
+# Environment variables & Secrets (CRITICAL)
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+web/.env.local
+web/.env
+
+# Google Service Account JSON Keys (CRITICAL)
+*.json
+!package.json
+!web/package.json
+!web/jsconfig.json
+!web/tsconfig.json
+!web/package-lock.json
+!logs/*.json
+!used_bookmarks.txt
+
+# Caching and State
+last_run.txt
+last_run_ceo.txt
+data.json
+web/data.json
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# System
+.DS_Store
+Thumbs.db
