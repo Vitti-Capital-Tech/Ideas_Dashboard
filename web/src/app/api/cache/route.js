@@ -68,9 +68,17 @@ export async function GET(req) {
         if (fileName) {
           const filePath = path.join(subDir, fileName);
           if (fs.existsSync(filePath)) {
-            const data = fs.readFileSync(filePath, 'utf-8');
-            const parsedArray = JSON.parse(data);
-            return Array.isArray(parsedArray) && parsedArray.length > 0 ? parsedArray[parsedArray.length - 1] : null;
+            try {
+              const raw = fs.readFileSync(filePath, 'utf-8').trim();
+              if (!raw) return null;
+              const parsedArray = JSON.parse(raw);
+              return Array.isArray(parsedArray) && parsedArray.length > 0
+                ? parsedArray[parsedArray.length - 1]
+                : null;
+            } catch (parseErr) {
+              console.error(`Failed to parse ${type} log:`, parseErr.message);
+              return null;
+            }
           }
         }
       }
