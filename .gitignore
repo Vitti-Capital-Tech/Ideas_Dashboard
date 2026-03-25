@@ -27,7 +27,8 @@ web/.env
 !web/jsconfig.json
 !web/tsconfig.json
 !web/package-lock.json
-!web/logs/*.json
+!web/logs/**/*.json
+!web/logs/**/.gitkeep
 !web/used_bookmarks.txt
 
 # Caching and State

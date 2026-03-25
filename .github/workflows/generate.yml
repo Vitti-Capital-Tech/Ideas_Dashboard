@@ -54,8 +54,8 @@ jobs:
         run: |
           git config --local user.name 'github-actions[bot]'
           git config --local user.email 'github-actions[bot]@users.noreply.github.com'
-          mkdir -p web/logs
+          mkdir -p web/logs/ceo web/logs/ideas web/logs/posts
           touch web/used_bookmarks.txt
           git add web/logs/ web/used_bookmarks.txt
-          git commit -m "chore: automated content generation logs [skip ci]" || exit 0
+          git commit -m "chore: automated content generation logs" || exit 0
           git push https://x-access-token:${GITHUB_TOKEN}@github.com/${{ github.repository }}.git main
