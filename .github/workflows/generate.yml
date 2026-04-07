@@ -31,7 +31,7 @@ jobs:
           ANTHROPIC_MODEL: ${{ secrets.ANTHROPIC_MODEL }}
           RAINDROP_TOKEN: ${{ secrets.RAINDROP_TOKEN }}
           DISABLE_GOOGLE_DOC: "1"
-        run: python generate_raindrop_posts.py
+        run: python -u generate_raindrop_posts.py
 
       - name: Commit and Push Logs
         env:
