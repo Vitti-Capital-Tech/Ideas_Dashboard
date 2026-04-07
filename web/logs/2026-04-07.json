@@ -218,5 +218,225 @@
                 }
             }
         ]
+    },
+    {
+        "timestamp": "2026-04-07T09:26:18.407780",
+        "ideas": [
+            {
+                "anchor_source": "https://news.google.com/rss/articles/CBMikgFBVV95cUxOZEJCRmFpNFhjSzdETU9WN2N6WkMtTHJWN090aXMzUVJEZkdhQ2VJaVo2c1J1UjczMnZsR1RPNjlmX0ZIekc3azdRQnl4bzgwdk9aVm9td1lyRENyUXVEdWxjZ09lUDdpVWdCZ0FEUjlyakVlNzAzZEU4eGQybjdEQ2NaUnctbGlPY0plLVMyVEFYZw?oc=5",
+                "title": "ASX 200 Afternoon Snapshot: What Sector Rotation Tells Us About Market Conviction",
+                "context": "The IG afternoon report captures the ASX 200's intraday performance on 7 April 2026, highlighting sector-level moves and momentum shifts through the trading session. The Motley Fool's '5 things to watch' piece narrows the lens to specific catalysts \u2014 earnings, macro data, and geopolitical headlines \u2014 confirming that the session's moves were driven by multiple concurrent forces rather than a single catalyst. Together, they reveal a market where broad participation masks selective conviction.",
+                "angle": "Intraday sector rotation is the real signal \u2014 headline index moves hide where capital is actually flowing.",
+                "linkedin_playbook": {
+                    "format_name": "Signal Decoder",
+                    "opening_hook": "The ASX 200 moved decisively today. But the headline number is hiding the real story.",
+                    "why_section": "Investors who only track the index miss the capital rotation happening underneath. Sector-level flows reveal where institutional conviction is building \u2014 and where it's quietly exiting.",
+                    "unique_take": "The IG afternoon report showed broad green across the board, but the Motley Fool's watchlist flagged that specific catalysts \u2014 not blanket optimism \u2014 drove the biggest movers. That gap between 'everything is up' and 'here's why these names moved' is where actionable insight lives. Passive exposure captures the average; understanding rotation captures the edge.",
+                    "call_to_action": "Which ASX sector are you watching most closely for the rest of this week \u2014 and why?",
+                    "why_this_works": "Signal Decoder format rewards the audience with a 'look deeper' insight they can act on, positioning Vitti Capital as the firm that reads beneath the tape.",
+                    "poll_options": []
+                },
+                "grounding": {
+                    "sources_used": [
+                        {
+                            "source_type": "news",
+                            "title": "ASX 200 afternoon report: 7 April 2026",
+                            "url": "https://news.google.com/rss/articles/CBMikgFBVV95cUxOZEJCRmFpNFhjSzdETU9WN2N6WkMtTHJWN090aXMzUVJEZkdhQ2VJaVo2c1J1UjczMnZsR1RPNjlmX0ZIekc3azdRQnl4bzgwdk9aVm9td1lyRENyUXVEdWxjZ09lUDdpVWdCZ0FEUjlyakVlNzAzZEU4eGQybjdEQ2NaUnctbGlPY0plLVMyVEFYZw?oc=5"
+                        },
+                        {
+                            "source_type": "news",
+                            "title": "5 things to watch on the ASX 200 on Tuesday 7 April 2026",
+                            "url": "https://news.google.com/rss/articles/CBMimAFBVV95cUxQR2lGQVVMR3RwRVh5OHVNbXEyMVVlN0hEMHhDYS12ZVVBcENDOWRYSlpEZHlQOEM0NldMRE9tY2IyMDlzbDBvWDZlVkJBbG1XRE8tUWUweVlMV0oyc0pMMzNsVzMtUTBJQ1FtX09fSHZNQ2FQMG1sZDg5QzBhU2loMGF3S1dWYnpRNWNvbmJHVnUtYkFXX05Dcg?oc=5"
+                        }
+                    ]
+                },
+                "region": "Australia",
+                "source_type": "news",
+                "content": {
+                    "format": "1-pager",
+                    "pages": [
+                        {
+                            "page_title": "Draft",
+                            "markdown": "The ASX 200 moved decisively today. But the headline number is hiding the real story.\n\n**The signal:** The afternoon report showed broad green across the board \u2014 the kind of session that makes index investors feel comfortable. But when you overlay the specific catalysts flagged in pre-market watchlists (earnings surprises, macro data, geopolitical positioning), a different picture emerges.\n\nNot everything rallied for the same reason.\n\nSome sectors moved on genuine earnings conviction. Others rode a geopolitical relief trade that could reverse in 48 hours. And a few quietly underperformed despite the tailwind.\n\n**Why this matters for portfolio construction:**\n\nIn a market where the index is up broadly, the temptation is to assume all boats are rising equally. They're not. Capital is rotating \u2014 and the sectors absorbing the most flow today may not be the ones leading next month.\n\nThe gap between 'the ASX was up' and 'here's where the money actually went' is where professional investors earn their edge. Passive exposure captures the average. Understanding rotation captures the opportunity.\n\nFor Australian investors navigating a market shaped by Middle East uncertainty, commodity cycles, and domestic earnings season, the afternoon tape is a starting point \u2014 not the conclusion.\n\nWhich ASX sector are you watching most closely for the rest of this week \u2014 and why?"
+                        }
+                    ]
+                }
+            },
+            {
+                "anchor_source": "https://news.google.com/rss/articles/CBMiXEFVX3lxTE0tb2NxcEtHaUhFTWpuZ2N3SUhKRk9zQnpaYmdIUmp2WXA2eUFPUjZDQThKVnd5SjZDcEh2Q1BMODJJM2ZiS29kcU1od2JiTW93TktzbUNlOWFRMm9I?oc=5",
+                "title": "Gold's Plumbing Matters More Than Gold's Price",
+                "context": "Mining.com.au's explainer on how the gold market works breaks down the physical and paper layers \u2014 from mining and refining to LBMA, COMEX futures, and central bank reserves \u2014 revealing a market far more complex than the spot price suggests. The Motley Fool's piece on ASX ETFs to buy during the rally highlights gold-exposed ETFs as a recommended allocation, confirming strong retail and institutional demand. The tension: investors are piling into gold exposure without necessarily understanding the market's structural plumbing, which determines liquidity, premiums, and actual delivery risk.",
+                "angle": "Understanding gold's market structure \u2014 not just its price \u2014 is the edge most investors are missing.",
+                "linkedin_playbook": {
+                    "format_name": "Contrarian Institution Read",
+                    "opening_hook": "Everyone has a gold price target. Almost nobody understands how the gold market actually works.",
+                    "why_section": "As gold allocations surge through ETFs and futures, the structural mechanics of the gold market \u2014 physical settlement, LBMA clearing, central bank lending, and the paper-to-physical ratio \u2014 become critical. These mechanics determine whether your gold exposure behaves the way you expect in a crisis.",
+                    "unique_take": "Mining.com.au's deep dive into gold market plumbing reveals layers most investors never consider: the difference between allocated and unallocated gold, how COMEX futures rarely result in physical delivery, and why central bank buying is reshaping the supply side. Meanwhile, ETF recommendation lists treat gold as a simple 'add to cart' decision. The consensus is bullish on gold \u2014 but structurally illiterate about it. The risk of being wrong: if you don't understand the plumbing, you may own paper that doesn't perform like the metal when it matters most.",
+                    "call_to_action": "When you allocate to gold \u2014 do you know whether you own the metal, a claim on it, or just a derivative of a derivative?",
+                    "why_this_works": "Contrarian Institution Read challenges a widely held but shallow consensus, positioning Vitti Capital as the advisor who goes deeper than the ticker symbol.",
+                    "poll_options": []
+                },
+                "grounding": {
+                    "sources_used": [
+                        {
+                            "source_type": "tech",
+                            "title": "How the gold market works",
+                            "url": "https://news.google.com/rss/articles/CBMiXEFVX3lxTE0tb2NxcEtHaUhFTWpuZ2N3SUhKRk9zQnpaYmdIUmp2WXA2eUFPUjZDQThKVnd5SjZDcEh2Q1BMODJJM2ZiS29kcU1od2JiTW93TktzbUNlOWFRMm9I?oc=5"
+                        },
+                        {
+                            "source_type": "news",
+                            "title": "3 ASX ETFs to buy amid share market rally today: Experts",
+                            "url": "https://news.google.com/rss/articles/CBMilgFBVV95cUxQQXRDTVMwUzBSZnlra2FJYW04NnZSb2Ruei1MSW9BY185UENkMzNEM1JYR2pRLUZPSlRheXpqR3lyWDZpc2RhQ2QyWTNxVE5fVFJ3azNmUDJvSktWZXZZMk5UYVY0dG9WLTljYUpySE1UcWRQV0pjazB2R2x0Z0ZBQk1WS0FMaU5GVFpQbU5kXzlfY0o2Z0E?oc=5"
+                        }
+                    ]
+                },
+                "region": "Mixed",
+                "source_type": "news",
+                "content": {
+                    "format": "1-pager",
+                    "pages": [
+                        {
+                            "page_title": "Draft",
+                            "markdown": "Everyone has a gold price target. Almost nobody understands how the gold market actually works.\n\nHere's what consensus is missing.\n\n**The bullish case is everywhere.** ETF recommendation lists are adding gold-exposed funds. Retail inflows are climbing. The narrative is simple: geopolitical risk + rate uncertainty = buy gold.\n\nBut Mining.com.au's breakdown of gold market mechanics reveals a far more layered reality:\n\n\u2192 Most gold 'ownership' is unallocated \u2014 you hold a claim, not a bar\n\u2192 COMEX futures overwhelmingly settle in cash, not metal\n\u2192 Central bank buying is tightening physical supply in ways the paper market doesn't fully reflect\n\u2192 The LBMA clearing system processes multiples of annual mine production daily \u2014 in paper\n\n**The gap:** Investors are adding gold exposure as if it's a simple asset class. It's not. It's a market with a complex physical-paper duality, and the structural plumbing determines whether your allocation performs as expected when you need it most.\n\nThe risk of being wrong here isn't that gold falls. It's that your gold exposure doesn't behave like gold in the scenario you bought it for.\n\nAs Australian investors increase commodity allocations amid Middle East uncertainty, understanding the difference between owning gold and owning a derivative of gold has never been more important.\n\nWhen you allocate to gold \u2014 do you know whether you own the metal, a claim on it, or just a derivative of a derivative?"
+                        }
+                    ]
+                }
+            },
+            {
+                "anchor_source": "https://news.google.com/rss/articles/CBMitgFBVV95cUxOVGdVeUtlSFNhUHNXT0lJa0t0YUlPbHpodjBYOVlDUWIybGVoLWFjY29VOERsZVBHQWxrS0xFRnRsbmxfY2l2N3ZNaG1GYkVrQTZRU0JnZmV6TzJNNzN2a3Z3TXBWbHRxY1dPZ1k1TXp0M3BaYndaaThvTVNwNWRURUNmMjVkWDd6cU1UbTVmQlcxdGNRMUtjU1RtREc0QU5pS2ZjQ2RXMy0wTlVOQTlTZ05SMEFWdw?oc=5",
+                "title": "The ASX Closed Up 1.74% \u2014 But Is This Relief or Conviction?",
+                "context": "Investing.com reports the ASX 200 closed up 1.74% on 7 April 2026, with broad-based gains across sectors. The Motley Fool's coverage adds that investors are 'looking beyond the Iran war,' suggesting the rally is driven by geopolitical de-escalation hopes rather than fundamental earnings upgrades. This creates a tension: the closing data looks like conviction, but the narrative underneath reads more like relief. The distinction matters for whether this rally has legs or is a one-day snap-back.",
+                "angle": "A 1.74% close looks like conviction \u2014 but the underlying driver is relief, and relief rallies have a very different shelf life.",
+                "linkedin_playbook": {
+                    "format_name": "Provocative Question & Poll Hybrid",
+                    "opening_hook": "The ASX 200 just posted a 1.74% gain. Strong day. But here's the uncomfortable question: was that conviction \u2014 or just exhaling?",
+                    "why_section": "Relief rallies and conviction rallies look identical on the daily chart. They behave very differently over the following weeks. For portfolio managers and advisors, correctly identifying which one you're in determines whether you add risk or take profit.",
+                    "unique_take": "Investing.com's closing data shows broad participation \u2014 the kind of session that screams 'risk on.' But the Motley Fool's framing reveals the catalyst: investors 'looking beyond' geopolitical risk, not pricing in improved fundamentals. Relief rallies tend to fade when the next headline hits. Conviction rallies build on earnings and data. Today's session had the breadth of conviction but the catalyst of relief. That mismatch is worth watching.",
+                    "call_to_action": "What's your read on today's ASX rally?",
+                    "why_this_works": "Poll hybrids drive high engagement because they invite low-friction participation while the contrarian setup sparks comment-section debate among finance professionals.",
+                    "poll_options": [
+                        "Genuine conviction \u2014 this rally has legs",
+                        "Relief trade \u2014 expect a pullback within days",
+                        "Sector-dependent \u2014 some conviction, some relief",
+                        "Too early to tell \u2014 need another session"
+                    ]
+                },
+                "grounding": {
+                    "sources_used": [
+                        {
+                            "source_type": "news",
+                            "title": "Australia stocks higher at close of trade; S&P/ASX 200 up 1.74%",
+                            "url": "https://news.google.com/rss/articles/CBMitgFBVV95cUxOVGdVeUtlSFNhUHNXT0lJa0t0YUlPbHpodjBYOVlDUWIybGVoLWFjY29VOERsZVBHQWxrS0xFRnRsbmxfY2l2N3ZNaG1GYkVrQTZRU0JnZmV6TzJNNzN2a3Z3TXBWbHRxY1dPZ1k1TXp0M3BaYndaaThvTVNwNWRURUNmMjVkWDd6cU1UbTVmQlcxdGNRMUtjU1RtREc0QU5pS2ZjQ2RXMy0wTlVOQTlTZ05SMEFWdw?oc=5"
+                        },
+                        {
+                            "source_type": "news",
+                            "title": "ASX 200 surging as investors look beyond Iran war",
+                            "url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxOcW1SRmQ0YkVLc1NJMEJjWEttRk1uRGc2TzN3YWJOdXRhYlk4c2wxSEVwY1gyRFctenZNeHNTazhsQ2M1djVfTXVrbm5WUlBYYVR2YVhmQ1QxY2E1eUJfcHJOUEJob0tLNnkzTmExV0ZnY0pnejhWcnZSaC1HU0tvbkcxaVNwbHltVTlhc1p3?oc=5"
+                        }
+                    ]
+                },
+                "region": "Australia",
+                "source_type": "news",
+                "content": {
+                    "format": "1-pager",
+                    "pages": [
+                        {
+                            "page_title": "Draft",
+                            "markdown": "The ASX 200 just posted a 1.74% gain. Strong day.\n\nBut here's the uncomfortable question: was that conviction \u2014 or just exhaling?\n\nThe closing numbers look impressive. Broad participation. Green across most sectors. The kind of session that makes portfolios feel healthy again.\n\nBut look at the catalyst.\n\nReporting suggests this rally was driven by investors 'looking beyond' the Iran conflict \u2014 pricing in de-escalation hopes, not upgraded earnings or improved macro data.\n\nThat's a relief trade. And relief trades have a very different shelf life than conviction trades.\n\n**Here's the distinction that matters:**\n\n\u2192 Conviction rallies build on fundamentals \u2014 earnings beats, policy clarity, structural demand\n\u2192 Relief rallies build on the *absence* of bad news \u2014 and they're vulnerable to the next headline\n\nToday's session had the breadth of conviction but the catalyst of relief. That mismatch deserves attention, not celebration.\n\nFor Australian investors, the question isn't whether today felt good. It's whether the conditions that drove the rally are durable or fragile.\n\nGeopolitical de-escalation hopes can evaporate overnight. Earnings upgrades take quarters to reverse.\n\nKnow which one you're betting on.\n\n**What's your read on today's ASX rally?**\n\n\ud83d\udd35 Genuine conviction \u2014 this rally has legs\n\ud83d\udfe2 Relief trade \u2014 expect a pullback within days\n\ud83d\udfe1 Sector-dependent \u2014 some conviction, some relief\n\ud83d\udd34 Too early to tell \u2014 need another session"
+                        }
+                    ]
+                }
+            },
+            {
+                "anchor_source": "https://news.google.com/rss/articles/CBMiSEFVX3lxTFBDY0FqQXFGMUwzNVU0YkZaMC1TUjg0OFRaY1B0bWNIM2ZqNFE4ZFBKSGxyQjE3dC1HUnJxUXlOdGJCY0FTb213Sg?oc=5",
+                "title": "The AUD Is Holding Steady \u2014 That's the Story, Not the Move",
+                "context": "MEXC reports the Australian dollar holding steady as markets brace for Trump's critical Iran deadline, suggesting the currency is in a wait-and-see mode rather than pricing in a specific outcome. The cross-verify from MEXC's AUD/USD surge piece shows the Aussie dollar jumped to 0.6930 on ceasefire response hopes, while a separate MEXC piece noted the AUD plummeting on strong US jobs data and Middle East tensions. Together, these three data points reveal extreme AUD sensitivity to geopolitical headlines \u2014 and the current 'steady' reading is less calm than it appears; it's a coiled spring between competing forces.",
+                "angle": "A 'steady' Australian dollar in this environment isn't stability \u2014 it's two massive opposing forces in temporary equilibrium.",
+                "linkedin_playbook": {
+                    "format_name": "Industry Trend Interpretation",
+                    "opening_hook": "The Australian dollar is holding steady. In any other week, that's boring. This week, it's the most interesting signal in FX.",
+                    "why_section": "Currency stability during geopolitical inflection points is rarely genuine calm \u2014 it's usually a market that hasn't decided yet. For Australian businesses with international exposure, importers, exporters, and investors with unhedged offshore positions, the next AUD move could be sharp in either direction.",
+                    "unique_take": "MEXC's reporting shows the AUD recently surged to 0.6930 on Iran ceasefire hopes, then plummeted on strong US jobs data and escalating tensions. Now it's 'holding steady' ahead of Trump's Iran deadline. This isn't equilibrium \u2014 it's two massive forces (risk-on geopolitical relief vs. USD strength from rate differentials) pulling in opposite directions simultaneously. The moment one force wins, the move will be fast. For Australian operators, this is the worst time to assume currency stability is your friend. The 'steady' AUD is a coiled spring, not a resting one.",
+                    "call_to_action": "If you run an Australian business with offshore revenue or costs \u2014 are you hedged for what happens when this equilibrium breaks?",
+                    "why_this_works": "Industry Trend Interpretation takes a seemingly dull data point (steady AUD) and reframes it as a high-stakes signal, rewarding the reader with a non-obvious insight they can act on immediately.",
+                    "poll_options": []
+                },
+                "grounding": {
+                    "sources_used": [
+                        {
+                            "source_type": "tech",
+                            "title": "Australian Dollar Holds Steady as Markets Brace for Trump's Critical Iran Deadline",
+                            "url": "https://news.google.com/rss/articles/CBMiSEFVX3lxTFBDY0FqQXFGMUwzNVU0YkZaMC1TUjg0OFRaY1B0bWNIM2ZqNFE4ZFBKSGxyQjE3dC1HUnJxUXlOdGJCY0FTb213Sg?oc=5"
+                        },
+                        {
+                            "source_type": "tech",
+                            "title": "AUD/USD Forecast Surges: Australian Dollar Jumps to 0.6930 Amid Critical Iran Ceasefire Response",
+                            "url": "https://news.google.com/rss/articles/CBMiSEFVX3lxTFA3UW5JSHZ0SGFlODE4NEd5RFQwQUFQZG94ZXJxQXpxcnhCV2ZURzc5ZFdoTnFnV1hUUEpRbGtWUFd1LVFla1A0TQ?oc=5"
+                        },
+                        {
+                            "source_type": "tech",
+                            "title": "Australian Dollar Plummets as Robust US Jobs Data and Middle East Tensions Fuel Dollar Strength",
+                            "url": "https://news.google.com/rss/articles/CBMiSEFVX3lxTE5KbDJiUHZ2eTY4X2dGTVVDNlBsRzhLSHN1SVpEM0kzRE9Zb25FWEtwUXFaLUVTeFVGMzdCLXRBTFZsOHBPZU00Vg?oc=5"
+                        }
+                    ]
+                },
+                "region": "Australia",
+                "source_type": "news",
+                "content": {
+                    "format": "1-pager",
+                    "pages": [
+                        {
+                            "page_title": "Draft",
+                            "markdown": "The Australian dollar is holding steady. In any other week, that's boring.\n\nThis week, it's the most interesting signal in FX.\n\nHere's why 'steady' is misleading right now.\n\nOver recent sessions, the AUD has whipsawed dramatically:\n\n\u2192 Surged to 0.6930 on Iran ceasefire hopes\n\u2192 Plummeted on strong US jobs data and escalating Middle East tensions\n\u2192 Now 'holding steady' as markets brace for Trump's critical Iran deadline\n\nThis isn't stability. It's two massive forces \u2014 geopolitical risk-on relief and USD strength from rate differentials \u2014 pulling in opposite directions at the same time.\n\nThe moment one force wins, the move will be fast.\n\n**Why this matters beyond the FX desk:**\n\nAustralian businesses with offshore revenue, import costs, or unhedged international positions are sitting on a currency that looks calm but is structurally coiled. A ceasefire deal could send the AUD sharply higher. An escalation or hawkish Fed repricing could send it through the floor.\n\n'Holding steady' in this environment isn't a signal to relax. It's a signal that the market hasn't made up its mind \u2014 and when it does, it won't move gradually.\n\nFor CFOs, treasury teams, and investors with cross-border exposure, this is the window to stress-test your hedging, not assume the current rate is your friend.\n\nIf you run an Australian business with offshore revenue or costs \u2014 are you hedged for what happens when this equilibrium breaks?"
+                        }
+                    ]
+                }
+            },
+            {
+                "anchor_source": "https://news.google.com/rss/articles/CBMizAFBVV95cUxQTG1SZFhlWDE4YUlJT2psZHlka0E1UmMwcTRhZ2hFWTJXWlFpSFE2MXZ6Y0pBbzdCdGVhTFF2dG5oV2x4eWtpSGFJdjBDcmFzRGpYSFduMUhGTDFpamoxTHlrMjdIVDhoZlQ0bnIyOGFjMl9uNHM2QTVKbU1kYi1ZbW15d2ZYbkJxeUMyQS02REVjSTNtTjVwQ1ZyMTQ3SmVwcmxacmpxbXo4Mk1uZ2ZUTjNzQUhLaUh0bGM2VnJ0M1lSUl9hQXpkaUJUS3M?oc=5",
+                "title": "From Fear to FOMO in 24 Hours: The Anatomy of a Geopolitical Relief Rally",
+                "context": "The West Australian reports the ASX 'storming higher' on hopes of an 11th-hour Iran deal, capturing the speed at which geopolitical fear can flip to optimism in equity markets. The Motley Fool confirms the momentum, noting investors are 'looking beyond' the Iran war, while Investing.com India's closing data validates the 1.74% gain held through to the bell. The cross-verification reveals a consistent pattern: the market moved from pricing conflict risk to pricing deal probability within a single session, illustrating how geopolitical sentiment trades can compress weeks of fundamental analysis into hours.",
+                "angle": "Geopolitical relief rallies compress months of sentiment into a single session \u2014 and understanding that compression is critical to avoiding reactive portfolio decisions.",
+                "linkedin_playbook": {
+                    "format_name": "Before/After Results Story",
+                    "opening_hook": "Last week, the ASX was pricing in an escalating Middle East conflict. Today, it stormed higher on hopes of an 11th-hour Iran deal. The speed of that reversal tells us something important.",
+                    "why_section": "Geopolitical sentiment trades are among the fastest-moving forces in equity markets. For long-term investors, the challenge isn't predicting the headline \u2014 it's avoiding portfolio decisions driven by the emotional whiplash these events create.",
+                    "unique_take": "The West Australian's 'storms higher' framing captures the velocity. The Motley Fool's 'looking beyond' framing captures the narrative shift. And the 1.74% closing gain confirms the move held \u2014 it wasn't just a morning spike. What's instructive is the before/after: portfolios that panic-sold on escalation fears locked in losses. Portfolios that held through the noise captured the snap-back. This isn't an argument for ignoring geopolitics. It's an argument for having a framework that distinguishes between 'this changes fundamentals' and 'this changes sentiment temporarily.' The Iran situation may still deteriorate. But the lesson from today's session is that markets price hope as fast as they price fear.",
+                    "call_to_action": "Have you ever made a portfolio move on a geopolitical headline that you later regretted? What did it teach you?",
+                    "why_this_works": "Before/After format creates a relatable narrative arc that invites personal reflection and sharing, driving comments from professionals who've lived through similar market whiplash.",
+                    "poll_options": []
+                },
+                "grounding": {
+                    "sources_used": [
+                        {
+                            "source_type": "news",
+                            "title": "ASX storms higher on hopes of 11th-hour Iran deal",
+                            "url": "https://news.google.com/rss/articles/CBMizAFBVV95cUxQTG1SZFhlWDE4YUlJT2psZHlka0E1UmMwcTRhZ2hFWTJXWlFpSFE2MXZ6Y0pBbzdCdGVhTFF2dG5oV2x4eWtpSGFJdjBDcmFzRGpYSFduMUhGTDFpamoxTHlrMjdIVDhoZlQ0bnIyOGFjMl9uNHM2QTVKbU1kYi1ZbW15d2ZYbkJxeUMyQS02REVjSTNtTjVwQ1ZyMTQ3SmVwcmxacmpxbXo4Mk1uZ2ZUTjNzQUhLaUh0bGM2VnJ0M1lSUl9hQXpkaUJUS3M?oc=5"
+                        },
+                        {
+                            "source_type": "news",
+                            "title": "ASX 200 surging as investors look beyond Iran war",
+                            "url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxOcW1SRmQ0YkVLc1NJMEJjWEttRk1uRGc2TzN3YWJOdXRhYlk4c2wxSEVwY1gyRFctenZNeHNTazhsQ2M1djVfTXVrbm5WUlBYYVR2YVhmQ1QxY2E1eUJfcHJOUEJob0tLNnkzTmExV0ZnY0pnejhWcnZSaC1HU0tvbkcxaVNwbHltVTlhc1p3?oc=5"
+                        },
+                        {
+                            "source_type": "news",
+                            "title": "Australia shares higher at close of trade; S&P/ASX 200 up 1.74%",
+                            "url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxQVG5WeEFIMlRrMjFnVDhrUjhYMVFlN2gwUjZWMHFFMjFMQ2lYZDVKbzFUUlB0cjFjbGNWZ0lfOVlyNUdXam1ZVmVfZ1hkelJqYzV0cGdBU19waHFwMjdTdDAzaXBNTENNX2I3OXprbld2bEpOdGpjeGh2NXdFTTB6cWF0STVVZW5yQXdkcFZFZWtsUlotOFpna1liZXNsU3RKaVpPeHQ0cndRU3dTcEIzSk5fUUE?oc=5"
+                        }
+                    ]
+                },
+                "region": "Australia",
+                "source_type": "news",
+                "content": {
+                    "format": "1-pager",
+                    "pages": [
+                        {
+                            "page_title": "Draft",
+                            "markdown": "Last week, the ASX was pricing in an escalating Middle East conflict. Today, it stormed higher on hopes of an 11th-hour Iran deal.\n\nThe speed of that reversal tells us something important.\n\n**Before:** Investor sentiment was dominated by conflict risk. Defensive positioning increased. Headlines drove fear.\n\n**The turning point:** Reports emerged of a potential diplomatic resolution. Within hours, the narrative flipped from 'how bad could this get' to 'maybe the worst is over.'\n\n**After:** The ASX 200 surged \u2014 closing up 1.74% with broad-based gains. BHP and RIO among the leaders. The rally held through to the bell, confirming it wasn't just a morning knee-jerk.\n\nHere's what this pattern teaches us:\n\nMarkets price hope as fast as they price fear. The portfolios that panic-sold on escalation headlines locked in losses at the worst moment. The portfolios that held through the noise captured the snap-back.\n\nThis isn't an argument for ignoring geopolitics. The Iran situation may still deteriorate. It's an argument for having a framework that separates 'this changes the fundamentals of my holdings' from 'this changes how I feel about my holdings today.'\n\nGeopolitical sentiment can compress weeks of analysis into a single session. Your investment process needs to be built for that speed \u2014 not reactive to it.\n\nHave you ever made a portfolio move on a geopolitical headline that you later regretted? What did it teach you?"
+                        }
+                    ]
+                }
+            }
+        ]
     }
 ]
