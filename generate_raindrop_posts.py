@@ -302,10 +302,10 @@ def fetch_trending_finance_news(count=8, within_hours=48):
     Returns list of {title, excerpt, url, source_type, region}.
     """
     feeds = [
-        # Google News RSS queries (broad but current)
-        "https://news.google.com/rss/search?q=Australia+finance+ASX+RBA+when:2d&hl=en-AU&gl=AU&ceid=AU:en",
-        "https://news.google.com/rss/search?q=global+markets+inflation+rates+commodities+when:2d&hl=en-US&gl=US&ceid=US:en",
-        "https://news.google.com/rss/search?q=private+equity+M%26A+deal+when:2d&hl=en-US&gl=US&ceid=US:en",
+        # Finance & Trading news (Australia focused + Global Macro)
+        "https://news.google.com/rss/search?q=Australia+ASX200+stock+market+trading+when:2d&hl=en-AU&gl=AU&ceid=AU:en",
+        "https://news.google.com/rss/search?q=Reserve+Bank+of+Australia+RBA+interest+rates+economy+when:2d&hl=en-AU&gl=AU&ceid=AU:en",
+        "https://news.google.com/rss/search?q=global+stock+markets+S%26P500+Wall+Street+when:2d&hl=en-US&gl=US&ceid=US:en",
     ]
 
     cutoff = datetime.now(timezone.utc) - timedelta(hours=within_hours)
@@ -363,9 +363,10 @@ def fetch_trending_tech_news(count=6, within_hours=48):
     Returns list of {title, excerpt, url, source_type, region}.
     """
     feeds = [
-        "https://news.google.com/rss/search?q=AI+enterprise+software+chips+semiconductors+when:2d&hl=en-US&gl=US&ceid=US:en",
-        "https://news.google.com/rss/search?q=Australia+technology+startup+when:2d&hl=en-AU&gl=AU&ceid=AU:en",
-        "https://news.google.com/rss/search?q=cybersecurity+ransomware+when:2d&hl=en-US&gl=US&ceid=US:en",
+        # Market segments (Commodities, Forex, Crypto/Algo Trading)
+        "https://news.google.com/rss/search?q=Australia+commodities+iron+ore+gold+trading+when:2d&hl=en-AU&gl=AU&ceid=AU:en",
+        "https://news.google.com/rss/search?q=forex+AUD+USD+currency+trading+markets+when:2d&hl=en-US&gl=US&ceid=US:en",
+        "https://news.google.com/rss/search?q=crypto+Bitcoin+algorithmic+trading+quant+when:2d&hl=en-US&gl=US&ceid=US:en",
     ]
 
     cutoff = datetime.now(timezone.utc) - timedelta(hours=within_hours)
