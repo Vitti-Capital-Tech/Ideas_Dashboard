@@ -3,8 +3,8 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import {
-  Settings, Newspaper, Sparkles, CheckCircle, AlertCircle,
-  Loader2, Sun, Moon, Clock, Copy, RefreshCw,
+  Settings, Newspaper, CheckCircle, AlertCircle,
+  Sun, Moon, Clock, Copy, RefreshCw,
   Lightbulb, Globe, MapPin, BookmarkCheck, X
 } from 'lucide-react';
 
@@ -134,11 +134,13 @@ const IdeaCard = ({ index, idea, delay = 0 }) => {
             right: 12,
             zIndex: 20,
             maxWidth: 320,
-            padding: 14,
-            background: 'var(--surface)',
-            border: '1px solid var(--surface-border)',
-            borderRadius: 12,
-            boxShadow: '0 12px 40px rgba(0,0,0,0.35)',
+            width: 300,
+            padding: 16,
+            background: 'var(--bg-popover, #12162a)',
+            border: '1px solid rgba(124, 92, 252, 0.3)',
+            borderRadius: 14,
+            boxShadow: '0 16px 48px rgba(0,0,0,0.6)',
+            backdropFilter: 'blur(0px)',
           }}
         >
           <div className="flex items-center justify-between mb-2">
@@ -367,11 +369,12 @@ const StatsBar = ({ ideas }) => {
 /* ─── Main Page ───────────────────────────────────────────────── */
 export default function Home() {
   const [results, setResults]             = useState({ ideas: null });
+  const [previousIdeas, setPreviousIdeas] = useState(null);
+  const [previousDate, setPreviousDate]   = useState(null);
   const [availableDates, setAvailableDates] = useState([]);
   const [selectedDate, setSelectedDate]   = useState(null);
+  const [todayStr, setTodayStr]           = useState(null);
   const [loading, setLoading]             = useState(true);
-  const [triggering, setTriggering]       = useState(null); // 'ideas' | null
-  const [triggerProgress, setTriggerProgress] = useState(0);
   const [error, setError]                 = useState(null);
   const [theme, setTheme]                 = useState('dark');
 
@@ -385,10 +388,14 @@ export default function Home() {
 
       // Handle both old (data) and new (posts / ideas) key schemas
       const ideasRaw = data.ideas?.ideas || data.ideas?.data  || null;
+      const prevRaw  = data.previousIdeas?.ideas || data.previousIdeas?.data || null;
 
       setResults({ ideas: ideasRaw });
+      setPreviousIdeas(prevRaw);
+      setPreviousDate(data.previousDate || null);
       if (data.availableDates) setAvailableDates(data.availableDates);
       if (data.selectedDate)   setSelectedDate(data.selectedDate);
+      if (data.todayStr)       setTodayStr(data.todayStr);
     } catch (err) {
       console.error('Failed to load cache:', err);
     } finally {
@@ -413,79 +420,8 @@ export default function Home() {
     document.body.classList.toggle('light-theme', next === 'light');
   };
 
-  /* ── Trigger Workflow ──── */
-  const triggerWorkflow = async (pipeline) => {
-    setTriggering(pipeline);
-    setTriggerProgress(0);
-    setError(null);
-
-    try {
-      const res  = await fetch('/api/trigger', { method: 'POST' });
-      const data = await res.json();
-      if (!res.ok) throw new Error(data.error || 'Failed to trigger workflow');
-
-      // Animate progress bar for 60 seconds
-      let prog = 0;
-      const iv = setInterval(() => {
-        prog += 1;
-        setTriggerProgress(prog);
-        if (prog >= 100) {
-          clearInterval(iv);
-          setTriggering(null);
-          fetchCache();
-        }
-      }, 600);
-    } catch (err) {
-      setError(err.message);
-      setTriggering(null);
-    }
-  };
-
   return (
     <div className="flex-col" style={{ minHeight: '100vh', paddingTop: 36, paddingBottom: 60, gap: 0 }}>
-
-      {/* ── Trigger Overlay ── */}
-      <AnimatePresence>
-        {triggering && (
-          <motion.div
-            initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
-            style={{
-              position: 'fixed', inset: 0, zIndex: 100,
-              background: 'rgba(4, 8, 20, 0.8)', backdropFilter: 'blur(12px)',
-              display: 'flex', alignItems: 'center', justifyContent: 'center', padding: 24
-            }}
-          >
-            <motion.div
-              initial={{ scale: 0.88, y: 24 }} animate={{ scale: 1, y: 0 }}
-              className="glass-card"
-              style={{ maxWidth: 420, width: '100%', textAlign: 'center', padding: 40,
-                       border: '1px solid rgba(124,92,252,0.35)' }}
-            >
-              <Loader2 className="spinner" size={44} color="var(--primary)" style={{ margin: '0 auto 20px' }} />
-              <h2 className="text-gradient" style={{ marginBottom: 6 }}>
-                Running Ideas Pipeline
-              </h2>
-              <p className="text-muted" style={{ fontSize: '0.85rem', marginBottom: 24 }}>
-                Fetching real-time data and generating content...
-              </p>
-              <div className="progress-bar-track">
-                <motion.div
-                  className="progress-bar-fill"
-                  initial={{ width: '0%' }}
-                  animate={{ width: '100%' }}
-                  transition={{ duration: 60, ease: 'linear' }}
-                />
-              </div>
-              <p style={{ marginTop: 14, fontSize: '0.85rem', color: 'var(--primary)', fontWeight: 600 }}>
-                Done! Wait 2 minutes for the cloud to sync, then refresh.
-              </p>
-              <p style={{ marginTop: 6, fontSize: '0.75rem', color: 'var(--muted)', opacity: 0.6 }}>
-                Generation is complete, but cloud sync takes a moment.
-              </p>
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
 
       {/* ── Header ── */}
       <motion.header
@@ -545,22 +481,12 @@ export default function Home() {
               >
                 {availableDates.map(d => (
                   <option key={d} value={d} style={{ background: 'var(--bg-secondary)' }}>
-                    {d === availableDates[0] ? `Today (${d})` : d}
+                    {d === todayStr ? `Today (${d})` : d}
                   </option>
                 ))}
               </select>
             </div>
           )}
-
-          {/* Force Run Pipeline */}
-          <button
-            className="btn-ghost"
-            onClick={() => triggerWorkflow('ideas')}
-            disabled={!!triggering || loading}
-            title="Force run ideas pipeline"
-          >
-            {triggering ? <Loader2 size={16} className="spinner" /> : <Sparkles size={16} />}
-          </button>
 
           {/* Refresh */}
           <button
@@ -655,12 +581,45 @@ export default function Home() {
                 ))}
               </div>
             ) : (
-              <EmptyState 
-                icon={<Lightbulb size={48} />} 
-                msg="No ideas found. Try reloading or run a new generation." 
-                onRetry={() => fetchCache(selectedDate)}
-                onRun={() => triggerWorkflow('ideas')}
-              />
+              <>
+                {/* Today pending banner */}
+                <div style={{
+                  background: 'linear-gradient(135deg, rgba(124,92,252,0.10), rgba(59,153,252,0.08))',
+                  border: '1px dashed rgba(124,92,252,0.35)',
+                  borderRadius: 14,
+                  padding: '20px 24px',
+                  marginBottom: previousIdeas?.length > 0 ? 32 : 0,
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: 14,
+                }}>
+                  <Lightbulb size={28} color="var(--gold, #f59e0b)" style={{ flexShrink: 0 }} />
+                  <div>
+                    <p style={{ fontWeight: 600, color: 'var(--foreground)', marginBottom: 4 }}>
+                      {selectedDate === todayStr || !selectedDate
+                        ? `Today's ideas haven't been generated yet (${todayStr}).`
+                        : `No ideas found for ${selectedDate}.`}
+                    </p>
+                    {previousIdeas?.length > 0 && (
+                      <p style={{ fontSize: '0.85rem', color: 'var(--muted)' }}>
+                        In the meantime, here are the last ideas from <strong>{previousDate}</strong>.
+                      </p>
+                    )}
+                  </div>
+                  <button onClick={() => fetchCache(selectedDate)} className="btn-secondary" style={{ marginLeft: 'auto', flexShrink: 0 }}>
+                    <RefreshCw size={14} /> Reload
+                  </button>
+                </div>
+
+                {/* Previous ideas as fallback */}
+                {previousIdeas?.length > 0 && (
+                  <div className="flex-col gap-8">
+                    {previousIdeas.map((idea, i) => (
+                      <IdeaCard key={i} index={i + 1} idea={idea} delay={i * 0.06} />
+                    ))}
+                  </div>
+                )}
+              </>
             )}
           </motion.div>
         </AnimatePresence>

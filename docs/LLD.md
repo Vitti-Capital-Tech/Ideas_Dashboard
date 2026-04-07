@@ -7,12 +7,12 @@
 | Variable | Purpose |
 |----------|---------|
 | `RAINDROP_TOKEN` | Bearer token for Raindrop API |
-| `ANTHROPIC_API_KEY` or `CLAUDE_API_KEY` | Claude API |
+| `ANTHROPIC_API_KEY` or `CLAUDE_API_KEY` | Claude API (both checked) |
 | `ANTHROPIC_MODEL` | Optional model id (code has a default) |
-| `IDEAS_DOC_ID` | Target Google Doc |
-| `GOOGLE_CREDENTIALS_JSON` | Path to service account JSON file |
+| `IDEAS_DOC_ID` | Target Google Doc (optional) |
+| `GOOGLE_CREDENTIALS_JSON` | Path to service account JSON file (optional) |
 | `DISABLE_GOOGLE_DOC` | If truthy, skip Doc API writes |
-| `FALLBACK_ON_LLM_FAILURE` | Debug-only; not used for production log writes |
+| `FALLBACK_ON_LLM_FAILURE` | Debug-only; skips log write and bookmark consumption |
 
 `load_dotenv()` loads a root `.env` when present.
 
@@ -20,32 +20,67 @@
 
 | Function | Behavior |
 |----------|----------|
-| `fetch_raindrop_bookmarks()` | GET raindrops; skip IDs in `web/used_bookmarks.txt`; split pinned vs not; return up to five (pinned first). |
-| `fetch_trending_finance_news()` / `fetch_trending_tech_news()` | Google News RSS–style URLs; dedupe by title; respect recency window. |
-| `attach_cross_verification(anchors, external_items, per_anchor)` | Score overlap; attach up to `per_anchor` URLs; fill from pool if weak overlap. |
-| `pick_diverse_web_anchors(finance, tech, count)` | Alternate pools + dedupe keys for web-only mode. |
-| `dedupe_source_list(items)` | Dedupe by URL or title before sending giant payloads. |
-| `fetch_url_snippet(url)` | Optional HTML snippet for empty Raindrop excerpts (best-effort). |
-| `generate_daily_connected_ideas(sources, ideas_per_day, source_mode)` | Builds `compact_sources` (includes `cross_verify`); prompts Claude; returns raw text. |
-| `_normalize_idea_fields(idea)` | Merges `linkedin_playbook` into `context`/`angle`/`title` when needed; fixes occasional key typos. |
-| `parse_and_filter_ideas(raw)` | JSON extract via `extract_first_json_array`; generic-phrase filter; requires title, context, angle after normalization. |
+| `fetch_raindrop_bookmarks(within_days=5, max_items=5)` | GET last 50 raindrops sorted newest-first; skip IDs in `web/used_bookmarks.txt`; skip items older than `within_days`; split into `pinned[]` + `recent[]`; return `(pinned + recent)[:max_items]`. |
+| `fetch_trending_finance_news()` / `fetch_trending_tech_news()` | Google News RSS-style URLs; dedupe by title; respect recency window. |
+| `pick_diverse_web_anchors(finance, tech, count)` | Alternate between finance/tech pools + dedupe keys; used to fill gap when Raindrop returns fewer than 5 items. |
+| `attach_cross_verification(anchors, external_items, per_anchor)` | Score token overlap; attach up to `per_anchor` external items to each anchor; fill from pool if weak overlap. |
+| `dedupe_source_list(items)` | Dedupe by URL or title before sending to Claude. |
+| `fetch_url_snippet(url)` | Optional HTML snippet for empty Raindrop excerpts (best-effort, no JS). |
+| `generate_daily_connected_ideas(sources, ideas_per_day, source_mode)` | Splits sources into `anchor_items` (have `cross_verify`) and `context_pool`; sends `ANCHORS` + `ADDITIONAL CONTEXT` to Claude as two separate JSON blocks; instructs one idea per anchor in order. Returns raw Claude text. |
+| `_normalize_idea_fields(idea)` | Merges `linkedin_playbook` into `context`/`angle`/`title` when needed; fixes key typos. |
+| `parse_and_filter_ideas(raw)` | JSON extract via `extract_first_json_array`; generic-phrase filter; requires `title`, `context`, `angle` after normalization. |
 | `format_ideas_for_doc(ideas)` | Plain text for Google Doc: playbook fields, sources, draft excerpt. |
-| `save_to_logs(ideas)` | Append to `web/logs/{date}.json`. |
+| `save_to_logs(ideas)` | Append `{ timestamp, ideas }` to `web/logs/{date}.json`. |
+| `mark_bookmark_used(bm_id)` | Append Raindrop ID to `web/used_bookmarks.txt`. |
+| `get_used_bookmarks()` | Return set of already-used Raindrop IDs from `web/used_bookmarks.txt`. |
 | `append_to_google_doc(...)` | Prepend to Doc; respects size trim helpers; skips if disabled or missing creds. |
 
-### Main control flow (simplified)
+### Main control flow (`__main__`)
 
-1. Load bookmarks; enrich with optional snippet.
-2. Load finance + tech RSS; fail if empty.
-3. If bookmarks: `source_mode = raindrop_plus_web`; attach cross-verify from RSS; `used_ids` = bookmark ids.
-4. Else: `source_mode = web_only`; `pick_diverse_web_anchors`; attach cross-verify from rest pool; `used_ids` = [].
-5. Call Claude; optional debug fallback (does not commit logs in success path).
-6. Parse; require **exactly five** ideas (unless fallback debug path).
-7. Write Doc + log + `mark_bookmark_used` only on success.
+```
+IDEAS_PER_DAY = 5
+
+1. fetch_raindrop_bookmarks(within_days=5, max_items=5)
+   → returns 0..5 items from the last 5 days (pinned first)
+
+2. fetch_trending_finance_news() + fetch_trending_tech_news()
+   → fail-exit if RSS is completely empty
+
+3. Compute deficit = 5 - len(raindrop_items)
+   If deficit > 0:
+     → pick_diverse_web_anchors(finance, tech, count=deficit)
+     → web_fill_items (NOT added to used_ids later)
+
+4. anchor_items = raindrop_items + web_fill_items
+   used_ids = [bm.id for bm in raindrop_items]   # Raindrop only
+   source_mode = "raindrop_plus_web" if any Raindrop else "web_only"
+
+5. attach_cross_verification(anchor_items, external_pool, per_anchor=2)
+
+6. generate_daily_connected_ideas(sources, ideas_per_day=5, source_mode)
+   → Claude prompt: "one idea per anchor, in order, independently themed"
+
+7. parse_and_filter_ideas(raw)   → exactly 5 ideas required
+
+8. On success:
+   append_to_google_doc(...)      (if enabled)
+   save_to_logs(ideas)
+   for bm_id in used_ids:
+       mark_bookmark_used(bm_id)  (Raindrop IDs only)
+```
+
+### Prompt model (`generate_daily_connected_ideas`)
+
+The function now separates sources into two blocks before calling Claude:
+
+- **`anchor_items`** — sources that have a `cross_verify` array attached (these are the primary anchors, one per idea).
+- **`context_pool`** — remaining sources (no `cross_verify`), passed as `ADDITIONAL CONTEXT` for enrichment only.
+
+Claude receives the instruction: **"Anchor 1 → Idea 1, Anchor 2 → Idea 2… Each idea must have a different topic."** This prevents the old behaviour where 2 Raindrop articles would be woven into all 5 ideas as a single themed series.
 
 ### JSON extraction
 
-`extract_first_json_array` walks bracket depth to find first `[{...}]` or a single object, stripping ``` fences—reduces breakage from stray `[1]` citations.
+`extract_first_json_array` walks bracket depth to find the first `[{...}]` or a single object, stripping ``` fences — reduces breakage from stray `[1]` footnote-style citations.
 
 ---
 
@@ -54,39 +89,39 @@
 ### `src/app/api/cache/route.js`
 
 - Resolves `logs` dir: `process.cwd()/logs` or `process.cwd()/web/logs`.
-- **Available dates:** scan **root** `*.json` (not `ideas/` subfolder).
-- **Load:** `ideas` = last element of parsed array in `YYYY-MM-DD.json`.
-- Response: `{ ideas, availableDates, selectedDate }`.
-
-### `src/app/api/trigger/route.js`
-
-- POST: GitHub `workflow_dispatch` on `generate.yml` using `GITHUB_PAT` + `GITHUB_REPO`.
+- Computes `todayStr` = `YYYY-MM-DD` in server local time.
+- **Available dates:** scan root `*.json`; always inject `todayStr` at position 0 even if no log file exists for today yet.
+- **On initial load** (no `?date=` param): serve today's log. If today has no log, return `ideas: null` + `previousIdeas` (most recent past log) + `previousDate`.
+- **On date change** (`?date=YYYY-MM-DD`): serve that date's log only.
+- Response: `{ ideas, previousIdeas, previousDate, availableDates, selectedDate, todayStr }`.
 
 ### `src/app/page.js`
 
-- Fetches `/api/cache`; renders **Ideas only**.
-- **IdeaCard:** series strip; badges; LinkedIn playbook (hook, why, unique take, CTA, poll list); **lightbulb** toggles popover for `why_this_works`; **Headline** when draft exists; **Context/angle** hidden when draft exists to reduce duplication.
-- **Copy:** copies concatenated pager markdown (“Copy draft”) or fallback to title/context/angle.
-- Single-page pager auto-opens once via `useEffect` + `pagerInitialized`.
+- Fetches `/api/cache`; renders **Ideas only** (Posts tab removed).
+- State includes `todayStr` + `previousIdeas` + `previousDate` from API response.
+- **Today pending state:** when `ideas` is null, shows a dashed purple banner ("Today's ideas haven't been generated yet") and renders `previousIdeas` cards below it.
+- **Date picker:** "Today (YYYY-MM-DD)" label is applied only when the option value equals `todayStr` (not just the most recent date).
+- **IdeaCard:** series strip; badges; LinkedIn playbook (hook, why, unique take, CTA, poll list); **lightbulb** toggles popover for `why_this_works`; pager draft; **Copy draft** button.
+- **Lightbulb popover:** solid opaque background (`--bg-popover`) prevents content bleed-through in both dark and light themes.
+- **Run Pipeline button** removed; pipeline must be triggered via GitHub Actions.
 
 ### `src/app/globals.css`
 
-- Design tokens, glass cards, pager accordion styles.
+- Design tokens including `--bg-popover: #0e1a33` (dark) / `#ffffff` (light) for the lightbulb popover.
+- Glass cards, pager accordion, skeleton shimmer, date pill styles.
 
 ---
 
 ## 3. Data schema (idea object)
 
-Minimal shape stored in logs (exact fields may vary slightly by model):
+Minimal shape stored in logs (exact fields may vary by model run):
 
 ```json
 {
-  "series_title": "string",
-  "series_thesis": "string",
+  "anchor_source": "url of the primary anchor for this idea",
   "title": "string",
   "context": "string",
   "angle": "string",
-  "connections": { "builds_on": "string" },
   "linkedin_playbook": {
     "format_name": "string",
     "opening_hook": "string",
@@ -102,15 +137,17 @@ Minimal shape stored in logs (exact fields may vary slightly by model):
     ]
   },
   "region": "Australia|Global|Mixed",
-  "source_type": "hybrid",
+  "source_type": "raindrop|news|hybrid",
   "content": {
-    "format": "1-pager|multi-pager",
+    "format": "1-pager",
     "pages": [
-      { "page_title": "string", "markdown": "string" }
+      { "page_title": "Draft", "markdown": "string" }
     ]
   }
 }
 ```
+
+> **Note:** `series_title`, `series_thesis`, and `connections.builds_on` fields from the old series-based schema are no longer generated by the prompt. The dashboard handles their absence gracefully.
 
 ---
 
@@ -119,15 +156,19 @@ Minimal shape stored in logs (exact fields may vary slightly by model):
 | Path | Role |
 |------|------|
 | `generate_raindrop_posts.py` | Daily generator |
-| `web/logs/YYYY-MM-DD.json` | Dashboard input |
-| `web/used_bookmarks.txt` | Raindrop IDs consumed |
-| `.github/workflows/generate.yml` | CI schedule + run |
-| `requirements.txt` | Python deps (e.g. `anthropic`, Google clients, `requests`) |
+| `web/logs/YYYY-MM-DD.json` | Dashboard input (one file per day) |
+| `web/used_bookmarks.txt` | Raindrop IDs consumed (one per line) |
+| `.github/workflows/generate.yml` | CI schedule + manual dispatch |
+| `requirements.txt` | Python deps (`anthropic`, `requests`, Google clients, etc.) |
+| `docs/HLD.md` | High-level architecture |
+| `docs/LLD.md` | This file |
 
 ---
 
-## 5. Failure behavior
+## 5. Failure behaviour
 
 - **Claude errors / overload:** retries with backoff; if still no valid five ideas, process exits **without** writing logs or consuming bookmarks.
-- **Empty RSS:** hard exit (cannot cross-verify).
+- **Empty RSS:** hard exit (cannot cross-verify; bookmarks not consumed).
+- **Fewer than 5 ideas returned:** hard exit without writing (ensures log always has a complete 5-idea set).
 - **Malformed log file:** `_load_log_file` returns `[]` and starts fresh on write.
+- **No Raindrop items (last 5 days fully consumed or no new saves):** falls back to `web_only` mode automatically — no error, pipeline continues normally.

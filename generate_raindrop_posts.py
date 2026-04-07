@@ -83,11 +83,11 @@ def mark_bookmark_used(bm_id):
 
 def fetch_raindrop_bookmarks(within_days=5, max_items=5):
     """
-    Return up to `max_items` PINNED Raindrop bookmarks that were created
-    within the last `within_days` days and have not been used before.
+    Return up to `max_items` Raindrop bookmarks saved within the last
+    `within_days` days that have not been used before.
 
-    Only PINNED (important=True) items qualify -- recency is checked against
-    the `created` field returned by the API.
+    Pinned (important=True) items are preferred and sorted first,
+    but all recently saved bookmarks qualify regardless of pin status.
     Returns a list of 0..max_items dicts.
     """
     if not RAINDROP_TOKEN:
@@ -107,7 +107,8 @@ def fetch_raindrop_bookmarks(within_days=5, max_items=5):
         return []
 
     items = response.json().get("items", [])
-    qualified = []
+    pinned = []
+    recent = []
 
     for item in items:
         bm_id = str(item.get("_id", ""))
@@ -116,34 +117,31 @@ def fetch_raindrop_bookmarks(within_days=5, max_items=5):
         if bm_id in used_bms:
             continue
 
-        # Only accept PINNED items
-        if not bool(item.get("important", False)):
-            continue
-
-        # Date filter: must have been created within the last `within_days` days
+        # Date filter: must have been saved within the last `within_days` days
         created_raw = item.get("created") or item.get("lastUpdate") or ""
         try:
-            # Raindrop returns ISO-8601, e.g. "2026-04-05T12:34:56.789Z"
             created_dt = datetime.fromisoformat(created_raw.replace("Z", "+00:00"))
             if created_dt < cutoff:
-                continue  # too old
+                continue  # too old — stop scanning (API is sorted newest first)
         except Exception:
-            # If we cannot parse the date, skip conservatively
             continue
 
-        qualified.append({
+        is_pinned = bool(item.get("important", False))
+        bm = {
             "id": bm_id,
             "title": item.get("title", ""),
             "excerpt": item.get("excerpt", ""),
             "url": item.get("link", "") or item.get("url", ""),
-            "pinned": True,
+            "pinned": is_pinned,
             "source_type": "raindrop",
             "created": created_raw,
-        })
+        }
+        (pinned if is_pinned else recent).append(bm)
 
-        if len(qualified) >= max_items:
-            break
-
+    # Pinned first, then newest saved — cap to max_items
+    qualified = (pinned + recent)[:max_items]
+    print(f"  [raindrop] {len(pinned)} pinned + {len(recent)} recent = "
+          f"{len(qualified)} selected (last {within_days} days)")
     return qualified
 
 def _call_claude(prompt, temperature=0.4, max_tokens=4000):
@@ -557,24 +555,26 @@ def fetch_url_snippet(url, max_chars=600, timeout=8):
 
 def generate_daily_connected_ideas(sources, ideas_per_day=5, source_mode="raindrop_plus_web"):
     """
-    Single Claude call that consumes combined sources and outputs EXACTLY N connected ideas,
-    each including finance-news-related content (single or multi-page).
+    Single Claude call: one dedicated idea per anchor source, each independently themed.
+    Web cross_verify items validate/enrich each anchor but cannot dominate.
 
     source_mode:
-      - "raindrop_plus_web": pinned Raindrop (or unused bookmarks) + web RSS cross-checks
-      - "web_only": no Raindrop; anchors are diverse web items, each with cross_verify from other web items
+      - "raindrop_plus_web": Raindrop bookmarks are anchors; web is context/verification
+      - "web_only": diverse web items are anchors; other web items are context/verification
     """
     sources = sources or []
-    compact_sources = []
+
+    # Separate anchors (items with cross_verify) from pure context sources
+    anchor_items = []
+    context_pool = []
     for s in sources:
         cv = s.get("cross_verify") or []
-        compact_sources.append({
+        entry = {
             "source_type": s.get("source_type", "news"),
             "title": _safe_text(s.get("title")),
             "excerpt": _safe_text(s.get("excerpt")),
             "url": _safe_text(s.get("url", "")),
             "region": _safe_text(s.get("region", "")),
-            "id": _safe_text(s.get("id", "")),
             "pinned": bool(s.get("pinned", False)),
             "cross_verify": [
                 {
@@ -585,61 +585,75 @@ def generate_daily_connected_ideas(sources, ideas_per_day=5, source_mode="raindr
                 }
                 for x in cv
             ],
-        })
+        }
+        if cv:
+            anchor_items.append(entry)
+        else:
+            ctx = {k: v for k, v in entry.items() if k != "cross_verify"}
+            context_pool.append(ctx)
+
+    # Ensure we have exactly ideas_per_day anchors labelled
+    anchors_for_prompt = anchor_items[:ideas_per_day]
 
     if source_mode == "raindrop_plus_web":
-        mode_rules = """SOURCE MODE: Raindrop + web cross-check
-- Prefer PINNED Raindrop items when listing anchors; each idea must tie at least one Raindrop URL to at least one EXTERNAL (finance or tech RSS) URL.
-- Use the provided cross_verify arrays: they are independent signals to validate or challenge the Raindrop angle.
-- Never treat a single headline as sufficient: explicitly state how the external items confirm, contradict, or narrow the Raindrop takeaway."""
+        mode_rules = f"""SOURCE MODE: Raindrop bookmarks + web cross-check
+- The ANCHORS array contains {len(anchors_for_prompt)} items. Generate EXACTLY ONE idea per anchor — in the same order.
+- Raindrop anchors (source_type="raindrop") must be the PRIMARY subject of their idea. Do not reuse any anchor as the primary for a second idea.
+- Each idea's cross_verify items are web sources to VALIDATE or CHALLENGE the anchor angle — cite at least one per idea.
+- Ideas must be INDEPENDENTLY themed: Idea 1 is about anchor 1's topic, Idea 2 is about anchor 2's topic, etc.
+- Do NOT create one overarching series thesis that forces all ideas onto the same topic."""
     else:
-        mode_rules = """SOURCE MODE: Web-only (no Raindrop today)
-- Anchors are drawn from live web (RSS + optional fetch). Each anchor includes cross_verify items from OTHER stories (finance + tech mix).
-- EVERY idea must cite at least TWO distinct web sources (different URLs) from the JSON. Describe the cross-check (agreement, tension, or gap).
-- Do not depend on one publication or one RSS feed: mix categories where possible."""
+        mode_rules = f"""SOURCE MODE: Web-only (no Raindrop bookmarks today)
+- The ANCHORS array contains {len(anchors_for_prompt)} diverse web stories. Generate EXACTLY ONE idea per anchor — in the same order.
+- Each anchor is the PRIMARY subject of its idea. Do not reuse any anchor as primary for another idea.
+- Use cross_verify items to add a second independent perspective (agreement, tension, or gap).
+- Ideas must cover DISTINCT topics — do not force one narrative across all five."""
 
-    prompt = f"""You are a finance + tech content strategist.
+    prompt = f"""You are a finance + tech content strategist for Vitti Capital.
 
 TASK:
-Generate EXACTLY {ideas_per_day} connected content ideas for today using the sources below. Nothing should rest on a single source.
+Generate EXACTLY {ideas_per_day} LinkedIn content ideas — one dedicated idea per ANCHOR SOURCE below.
+Each idea must be independently themed based on its anchor's topic.
 
 {mode_rules}
 
-GLOBAL RULES:
-- The {ideas_per_day} ideas MUST be one themed series: shared thesis; each idea builds on the previous.
-- Cross-verification is mandatory: weave at least two independent sources (see cross_verify / URLs) into the playbook sections—not just in a footnote.
-- Avoid repetition: `context` must be a tight research synthesis (sources + tension). `content.pages[].markdown` is the publishable post—do NOT paste the same opening sentences in both; the draft may elaborate hooks already stated in the playbook.
-- Australian finance + global / tech where relevant. Professional, thought-leadership tone for LinkedIn (not clickbait).
-- No invented statistics. If a number is not in the excerpts, say "not specified" or omit the number.
-- Each idea MUST use a distinct "LinkedIn post format" from the playbook list below (do not repeat the same format_name for all five).
+ANCHOR-TO-IDEA MAPPING RULE (CRITICAL):
+- Anchor 1 → Idea 1. Anchor 2 → Idea 2. And so on.
+- The anchor is the headline and primary evidence for that idea.
+- The cross_verify items add a second voice but must not override the anchor's core topic.
+- NEVER use the same anchor URL as the primary source in more than one idea.
+- Each idea must have a DIFFERENT topic, hook, and takeaway.
 
-LINKEDIN FORMATS (rotate across the {ideas_per_day} ideas—use each at most once; pick {ideas_per_day} different ones):
-1) "Industry Trend Interpretation" — surprising hook on a live trend, why it matters for the industry, your unique read vs headlines, CTA question.
-2) "Before/After Results Story" — challenge, turning point, outcome (metrics only if grounded in sources), invitation to share.
-3) "Provocative Question & Poll Hybrid" — contrarian setup, suggested poll options (3-4), 2-3 lines why now, CTA to comment.
+GLOBAL QUALITY RULES:
+- Cross-verification is mandatory: each idea must explicitly state how the cross_verify item confirms, contradicts, or narrows the anchor angle.
+- Context: tight research synthesis — what the anchor says + what the cross_verify adds. Do not pad.
+- Draft (markdown): publishable LinkedIn post, 150-280 words. Professional, thought-leadership tone. No clickbait. No invented statistics.
+- Australian finance lens where relevant; global where not.
+- Each idea MUST use a DIFFERENT LinkedIn format (no repeats across the {ideas_per_day} ideas).
+
+LINKEDIN FORMATS (use each at most once):
+1) "Industry Trend Interpretation" — surprising hook on a live trend, why it matters, unique read vs headlines, CTA question.
+2) "Before/After Results Story" — challenge, turning point, outcome (grounded metrics only), invitation to share.
+3) "Provocative Question & Poll Hybrid" — contrarian setup, poll options (3-4), 2-3 lines why now, CTA to comment.
 4) "Contrarian Institution Read" — what consensus misses, evidence from sources, risk of being wrong, one sharp question.
-5) "Signal Decoder" — what the market signal is, second source that confirms or tensions, practical implication for operators/investors.
+5) "Signal Decoder" — what the signal is, second source confirming or tensioning it, practical implication for operators/investors.
 
 OUTPUT:
-Return strict JSON array ONLY (no markdown, no commentary). EXACTLY {ideas_per_day} objects.
+Return strict JSON array ONLY (no markdown, no commentary). EXACTLY {ideas_per_day} objects, one per anchor in order.
 Schema:
 [
   {{
-    "series_title": "Shared theme for the 5 ideas",
-    "series_thesis": "1-2 sentences",
-    "title": "Working title for the post (can match opening_hook first line)",
-    "context": "2-5 sentences: cross-verification narrative across sources (required)",
+    "anchor_source": "url of the anchor this idea is based on",
+    "title": "Working title for the post",
+    "context": "2-4 sentences: what the anchor says + how cross_verify confirms/challenges it (required)",
     "angle": "One-line strategic takeaway",
-    "connections": {{
-      "builds_on": "How this connects to the previous idea in the series"
-    }},
     "linkedin_playbook": {{
       "format_name": "One of the five format names above",
       "opening_hook": "Scroll-stopping opening line or short paragraph",
       "why_section": "Broader implications for professionals / markets",
-      "unique_take": "Perspective beyond headlines, grounded in sources",
+      "unique_take": "Perspective beyond the headline, grounded in both anchor and cross_verify",
       "call_to_action": "Ending question or invitation (exactly one)",
-      "why_this_works": "1-2 sentences: why this structure earns engagement for this audience",
+      "why_this_works": "1-2 sentences: why this format earns engagement for this audience",
       "poll_options": ["Option A", "Option B", "Option C", "Option D"]
     }},
     "grounding": {{
@@ -648,13 +662,13 @@ Schema:
       ]
     }},
     "region": "Australia|Global|Mixed",
-    "source_type": "hybrid",
+    "source_type": "raindrop|news|hybrid",
     "content": {{
-      "format": "1-pager|multi-pager",
+      "format": "1-pager",
       "pages": [
         {{
           "page_title": "Draft",
-          "markdown": "Full LinkedIn-ready draft in markdown (hook through CTA), 150-280 words unless poll format needs slightly more setup. No fake [5] citations."
+          "markdown": "Full LinkedIn-ready draft, 150-280 words. Hook through CTA. No fake citations."
         }}
       ]
     }}
@@ -663,13 +677,20 @@ Schema:
 
 Note: If the format is not poll-based, set poll_options to [] (empty array).
 
-SOURCES JSON:
-{json.dumps(compact_sources, ensure_ascii=False)}
+ANCHORS (one idea per anchor, in order):
+{json.dumps(anchors_for_prompt, ensure_ascii=False)}
+
+ADDITIONAL CONTEXT (use for cross-verification only, not as primary anchors):
+{json.dumps(context_pool[:10], ensure_ascii=False)}
 
 Generate now:"""
 
     raw = _call_claude(prompt, temperature=0.35, max_tokens=12000)
     return raw
+
+
+
+
 
 
 def fallback_connected_ideas(sources, ideas_per_day=5):
