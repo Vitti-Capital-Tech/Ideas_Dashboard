@@ -81,39 +81,70 @@ def mark_bookmark_used(bm_id):
     with open('web/used_bookmarks.txt', 'a', encoding='utf-8') as f:
         f.write(f"{bm_id}\n")
 
-def fetch_raindrop_bookmarks():
+def fetch_raindrop_bookmarks(within_days=5, max_items=5):
+    """
+    Return up to `max_items` PINNED Raindrop bookmarks that were created
+    within the last `within_days` days and have not been used before.
+
+    Only PINNED (important=True) items qualify -- recency is checked against
+    the `created` field returned by the API.
+    Returns a list of 0..max_items dicts.
+    """
+    if not RAINDROP_TOKEN:
+        print("[warn] RAINDROP_TOKEN not set -- skipping Raindrop fetch.")
+        return []
+
     used_bms = get_used_bookmarks()
+    cutoff = datetime.now(timezone.utc) - timedelta(days=within_days)
+
     headers = {"Authorization": f"Bearer {RAINDROP_TOKEN}"}
     response = requests.get(
-        f"https://api.raindrop.io/rest/v1/raindrops/0?perpage=50",
-        headers=headers
+        "https://api.raindrop.io/rest/v1/raindrops/0?perpage=50&sort=-created",
+        headers=headers,
     )
     if response.status_code != 200:
-        print(f"Raindrop Error: {response.text}")
+        print(f"[error] Raindrop API error {response.status_code}: {response.text[:200]}")
         return []
-        
+
     items = response.json().get("items", [])
-    pinned = []
-    recent = []
-    
+    qualified = []
+
     for item in items:
         bm_id = str(item.get("_id", ""))
+
+        # Skip already-used bookmarks
         if bm_id in used_bms:
             continue
-        bm = {
+
+        # Only accept PINNED items
+        if not bool(item.get("important", False)):
+            continue
+
+        # Date filter: must have been created within the last `within_days` days
+        created_raw = item.get("created") or item.get("lastUpdate") or ""
+        try:
+            # Raindrop returns ISO-8601, e.g. "2026-04-05T12:34:56.789Z"
+            created_dt = datetime.fromisoformat(created_raw.replace("Z", "+00:00"))
+            if created_dt < cutoff:
+                continue  # too old
+        except Exception:
+            # If we cannot parse the date, skip conservatively
+            continue
+
+        qualified.append({
             "id": bm_id,
             "title": item.get("title", ""),
             "excerpt": item.get("excerpt", ""),
             "url": item.get("link", "") or item.get("url", ""),
-            # Raindrop uses `important` for “pinned/starred” items.
-            "pinned": bool(item.get("important", False)),
-        }
-        (pinned if bm["pinned"] else recent).append(bm)
-        if len(pinned) + len(recent) >= 50:
+            "pinned": True,
+            "source_type": "raindrop",
+            "created": created_raw,
+        })
+
+        if len(qualified) >= max_items:
             break
 
-    # Prefer pinned first, then newest unused. Cap to 5 as per daily goal.
-    return (pinned + recent)[:5]
+    return qualified
 
 def _call_claude(prompt, temperature=0.4, max_tokens=4000):
     if not anthropic_client:
@@ -810,29 +841,31 @@ def save_to_logs(all_ideas_structured, all_posts):
     # Posts are no longer generated; dashboard is Ideas-only.
 
 if __name__ == "__main__":
-    print("="*50)
+    print("=" * 50)
     print("VITTI CAPITAL - Daily Ideas Pack Generator")
-    print("="*50)
+    print("=" * 50)
 
     IDEAS_PER_DAY = 5
 
-    # 1. Fetch Raindrop (pinned first, then other unused; max 5). Never reuse IDs in used_bookmarks.txt
-    bookmarks = fetch_raindrop_bookmarks()
-    print(f"\nFound {len(bookmarks)} unused Raindrop items (pinned first).")
+    # -- 1. Raindrop: pinned bookmarks saved in the last 5 days ---------------
+    print("\nFetching Raindrop bookmarks (pinned, last 5 days)...")
+    raindrop_items = fetch_raindrop_bookmarks(within_days=5, max_items=IDEAS_PER_DAY)
+    print(f"Found {len(raindrop_items)} qualifying Raindrop item(s) (pinned + <=5 days old).")
 
-    for bm in bookmarks:
+    # Enrich excerpts for Raindrop items that have no snippet
+    for bm in raindrop_items:
         bm["source_type"] = "raindrop"
         if not bm.get("excerpt") and bm.get("url"):
             snip = fetch_url_snippet(bm["url"])
             if snip:
                 bm["excerpt"] = snip[:500]
 
-    # 2. Live web: finance + tech RSS (always fetched for cross-verification)
-    print("Fetching trending finance news via RSS...")
+    # -- 2. Live web RSS -- always fetch for cross-verification + potential fill
+    print("\nFetching trending finance news via RSS...")
     finance_items = fetch_trending_finance_news(count=14, within_hours=48)
     print(f"Found {len(finance_items)} finance items.")
 
-    print("Fetching trending tech trends via RSS...")
+    print("Fetching trending tech news via RSS...")
     tech_items = fetch_trending_tech_news(count=12, within_hours=48)
     print(f"Found {len(tech_items)} tech items.")
 
@@ -842,38 +875,66 @@ if __name__ == "__main__":
         print("[error] No web sources available (RSS empty). Cannot cross-verify. Exiting.")
         exit(1)
 
-    source_mode = "raindrop_plus_web"
-    used_ids = []
+    # -- 3. Build anchor list -- Raindrop first, top up with web if needed ----
+    n_rain = len(raindrop_items)
+    deficit = IDEAS_PER_DAY - n_rain  # how many web fill-ins we need
 
-    if bookmarks:
-        # Raindrop path: each item gets cross_verify from web; full web pool also passed for breadth
-        bookmarks = attach_cross_verification(bookmarks, external_items, per_anchor=2)
-        sources = dedupe_source_list(list(bookmarks) + external_items)
-        used_ids = [bm.get("id") for bm in bookmarks if bm.get("id")]
-    else:
-        # Web-only path: diverse anchors + cross-verify between web stories (never single-source)
-        source_mode = "web_only"
-        print("[info] No unused Raindrop items — using web-only anchors with cross-verification.")
-        web_anchors = pick_diverse_web_anchors(finance_items, tech_items, count=IDEAS_PER_DAY)
-        if len(web_anchors) < IDEAS_PER_DAY:
-            print("[error] Not enough diverse web anchors to run. Exiting.")
-            exit(1)
-        # Pool for matching: everything not identical URL to anchors
-        anchor_urls = {a.get("url") or a.get("title", "") for a in web_anchors}
-        rest_pool = [x for x in external_items if (x.get("url") or x.get("title")) not in anchor_urls]
-        verify_pool = dedupe_source_list(rest_pool + external_items)
-        web_anchors = attach_cross_verification(web_anchors, verify_pool, per_anchor=2)
-        for a in web_anchors:
-            a.setdefault("source_type", "web")
-        sources = dedupe_source_list(list(web_anchors) + external_items)
+    used_ids = []        # only Raindrop IDs get marked as used
+    web_fill_items = []  # web items used as anchors (not marked used)
+
+    if deficit > 0:
+        # Pick diverse web stories to fill the gap
+        rain_urls = {bm.get("url") or bm.get("title", "") for bm in raindrop_items}
+        candidate_pool = [x for x in external_items
+                          if (x.get("url") or x.get("title", "")) not in rain_urls]
+        web_fill_items = pick_diverse_web_anchors(
+            [x for x in candidate_pool if x.get("source_type") == "news"],
+            [x for x in candidate_pool if x.get("source_type") == "tech"],
+            count=deficit,
+        )
+        if len(web_fill_items) < deficit:
+            # If still short, just take whatever is available
+            web_fill_items = candidate_pool[:deficit]
+        print(f"[info] Filling {deficit} slot(s) with web anchors "
+              f"({len(web_fill_items)} selected).")
+
+    # Combined anchor list: Raindrop items + web fill-ins
+    anchor_items = raindrop_items + web_fill_items
+
+    if not anchor_items:
+        print("[error] No anchors available at all (Raindrop empty, web RSS also empty).")
+        exit(1)
+
+    # IDs to mark used -- Raindrop only
+    used_ids = [bm.get("id") for bm in raindrop_items if bm.get("id")]
+
+    # Set source mode
+    source_mode = "raindrop_plus_web" if n_rain > 0 else "web_only"
+    print(f"\n[info] Source mode: {source_mode} "
+          f"| Raindrop anchors: {n_rain} | Web fill-ins: {len(web_fill_items)}")
+
+    # Attach cross-verification sources (from the external pool) to every anchor
+    anchor_url_set = {a.get("url") or a.get("title") for a in anchor_items}
+    verify_pool = dedupe_source_list(
+        [x for x in external_items if (x.get("url") or x.get("title")) not in anchor_url_set]
+        + external_items
+    )
+    anchor_items = attach_cross_verification(anchor_items, verify_pool, per_anchor=2)
+
+    # Full source list passed to Claude (anchors + all web context for breadth)
+    sources = dedupe_source_list(list(anchor_items) + external_items)
 
     if not sources:
-        print("[error] No real context available. Exiting - no filler will be generated.")
+        print("[error] No real context available. Exiting.")
         exit(0)
 
-    # 3. Generate exactly 5 connected ideas (series) from combined sources
-    print(f"\nGenerating today's connected idea pack (x{IDEAS_PER_DAY}) [mode={source_mode}]...")
-    raw = generate_daily_connected_ideas(sources, ideas_per_day=IDEAS_PER_DAY, source_mode=source_mode)
+    # -- 4. Generate exactly 5 connected ideas via Claude ---------------------
+    print(f"\nGenerating today's connected idea pack (x{IDEAS_PER_DAY}) "
+          f"[mode={source_mode}]...")
+    raw = generate_daily_connected_ideas(
+        sources, ideas_per_day=IDEAS_PER_DAY, source_mode=source_mode
+    )
+
     used_fallback = False
     if not raw and FALLBACK_ON_LLM_FAILURE:
         used_fallback = True
@@ -882,29 +943,33 @@ if __name__ == "__main__":
 
     all_ideas_structured = parse_and_filter_ideas(raw)
     all_ideas_structured = all_ideas_structured[:IDEAS_PER_DAY]
-    print(f"\nTotal ideas after filtering: {len(all_ideas_structured)} (target {IDEAS_PER_DAY})")
+    print(f"\nTotal ideas after filtering: {len(all_ideas_structured)} "
+          f"(target {IDEAS_PER_DAY})")
 
-    # For real runs, enforce EXACTLY 5 ideas. If Claude fails or returns garbage, do not write logs / do not consume bookmarks.
+    # Enforce exactly 5 ideas on real runs; don't consume bookmarks on failure
     if len(all_ideas_structured) != IDEAS_PER_DAY and not used_fallback:
-        print("[error] Did not get exactly 5 valid ideas. Exiting - nothing will be written, no bookmarks consumed.")
+        print("[error] Did not get exactly 5 valid ideas. "
+              "Exiting -- nothing written, no bookmarks consumed.")
         exit(1)
 
     if not all_ideas_structured:
-        print("[error] No ideas passed the quality filter. Exiting - nothing will be written to docs.")
+        print("[error] No ideas passed the quality filter. Exiting.")
         exit(0)
 
     if used_fallback:
-        print("[warn] Fallback output is for debugging only. Skipping Google Doc write, log write, and bookmark consumption.")
+        print("[warn] Fallback output is for debugging only. "
+              "Skipping Google Doc write, log write, and bookmark consumption.")
         exit(1)
 
-    # 4. Save ideas as readable text to Google Docs (Ideas doc only)
+    # -- 5. Write to Google Docs ----------------------------------------------
     ideas_doc_text = format_ideas_for_doc(all_ideas_structured)
     if ideas_doc_text:
         append_to_google_doc([ideas_doc_text], GOOGLE_DOC_ID, "Ideas Doc", "Ideas")
 
-    # 5. Log and mark used bookmarks (only after successful end-to-end generation)
+    # -- 6. Save logs + mark ONLY Raindrop IDs as used ------------------------
     save_to_logs(all_ideas_structured, all_posts=[])
     for bm_id in used_ids:
         mark_bookmark_used(bm_id)
+    print(f"[ok] Marked {len(used_ids)} Raindrop bookmark(s) as used.")
 
     print("\nCompleted VITTI Daily Ideas Pack!")
