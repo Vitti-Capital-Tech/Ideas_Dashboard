@@ -23,11 +23,6 @@ jobs:
       - name: Install Dependencies
         run: pip install -r requirements.txt
 
-      - name: Create Google Credentials File (optional)
-        # Only writes the file if the secret is actually set
-        if: ${{ secrets.GOOGLE_CREDENTIALS != '' }}
-        run: echo '${{ secrets.GOOGLE_CREDENTIALS }}' > vitti-ideas-e5256b131985.json
-
       - name: Run Daily Ideas Pack Generator
         env:
           # Set ANTHROPIC_API_KEY or CLAUDE_API_KEY in repo secrets (either works)  
@@ -35,10 +30,7 @@ jobs:
           CLAUDE_API_KEY: ${{ secrets.CLAUDE_API_KEY }}
           ANTHROPIC_MODEL: ${{ secrets.ANTHROPIC_MODEL }}
           RAINDROP_TOKEN: ${{ secrets.RAINDROP_TOKEN }}
-          # Google Doc integration (optional — leave these secrets unset to skip)
-          IDEAS_DOC_ID: ${{ secrets.IDEAS_DOC_ID }}
-          GOOGLE_CREDENTIALS_JSON: "vitti-ideas-e5256b131985.json"
-          DISABLE_GOOGLE_DOC: ${{ secrets.GOOGLE_CREDENTIALS == '' && '1' || '' }}
+          DISABLE_GOOGLE_DOC: "1"
         run: python generate_raindrop_posts.py
 
       - name: Commit and Push Logs
