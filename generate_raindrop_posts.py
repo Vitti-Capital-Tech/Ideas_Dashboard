@@ -242,7 +242,7 @@ def _normalize_idea_fields(idea):
 
 
 def parse_and_filter_ideas(raw_ideas_str):
-    """Parse JSON output and reject generic/ungrounded ideas."""
+    """Parse JSON output and categorize ideas by quality tiers."""
     if not raw_ideas_str:
         return []
     try:
@@ -262,24 +262,51 @@ def parse_and_filter_ideas(raw_ideas_str):
         "in today's world", "fast-paced", "game changer", "disrupt"
     ]
 
-    filtered = []
+    tier1 = [] # Perfect
+    tier2 = [] # Generic phrases used
+    tier3 = [] # Missing angle but has title/context
+
     for idea in ideas:
         if not isinstance(idea, dict):
             continue
         idea = _normalize_idea_fields(idea)
-        title = _safe_text(idea.get("title", "")).lower()
-        context = _safe_text(idea.get("context", "")).lower()
+        title = _safe_text(idea.get("title", ""))
+        context = _safe_text(idea.get("context", ""))
         angle = _safe_text(idea.get("angle", ""))
-        # Reject if missing required fields (after normalization)
-        if not title or not context or not angle:
-            print(f"  [warn] REJECTED (missing fields): {idea.get('title', '')[:60]}")
+
+        # Tier 3 check (Minimum: title + some context)
+        if not title or len(context) < 20:
+            print(f"  [warn] DISCARDED (too brief/empty): {title[:60]}")
             continue
-        # Reject generic phrases
-        if any(phrase in title or phrase in context for phrase in GENERIC_PHRASES):
-            print(f"  [warn] REJECTED (generic): {idea.get('title', '')[:60]}")
-            continue
-        filtered.append(idea)
-    return filtered
+
+        raw_text = (title + " " + context).lower()
+        has_generic = any(phrase in raw_text for phrase in GENERIC_PHRASES)
+        has_all_fields = bool(title and context and angle)
+
+        if has_all_fields and not has_generic:
+            tier1.append(idea)
+        elif has_all_fields:
+            tier2.append(idea)
+        else:
+            tier3.append(idea)
+
+    total_t1 = len(tier1)
+    total_t2 = len(tier2)
+    total_t3 = len(tier3)
+
+    if total_t1 >= 5:
+        print(f"  [info] Filtered: {total_t1} high-quality ideas found.")
+        return tier1[:5]
+    
+    # Otherwise, combine and log the rescue
+    rescuing = 5 - total_t1
+    combined = tier1 + tier2 + tier3
+    
+    print(f"  [info] Quality breakdown: {total_t1} High, {total_t2} Generic, {total_t3} Minimal.")
+    if total_t1 < 5 and (total_t2 + total_t3) > 0:
+        print(f"  [info] Rescuing {min(rescuing, total_t2 + total_t3)} lower-tier ideas to reach target.")
+        
+    return combined[:5]
 
 def _safe_text(s):
     return re.sub(r"\s+", " ", (s or "")).strip()
@@ -950,8 +977,8 @@ if __name__ == "__main__":
         print("[error] No real context available. Exiting.")
         exit(0)
 
-    # -- 4. Generate exactly 5 connected ideas via Claude ---------------------
-    print(f"\nGenerating today's connected idea pack (x{IDEAS_PER_DAY}) "
+    # -- 4. Generate up to IDEAS_PER_DAY connected ideas via Claude -----------
+    print(f"\nGenerating today's connected idea pack (up to {IDEAS_PER_DAY}) "
           f"[mode={source_mode}]...")
     raw = generate_daily_connected_ideas(
         sources, ideas_per_day=IDEAS_PER_DAY, source_mode=source_mode
@@ -965,14 +992,14 @@ if __name__ == "__main__":
 
     all_ideas_structured = parse_and_filter_ideas(raw)
     all_ideas_structured = all_ideas_structured[:IDEAS_PER_DAY]
-    print(f"\nTotal ideas after filtering: {len(all_ideas_structured)} "
-          f"(target {IDEAS_PER_DAY})")
+    n_ideas = len(all_ideas_structured)
+    print(f"\nTotal ideas after filtering: {n_ideas} (target {IDEAS_PER_DAY})")
 
-    # Enforce exactly 5 ideas on real runs; don't consume bookmarks on failure
-    if len(all_ideas_structured) != IDEAS_PER_DAY and not used_fallback:
-        print("[error] Did not get exactly 5 valid ideas. "
-              "Exiting -- nothing written, no bookmarks consumed.")
-        exit(1)
+    # Allow fewer than IDEAS_PER_DAY — 5 is a cap, not a hard minimum.
+    # Only warn; never exit because we collected fewer than expected.
+    if n_ideas < IDEAS_PER_DAY and not used_fallback:
+        print(f"[warn] Collected {n_ideas}/{IDEAS_PER_DAY} ideas — "
+              "proceeding with whatever was gathered.")
 
     if not all_ideas_structured:
         print("[error] No ideas passed the quality filter. Exiting.")
