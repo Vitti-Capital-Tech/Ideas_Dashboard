@@ -1,6 +1,6 @@
 # Vitti Ideas Engine
 
-**A daily assistant that turns saved articles and live market news into five ready-to-use LinkedIn-style content ideas**—with sources checked against each other so ideas are not built from a single headline.
+**A weekday assistant that turns saved articles and live market news into ready-to-use LinkedIn-style content ideas**—with sources checked against each other so ideas are not built from a single headline.
 
 Built for **Vitti Capital**. The system runs on a schedule, saves results where your team can read them, and optionally syncs to one Google Doc.
 
@@ -37,11 +37,7 @@ Built for **Vitti Capital**. The system runs on a schedule, saves results where 
 ## How it runs
 
 ```text
-Scheduled time (or manual GitHub Actions trigger)
-    → Fetch Raindrop (last 5 days, pinned first) + web feeds
-    → Fill any gap with diverse web anchors (to always reach 5)
-    → Cross-verify each anchor with 1-2 independent web items
-    → Claude writes 5 ideas (one per anchor, independently themed)
+    → Claude writes up to 5 ideas (prioritizing high-quality, but allowing rescued tiers to reach target)
     → Save JSON log + update Google Doc (if configured)
     → Mark only Raindrop bookmark IDs as used
     → Dashboard reads the latest log
@@ -58,7 +54,7 @@ For a **technical diagram** and terms, see [docs/HLD.md](docs/HLD.md). For **fun
 | **Raindrop** | Your article library; any bookmark saved in the last 5 days qualifies (pinned items are preferred). |
 | **Web feeds** | Live finance and tech headlines — fill gaps when Raindrop has fewer than 5 new items, and always used for cross-verification. |
 | **Claude** | Writes one independent idea per anchor; independently themed, not forced into a single narrative. |
-| **GitHub Actions** | Runs the generator on a **daily schedule**; commits log files and `used_bookmarks.txt`. |
+| **GitHub Actions** | Runs the generator on a **weekday schedule (Mon-Fri)**; commits log files and `used_bookmarks.txt`. |
 | **Next.js dashboard** | Shows today's ideas (or the most recent past ideas with a "pending" banner if today hasn't run yet). Date picker lets you browse any past date. **Copy draft** copies the post text; a **lightbulb** popover explains why a given LinkedIn format fits. |
 | **Google Doc** | Optional archive of the same ideas in one document. |
 

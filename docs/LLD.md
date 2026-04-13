@@ -28,7 +28,7 @@
 | `fetch_url_snippet(url)` | Optional HTML snippet for empty Raindrop excerpts (best-effort, no JS). |
 | `generate_daily_connected_ideas(sources, ideas_per_day, source_mode)` | Splits sources into `anchor_items` (have `cross_verify`) and `context_pool`; sends `ANCHORS` + `ADDITIONAL CONTEXT` to Claude as two separate JSON blocks; instructs one idea per anchor in order. Returns raw Claude text. |
 | `_normalize_idea_fields(idea)` | Merges `linkedin_playbook` into `context`/`angle`/`title` when needed; fixes key typos. |
-| `parse_and_filter_ideas(raw)` | JSON extract via `extract_first_json_array`; generic-phrase filter; requires `title`, `context`, `angle` after normalization. |
+| `parse_and_filter_ideas(raw)` | Single extract via `extract_first_json_array`; categorizes ideas into Tier 1 (High Quality), Tier 2 (Generic), and Tier 3 (Minimal); prioritized collection to reach `IDEAS_PER_DAY`. |
 | `format_ideas_for_doc(ideas)` | Plain text for Google Doc: playbook fields, sources, draft excerpt. |
 | `save_to_logs(ideas)` | Append `{ timestamp, ideas }` to `web/logs/{date}.json`. |
 | `mark_bookmark_used(bm_id)` | Append Raindrop ID to `web/used_bookmarks.txt`. |
@@ -60,7 +60,7 @@ IDEAS_PER_DAY = 5
 6. generate_daily_connected_ideas(sources, ideas_per_day=5, source_mode)
    → Claude prompt: "one idea per anchor, in order, independently themed"
 
-7. parse_and_filter_ideas(raw)   → exactly 5 ideas required
+7. parse_and_filter_ideas(raw)   → Resilient top-up up to 5 ideas
 
 8. On success:
    append_to_google_doc(...)      (if enabled)
@@ -168,7 +168,7 @@ Minimal shape stored in logs (exact fields may vary by model run):
 ## 5. Failure behaviour
 
 - **Claude errors / overload:** retries with backoff; if still no valid five ideas, process exits **without** writing logs or consuming bookmarks.
+- **Fewer than 5 ideas returned:** The script now "rescues" generic or slightly incomplete ideas to reach the target. It only fails if zero candidates are found.
 - **Empty RSS:** hard exit (cannot cross-verify; bookmarks not consumed).
-- **Fewer than 5 ideas returned:** hard exit without writing (ensures log always has a complete 5-idea set).
 - **Malformed log file:** `_load_log_file` returns `[]` and starts fresh on write.
 - **No Raindrop items (last 5 days fully consumed or no new saves):** falls back to `web_only` mode automatically — no error, pipeline continues normally.

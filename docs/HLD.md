@@ -2,7 +2,7 @@
 
 ## 1. Purpose
 
-The **Vitti Ideas Engine** produces **five independent content ideas per day** for professional LinkedIn-style publishing. Ideas are grounded in **multiple sources**: Raindrop bookmarks saved in the last 5 days (pinned preferred) and live **finance + tech** headlines from RSS. A single language-model pass turns that bundle into structured output (playbook + draft text), then persists it to **JSON logs** and optionally one **Google Doc**.
+The **Vitti Ideas Engine** produces **up to five independent content ideas per weekday** for professional LinkedIn-style publishing. Ideas are grounded in **multiple sources**: Raindrop bookmarks saved in the last 5 days (pinned preferred) and live **finance + tech** headlines from RSS. A single language-model pass turns that bundle into structured output (playbook + draft text), then persists it to **JSON logs** and optionally one **Google Doc**.
 
 ## 2. Design principles
 
@@ -13,7 +13,7 @@ The **Vitti Ideas Engine** produces **five independent content ideas per day** f
 | **One anchor → one idea** | Each anchor source (Raindrop article or web story) maps to exactly one independently themed idea. The same anchor is never reused as the primary source for two ideas. |
 | **Hybrid fill-up** | If Raindrop provides fewer than 5 qualifying items, web RSS stories fill the deficit so exactly 5 anchors are always sent to Claude. |
 | **No reuse spam** | Only consumed **Raindrop** IDs are appended to `web/used_bookmarks.txt`. Web fill-ins are never marked as used. |
-| **Deterministic outputs** | Exactly **five** valid ideas required for a successful run; otherwise no log write and no bookmark consumption. |
+| **Resilient outputs** | Instead of a hard failure if 5 perfect ideas aren't found, the system uses a tiered approach (High Quality → Generic → Minimal) to reach the 5-idea target. |
 | **Today-aware dashboard** | The dashboard always checks today's date first. If no log exists for today, it shows a "pending" banner and displays the most recent past ideas below it. |
 
 ## 3. Major components
@@ -70,8 +70,8 @@ The **Vitti Ideas Engine** produces **five independent content ideas per day** f
            │
            ▼
 ┌────────────────────────┐     ┌────────────────────┐
-│ Validate / parse       │────►│ Exit without write │
-│ (exactly 5 ideas)      │     │ if incomplete      │
+│ Tiered Filter / Parse  │────►│ Exit without write │
+│ (up to 5 ideas)        │     │ if zero candidates │
 └──────────┬─────────────┘     └────────────────────┘
            │ success
            ▼
