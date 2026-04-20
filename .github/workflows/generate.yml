@@ -2,7 +2,7 @@ name: Daily Content Generator
 
 on:
   schedule:
-    - cron: '0 9 * * 1-5' # Runs Mon-Fri at 09:00 AM UTC (Weekdays only)
+    - cron: '0 9 * * *' # Runs Mon-Fri at 09:00 AM UTC (Weekdays only)
   workflow_dispatch: # Allows triggering manually from GitHub Actions tab
 
 jobs:
