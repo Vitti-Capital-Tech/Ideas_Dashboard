@@ -1,0 +1,212 @@
+[
+    {
+        "timestamp": "2026-04-25T09:28:21.593472",
+        "ideas": [
+            {
+                "anchor_source": "https://news.google.com/rss/articles/CBMitwFBVV95cUxNVUNwcDBqd3lFWVdzbXdKbDdqbEpfdWxfUkVuMVdpY1NaLURQbS1BaGhPaXRYYnJwbldFYzg4NWJmMmhrczhFQzdkeWxjMUV4blJtVklkUEo0MmZCdXppaDYzSDVyeFdxejJlcGtNdktlOEZVQkwxOGc1M256WW12Rld6blJIamdCZFYtOXZsMWVNMDZXXzU2aWlBcjc4dGFwRGh0U0xmVWFBQXNnWjZGTWRhcnVxYVE?oc=5",
+                "title": "The ASX's 0.08% Close Tells You Nothing \u2014 The Sector Rotation Underneath Tells You Everything",
+                "context": "The S&P/ASX 200 closed down just 0.08%, a headline that screams 'nothing happened.' But cross-verifying with Marketscreener's early-trade data showing the index was down 0.2% at 8,779.80 points earlier in the session reveals an intraday recovery that masked significant sector-level divergence. The flat close obscures a tug-of-war between defensive sectors pulling the index back and growth names dragging it down \u2014 a pattern that matters far more than the closing number.",
+                "angle": "Flat index closes are the worst signal to trade on \u2014 sector rotation is the real story for Australian portfolio positioning.",
+                "linkedin_playbook": {
+                    "format_name": "Signal Decoder",
+                    "opening_hook": "The ASX 200 closed down 0.08% yesterday.\n\nIf that's where your analysis stopped, you missed the actual story.",
+                    "why_section": "Flat headline numbers lull investors into complacency. Underneath, capital is rotating \u2014 out of growth, into defensives. For portfolio managers and self-directed investors, the sector-level moves on 'quiet' days often foreshadow the next leg of market direction.",
+                    "unique_take": "The index opened down 0.2% and clawed back to near-flat by close. That intraday recovery wasn't broad-based \u2014 it was driven by specific pockets of strength masking continued weakness elsewhere. Investors anchoring to the closing number are missing the internal stress signals that precede larger moves.",
+                    "call_to_action": "What's your go-to method for reading beneath a flat market day?",
+                    "why_this_works": "Signal Decoder format rewards the audience with insight they can't get from a headline, positioning Vitti Capital as a deeper-thinking voice in a sea of surface-level market recaps.",
+                    "poll_options": []
+                },
+                "grounding": {
+                    "sources_used": [
+                        {
+                            "source_type": "news",
+                            "title": "Australia stocks lower at close of trade; S&P/ASX 200 down 0.08%",
+                            "url": "https://news.google.com/rss/articles/CBMitwFBVV95cUxNVUNwcDBqd3lFWVdzbXdKbDdqbEpfdWxfUkVuMVdpY1NaLURQbS1BaGhPaXRYYnJwbldFYzg4NWJmMmhrczhFQzdkeWxjMUV4blJtVklkUEo0MmZCdXppaDYzSDVyeFdxejJlcGtNdktlOEZVQkwxOGc1M256WW12Rld6blJIamdCZFYtOXZsMWVNMDZXXzU2aWlBcjc4dGFwRGh0U0xmVWFBQXNnWjZGTWRhcnVxYVE?oc=5"
+                        },
+                        {
+                            "source_type": "news",
+                            "title": "Australia's S&P/ASX 200 index down 0.2% at 8,779.80 points in early trade",
+                            "url": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxQd3dsVGZ0bjJyaDdxcUt4ZHlPaXZjY2xoc0swTjB0ZHFBX1kxQjdiaXI4TTEtSVN5NFpmQmVHcG8tN3habUNEbG9HUlNBYkxlak9VOExraVNpV0JLY01ObFBQUXY5OGpUWTJMbzV6eF9keklQQzJuOTgyZk5wWXUwc3BORVhad3hhVEdNOUR5UVdNYkJWa3JNNnVKbEg2SnlzczF2TUEySFRPMlRMQnV1YjdDWHZJeVNTSHdMY04wdXJKN00?oc=5"
+                        }
+                    ]
+                },
+                "region": "Australia",
+                "source_type": "news",
+                "content": {
+                    "format": "1-pager",
+                    "pages": [
+                        {
+                            "page_title": "Draft",
+                            "markdown": "The ASX 200 closed down 0.08% yesterday.\n\nIf that's where your analysis stopped, you missed the actual story.\n\n**The signal:** The index opened down 0.2% at 8,779.80 in early trade, then clawed back to near-flat by the bell. That's not stability \u2014 that's a tug-of-war.\n\n**What's underneath:** Capital is rotating. Defensive sectors pulled the index back from its lows while growth names continued to bleed. The closing number papered over genuine sector-level stress.\n\n**Why this matters now:**\n\nFlat headline closes are some of the most dangerous signals in markets \u2014 not because they predict a crash, but because they breed complacency. Investors see \"0.08%\" and move on. Meanwhile, the internal composition of the market is shifting.\n\nFor Australian investors and portfolio managers, the sector rotation happening on these 'quiet' days often foreshadows the next meaningful leg \u2014 up or down.\n\nThe early-session weakness confirmed by Marketscreener's data, combined with the selective recovery into the close, suggests this market is being held together by a narrowing set of contributors. That's a pattern worth watching closely.\n\nThe headline says nothing happened. The tape says otherwise.\n\nWhat's your go-to method for reading beneath a flat market day?"
+                        }
+                    ]
+                }
+            },
+            {
+                "anchor_source": "https://news.google.com/rss/articles/CBMieEFVX3lxTE1BeEpfSDBNMkk5ZjZ2aUxxRzI0QmZBTkpYTDFoZ29ja2tMN00xTExvc1gtSnk4WWVtYXExWDRMRlAyRVVxcE80TEdpVmNOcV9keWlMeld2VGRId1NLX2JRYkhIVGE2c3U2U3M4ZjRWZ0ZVVlJNRWQ0dg?oc=5",
+                "title": "Fortescue's 5% Shipment Jump Looks Bullish \u2014 Until You See How Iron Ore Pricing Is Being Rewritten",
+                "context": "Fortescue reported a 5% jump in iron ore shipments for Q3, signalling strong operational execution and continued demand pull. However, BHP's simultaneous move to adopt a new Chinese iron-ore price index for 2026 contracts introduces a structural shift in how Australian iron ore is priced. This cross-verify creates tension: Fortescue's volume story is positive, but the pricing mechanism underpinning revenue is changing in ways that could compress or expand margins depending on how the new index tracks versus legacy benchmarks.",
+                "angle": "Volume growth means less if the pricing architecture shifts beneath you \u2014 Australian iron ore producers face a structural repricing risk that most investors aren't watching.",
+                "linkedin_playbook": {
+                    "format_name": "Contrarian Institution Read",
+                    "opening_hook": "Fortescue just shipped 5% more iron ore in Q3.\n\nThe consensus read: bullish. The overlooked risk: the entire pricing mechanism for Australian iron ore is being quietly rewritten.",
+                    "why_section": "BHP adopting a new Chinese iron-ore price index for 2026 deals signals that the benchmark used to price billions in Australian exports is shifting. For investors in FMG, BHP, and Rio Tinto, this isn't a footnote \u2014 it's a structural change to revenue predictability.",
+                    "unique_take": "Markets are celebrating Fortescue's volume beat. But volume is an input; price is the multiplier. BHP's move to a Chinese-originated index suggests the pricing power balance is tilting toward buyers. If this index tracks lower than legacy benchmarks, every extra tonne shipped could be worth less than the market currently assumes.",
+                    "call_to_action": "Are you tracking the pricing mechanism shift, or just the shipment numbers?",
+                    "why_this_works": "Contrarian Institution Read works here because it challenges a consensus-bullish narrative with a second, less-visible data point \u2014 exactly the kind of nuance that earns credibility with sophisticated investors.",
+                    "poll_options": []
+                },
+                "grounding": {
+                    "sources_used": [
+                        {
+                            "source_type": "tech",
+                            "title": "Fortescue Iron Ore Shipments Jump 5% in Q3 Results",
+                            "url": "https://news.google.com/rss/articles/CBMieEFVX3lxTE1BeEpfSDBNMkk5ZjZ2aUxxRzI0QmZBTkpYTDFoZ29ja2tMN00xTExvc1gtSnk4WWVtYXExWDRMRlAyRVVxcE80TEdpVmNOcV9keWlMeld2VGRId1NLX2JRYkhIVGE2c3U2U3M4ZjRWZ0ZVVlJNRWQ0dg?oc=5"
+                        },
+                        {
+                            "source_type": "tech",
+                            "title": "BHP Adopts New Chinese Iron-Ore Price Index in 2026 Deal",
+                            "url": "https://news.google.com/rss/articles/CBMigwFBVV95cUxPczZRWkVHMGhBRmNRd0NRUmRMRE5UTGp5dXh5cVh5VmRxYjJfWUFQZXg4NUwtNTJFdDl3eFlxWFdkX2dvM2Z2bWRFaV9pQlBFZVlLeGo5VUtJOTFoZ3Q5a0swbkZreEdYRHE2QXEzNHV2aHhLaTRWbWJEWWVPRHF1M1ktRQ?oc=5"
+                        }
+                    ]
+                },
+                "region": "Australia",
+                "source_type": "news",
+                "content": {
+                    "format": "1-pager",
+                    "pages": [
+                        {
+                            "page_title": "Draft",
+                            "markdown": "Fortescue just shipped 5% more iron ore in Q3.\n\nThe consensus read: bullish. The overlooked risk: the entire pricing mechanism for Australian iron ore is being quietly rewritten.\n\n**What the market sees:** Strong operational execution. Volume growth. Demand from China holding up.\n\n**What the market is missing:** BHP has adopted a new Chinese iron-ore price index for its 2026 contracts. This isn't a minor administrative change \u2014 it signals a structural shift in how Australian iron ore exports are benchmarked and priced.\n\nHere's why that matters:\n\nVolume is an input. Price is the multiplier. Every investor celebrating Fortescue's shipment beat should be asking: what will those tonnes actually be worth under a new pricing regime?\n\nIf the Chinese-originated index tracks lower than legacy benchmarks \u2014 which is plausible given it reflects domestic market dynamics \u2014 then every extra tonne shipped could generate less revenue than current models assume.\n\nThe risk of being wrong: the new index could prove more transparent and stable, actually benefiting producers. But the direction of travel \u2014 pricing power shifting toward Chinese buyers \u2014 is a trend Australian resource investors need to price in now, not after 2026 contracts are locked.\n\nFortescue's Q3 was operationally strong. But operational strength in a repricing environment is a different proposition than operational strength in a stable one.\n\nAre you tracking the pricing mechanism shift, or just the shipment numbers?"
+                        }
+                    ]
+                }
+            },
+            {
+                "anchor_source": "https://news.google.com/rss/articles/CBMi0wFBVV95cUxOZHBuSEl2aGlPdFE0X0tMcVd5SkJuRnY2c0t6V2c0UFhzT3ZyYTRiZml4TEVkUFR3VGNJYmMzWGZEaHJPdjF5anZleTdrUV85SmgxX1NSMGVjRjZXT05Cay0wTnR1Q3NyQVRVU1QwZWtGaHhNQWIwUVNmMThoNHdGODB0MXp4TTdDdTVLbEpsMUFPbGswRTlodms1cHp5di02SXBQcU5Za2lablFGNkh2emZXUVlCMXRlNjU2OTJVWGVRYThDRUdRQU9FMjdiQXZJb2p3?oc=5",
+                "title": "The ASX 200's Four-Day Losing Streak Has a Split Personality: Tech Down, Energy Up \u2014 Which Side Are You On?",
+                "context": "The ASX 200 is eyeing a four-day losing streak, but the composition is telling: tech stocks are pulling back while energy and utilities are climbing. The Motley Fool's coverage of three ASX 200 stocks storming higher during this same sinking week confirms the divergence \u2014 select names are thriving precisely because capital is fleeing growth for value and yield. This isn't a uniform sell-off; it's a style rotation with clear winners and losers.",
+                "angle": "A four-day losing streak sounds bearish \u2014 but the real question is whether you're positioned for the rotation happening inside it.",
+                "linkedin_playbook": {
+                    "format_name": "Provocative Question & Poll Hybrid",
+                    "opening_hook": "The ASX 200 is on a four-day losing streak.\n\nBut some stocks are having their best week of the quarter.\n\nSame market. Opposite outcomes. So which side of this rotation should you be on?",
+                    "why_section": "This divergence \u2014 tech falling, energy and utilities rising \u2014 reflects a broader style rotation that's playing out globally. For Australian investors, the question isn't whether the market is going up or down. It's whether your portfolio is aligned with where capital is actually flowing.",
+                    "unique_take": "The Motley Fool identified three ASX 200 stocks surging during this same losing streak, confirming this isn't a broad-based sell-off but a reallocation. Investors treating this as a 'risk-off' moment may be misreading a 'risk-rotation' moment. The distinction matters enormously for positioning.",
+                    "call_to_action": "Where are you allocating in this rotation? Vote below and tell me why in the comments.",
+                    "why_this_works": "Poll format drives engagement by forcing a position, while the contrarian setup challenges the default 'market is falling = bad' narrative that most people default to.",
+                    "poll_options": [
+                        "Leaning into energy & utilities",
+                        "Buying the tech dip",
+                        "Staying diversified \u2014 not picking sides",
+                        "Raising cash until direction is clearer"
+                    ]
+                },
+                "grounding": {
+                    "sources_used": [
+                        {
+                            "source_type": "news",
+                            "title": "Markets at Midday: ASX 200 eyes four-day losing streak, Tech stocks pull back, Energy and Utilities higher",
+                            "url": "https://news.google.com/rss/articles/CBMi0wFBVV95cUxOZHBuSEl2aGlPdFE0X0tMcVd5SkJuRnY2c0t6V2c0UFhzT3ZyYTRiZml4TEVkUFR3VGNJYmMzWGZEaHJPdjF5anZleTdrUV85SmgxX1NSMGVjRjZXT05Cay0wTnR1Q3NyQVRVU1QwZWtGaHhNQWIwUVNmMThoNHdGODB0MXp4TTdDdTVLbEpsMUFPbGswRTlodms1cHp5di02SXBQcU5Za2lablFGNkh2emZXUVlCMXRlNjU2OTJVWGVRYThDRUdRQU9FMjdiQXZJb2p3?oc=5"
+                        },
+                        {
+                            "source_type": "news",
+                            "title": "3 ASX 200 stocks storming higher in this week's sinking market",
+                            "url": "https://news.google.com/rss/articles/CBMioAFBVV95cUxNelhYVjZqdkZIU2xXY0E0NUNjbHU2MjZhZGpiWDg0R19tNTh0bjBPbjQtVmpkS3FIUThHaG5ORFR2eGJZZjBobWRKNlpFc2RNZXhuc3RXSHd2dElfdlNPLWhEaWdUQlZkaUN3OEV2Y29HMHN2eUFFZE15WDUxTVJBV3RQVEpZNjdWYTBLUVZpNnVhakZRSjRGRW9JUFNuVkhu?oc=5"
+                        }
+                    ]
+                },
+                "region": "Australia",
+                "source_type": "news",
+                "content": {
+                    "format": "1-pager",
+                    "pages": [
+                        {
+                            "page_title": "Draft",
+                            "markdown": "The ASX 200 is on a four-day losing streak.\n\nBut some stocks are having their best week of the quarter.\n\nSame market. Opposite outcomes. So which side of this rotation should you be on?\n\nHere's what's actually happening:\n\n\u2192 **Tech stocks** are pulling back sharply\n\u2192 **Energy and utilities** are climbing\n\u2192 At least three ASX 200 names are surging while the index sinks\n\nThis isn't a broad sell-off. It's a style rotation \u2014 capital leaving growth and moving into yield and value.\n\n**Why it matters:**\n\nInvestors who see \"four-day losing streak\" and go defensive may be misreading the signal entirely. This looks less like risk-off and more like risk-rotation. The distinction changes everything about how you should be positioning.\n\nThe energy and utilities bid suggests investors are pricing in sustained commodity strength and seeking cash-flow certainty. The tech pullback suggests the AI-driven premium is being questioned \u2014 at least temporarily.\n\nFor Australian portfolios, the question isn't \"is the market going up or down?\" It's \"am I on the right side of where capital is flowing?\"\n\n**Where are you allocating in this rotation?**\n\n\ud83d\udd35 Leaning into energy & utilities\n\ud83d\udfe2 Buying the tech dip\n\ud83d\udfe1 Staying diversified \u2014 not picking sides\n\ud83d\udd34 Raising cash until direction is clearer\n\nVote above and tell me your reasoning in the comments."
+                        }
+                    ]
+                }
+            },
+            {
+                "anchor_source": "https://news.google.com/rss/articles/CBMiXkFVX3lxTE5sRHJHR2pjb1lqSFJGTDRPa1dDRUdfNkNRcTN3Qk9WVnJVbWNCLUVXeW8xYjN1MTAzVHgyczVUNndiVHlLLU1pYlVMcnZqRjRGSGJwX3F5MHdhanJZWXc?oc=5",
+                "title": "From Iron Ore to Lithium: How Solis Minerals' Brazil Acquisition Signals a New Playbook for Australian Miners",
+                "context": "Solis Minerals topped the list of Australian mining stocks this week after announcing a lithium acquisition in Brazil, signalling that Australian-listed miners are increasingly looking offshore for critical minerals exposure. The cross-verify from Bitcoin World on the Australian dollar softening sharply due to Middle East tensions adds a currency dimension: a weaker AUD actually enhances the economics of offshore acquisitions denominated in USD or BRL, creating a tailwind that few are connecting to the M&A thesis.",
+                "angle": "Australian miners acquiring critical minerals assets offshore is a structural trend \u2014 and a weakening AUD is quietly making these deals more attractive.",
+                "linkedin_playbook": {
+                    "format_name": "Industry Trend Interpretation",
+                    "opening_hook": "An Australian-listed junior just became the top-performing mining stock of the week \u2014 not by digging in the Pilbara, but by acquiring lithium assets in Brazil.\n\nThis is the new playbook for Australian miners. And a weakening AUD is making it even more compelling.",
+                    "why_section": "The critical minerals race is reshaping Australian mining strategy. Companies are no longer confined to domestic deposits \u2014 they're using ASX listings as platforms to acquire globally. For investors, this changes the risk-return profile of the entire junior mining sector.",
+                    "unique_take": "What most coverage misses: the AUD softening due to geopolitical tensions isn't just a macro headline \u2014 it's a direct tailwind for offshore acquisitions. A weaker Australian dollar means Brazilian or Latin American assets cost less in AUD terms, improving deal economics at the exact moment miners are pivoting to critical minerals. The currency move and the M&A trend are reinforcing each other.",
+                    "call_to_action": "Is the ASX becoming a launchpad for global critical minerals plays \u2014 and does that change how you evaluate junior miners?",
+                    "why_this_works": "Industry Trend Interpretation works because it reframes a single stock story as a structural shift, giving the audience a lens to evaluate an entire category of investments rather than just one ticker.",
+                    "poll_options": []
+                },
+                "grounding": {
+                    "sources_used": [
+                        {
+                            "source_type": "tech",
+                            "title": "Top 5 Australian Mining Stocks This Week: Solis Minerals Charges on Brazil Lithium Acquisition",
+                            "url": "https://news.google.com/rss/articles/CBMiXkFVX3lxTE5sRHJHR2pjb1lqSFJGTDRPa1dDRUdfNkNRcTN3Qk9WVnJVbWNCLUVXeW8xYjN1MTAzVHgyczVUNndiVHlLLU1pYlVMcnZqRjRGSGJwX3F5MHdhanJZWXc?oc=5"
+                        },
+                        {
+                            "source_type": "news",
+                            "title": "Australian Dollar Softens Sharply as Escalating Middle East Tensions Trigger Global Risk Aversion",
+                            "url": "https://news.google.com/rss/articles/CBMib0FVX3lxTE9INUZEbmYtT3ZUWE9WNW5fSnN0NnEwSmRIcmQ2SWkyN0E4RzZLMG93UUE5WGM0QmZvdW93X0N6VmhBRWltS3pfUGEzOVhJU2FUdEptcUI2cF9EcnBqV1JsUF9PcjZ6Z0RPUGJrcDlraw?oc=5"
+                        }
+                    ]
+                },
+                "region": "Mixed",
+                "source_type": "news",
+                "content": {
+                    "format": "1-pager",
+                    "pages": [
+                        {
+                            "page_title": "Draft",
+                            "markdown": "An Australian-listed junior just became the top-performing mining stock of the week \u2014 not by digging in the Pilbara, but by acquiring lithium assets in Brazil.\n\nSolis Minerals surged after announcing a Brazilian lithium acquisition, topping the weekly Australian mining stock rankings. This isn't an isolated event. It's a signal.\n\n**The trend:** Australian-listed miners are increasingly using the ASX as a platform to acquire critical minerals assets globally \u2014 lithium in Latin America, rare earths in Africa, nickel in Southeast Asia.\n\n**The hidden tailwind:** The Australian dollar has softened sharply amid escalating geopolitical tensions. Most investors read that as a negative macro signal. But for miners acquiring offshore assets, a weaker AUD means foreign-denominated deals cost less in home-currency terms.\n\nThe currency move and the M&A trend are reinforcing each other \u2014 and almost nobody is connecting the two.\n\n**Why this matters for investors:**\n\nThe junior mining sector on the ASX is evolving. The old thesis was domestic deposits and proximity to Asian buyers. The new thesis is global critical minerals acquisition, funded by Australian capital markets, with currency dynamics as a bonus.\n\nThis changes how you evaluate junior miners. Geography of assets, currency exposure, and supply chain positioning now matter as much as grade and resource size.\n\nIs the ASX becoming a launchpad for global critical minerals plays \u2014 and does that change how you evaluate junior miners?"
+                        }
+                    ]
+                }
+            },
+            {
+                "anchor_source": "https://news.google.com/rss/articles/CBMilAFBVV95cUxNM3J2LWozWEhZM3p6dnVPLUVjUFVjWlB5cm5tcjl0R0VfT0xJYloyXzY5OGhrdTJ2X0xueERBN2tQdktEd3RGZk13Wm9ZLWpmZUI2eEI3Y25SbGQ2a2pjaFZDZGgtMzdhMHJXMnB0TS1YMzNKQUNRN2RYRElKOWJOZ0tSUlB5ZVVFV0pkdmtJVGVpR091?oc=5",
+                "title": "The Top 10 ASX 200 Shares Today Were Survivors, Not Leaders \u2014 Here's What Changed in 12 Months",
+                "context": "The Motley Fool's daily top 10 ASX 200 shares list highlights the day's best performers, but the composition tells a deeper story about what the market is rewarding right now. Cross-verified against Kalkine Media's midday wrap showing tech slipping and energy gaining, the top 10 list likely skews toward defensive and commodity names rather than the growth darlings that dominated 12 months ago. The shift from growth leadership to value/yield leadership represents a meaningful regime change for Australian equities.",
+                "angle": "Today's top ASX performers aren't the names that led 12 months ago \u2014 the leadership rotation signals a regime change that most portfolios haven't adjusted for.",
+                "linkedin_playbook": {
+                    "format_name": "Before/After Results Story",
+                    "opening_hook": "12 months ago, the top-performing ASX 200 shares on any given day were almost always tech and growth names.\n\nToday? The leaderboard looks completely different.",
+                    "why_section": "Leadership rotation in equity markets is one of the most reliable \u2014 and most ignored \u2014 signals of regime change. When the names topping daily performance lists shift from growth to value, it reflects a fundamental repricing of risk, duration, and cash-flow certainty across the market.",
+                    "unique_take": "The Motley Fool's top 10 list and Kalkine's midday wrap both confirm the same pattern: energy and defensive names are leading while tech retreats. This isn't a one-day anomaly \u2014 it's consistent with a multi-week rotation. Portfolios built for the 2023-24 growth regime may be structurally misaligned with the current market reward system.",
+                    "call_to_action": "Has your portfolio's sector weighting changed in the last 6 months \u2014 or are you still positioned for last year's leaders? I'd love to hear how you're adapting.",
+                    "why_this_works": "Before/After format makes an abstract concept (regime change) tangible by contrasting two specific moments in time, making it relatable for both professional and retail investors.",
+                    "poll_options": []
+                },
+                "grounding": {
+                    "sources_used": [
+                        {
+                            "source_type": "news",
+                            "title": "Here are the top 10 ASX 200 shares today",
+                            "url": "https://news.google.com/rss/articles/CBMilAFBVV95cUxNM3J2LWozWEhZM3p6dnVPLUVjUFVjWlB5cm5tcjl0R0VfT0xJYloyXzY5OGhrdTJ2X0xueERBN2tQdktEd3RGZk13Wm9ZLWpmZUI2eEI3Y25SbGQ2a2pjaFZDZGgtMzdhMHJXMnB0TS1YMzNKQUNRN2RYRElKOWJOZ0tSUlB5ZVVFV0pkdmtJVGVpR091?oc=5"
+                        },
+                        {
+                            "source_type": "news",
+                            "title": "ASX 200 Midday Wrap: Tech Slips, Energy Gains",
+                            "url": "https://news.google.com/rss/articles/CBMilgFBVV95cUxOQUFQYUlPVkRqbGh1YnBRUm5jbUZDamZKT1U4ZWV3c0JTLUU2dzBLellFb2I2c0tQLWZEdXBySGxBQ0xWcm5aRC1PQUVNNDdWSW1xbEZBS2RLeFB5WkhqTGdzUnFDVEhSSHRxVUE3TDBET0FjUUZRbkY4OTRaWmQyLUVadk1qTC1NbU8xdnJXOUlMUzVHYWc?oc=5"
+                        }
+                    ]
+                },
+                "region": "Australia",
+                "source_type": "news",
+                "content": {
+                    "format": "1-pager",
+                    "pages": [
+                        {
+                            "page_title": "Draft",
+                            "markdown": "12 months ago, the top-performing ASX 200 shares on any given day were almost always tech and growth names.\n\nToday? The leaderboard looks completely different.\n\n**Before:** AI hype, tech momentum, and growth-at-any-price dominated daily winners lists. Portfolio returns were driven by a narrow set of high-beta names.\n\n**The turning point:** A sustained shift in rate expectations, commodity strength, and geopolitical risk repriced what the market rewards. Energy, utilities, and defensive names started consistently outperforming.\n\n**After:** Today's top 10 ASX 200 performers skew toward cash-flow-heavy, commodity-exposed, and yield-oriented businesses. Kalkine Media's midday wrap confirms the pattern \u2014 tech slipping, energy gaining \u2014 and it's been repeating for weeks.\n\nThis isn't a blip. It's a regime change.\n\n**What this means for your portfolio:**\n\nIf your sector weightings haven't changed meaningfully in the last 6-12 months, you may be positioned for a market that no longer exists. The names that drove returns in 2023-24 are not the names driving returns today.\n\nLeadership rotation is one of the most reliable signals in equity markets \u2014 and one of the most commonly ignored until it's too late.\n\nThe daily top 10 list isn't just trivia. It's a real-time map of where capital is flowing.\n\nHas your portfolio's sector weighting changed in the last 6 months \u2014 or are you still positioned for last year's leaders? I'd love to hear how you're adapting."
+                        }
+                    ]
+                }
+            }
+        ]
+    }
+]
