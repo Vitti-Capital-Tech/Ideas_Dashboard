@@ -1,0 +1,212 @@
+[
+    {
+        "timestamp": "2026-04-30T09:52:48.291806",
+        "ideas": [
+            {
+                "anchor_source": "https://www.afr.com/chanticleer/in-just-71-seconds-big-tech-told-us-where-the-ai-boom-goes-next-20260429-p5zsby",
+                "title": "71 Seconds That Revealed the Next Phase of the AI Capex Cycle",
+                "context": "The AFR's Chanticleer column highlights that Q1 2026 earnings from Microsoft, Meta, Amazon, and Alphabet collectively confirmed AI investments are now generating measurable returns, setting the stage for an even larger spending wave. Kalkine Media's report on the ASX 200 opening soft after these very tech earnings confirms the global ripple effect \u2014 Australian markets are digesting the signal that AI capex is accelerating, not decelerating, creating a divergence between US tech momentum and local index sentiment.",
+                "angle": "AI capex is no longer a faith trade \u2014 returns are arriving, and the second wave of spending will be bigger than the first.",
+                "linkedin_playbook": {
+                    "format_name": "Signal Decoder",
+                    "opening_hook": "In 71 seconds of combined earnings commentary, four companies worth over $9 trillion told us exactly where the AI boom goes next.",
+                    "why_section": "For investors and operators, this is the inflection where AI shifts from speculative capex to proven ROI-driven reinvestment. The implications cascade: hyperscaler demand lifts semiconductor, energy, and data-centre infrastructure plays globally \u2014 including in Australia.",
+                    "unique_take": "The AFR frames this as a 'bonanza' setup, but the Kalkine cross-check reveals a tension: ASX 200 opened soft despite the bullish US tech prints. Australian markets are structurally underweight the AI beneficiaries, so the local index absorbs the risk sentiment (higher rates for longer to fund AI buildouts) without capturing the upside. The signal isn't just 'AI is working' \u2014 it's that the gap between AI-exposed and AI-absent portfolios is about to widen.",
+                    "call_to_action": "Is your portfolio positioned for the second AI capex wave \u2014 or still waiting for the first one to prove itself?",
+                    "why_this_works": "Signal Decoder format rewards the audience with a non-obvious read on a headline event, positioning Vitti Capital as the firm that connects global tech earnings to local portfolio implications.",
+                    "poll_options": []
+                },
+                "grounding": {
+                    "sources_used": [
+                        {
+                            "source_type": "raindrop",
+                            "title": "In just 71 seconds, big tech told us where the AI boom goes next",
+                            "url": "https://www.afr.com/chanticleer/in-just-71-seconds-big-tech-told-us-where-the-ai-boom-goes-next-20260429-p5zsby"
+                        },
+                        {
+                            "source_type": "news",
+                            "title": "ASX 200 Set for Soft Start as Tech Earnings Stir Global Markets - Kalkine Media",
+                            "url": "https://news.google.com/rss/articles/CBMisAFBVV95cUxNOG0wQngzam8xMEtnS05LVkttbEZHaUN4VFJsMEdVN1pKOXUwRkN3aGpfNXl6dUlXLVhSME1EUS1nLW12dGU0ams3SFdEby1RelVmc1pLQmtjblg1S2ZDYzVyMkNZanFydE1CR2pJMVVMTldGeldQeU9DOVZYTE5KUUs2NXRJbjNBUjZXWG5PSi16UzF4NHNzV0gzajVKR04zNXdGYkJtdDh1NG4zNHhrNg?oc=5"
+                        }
+                    ]
+                },
+                "region": "Mixed",
+                "source_type": "raindrop",
+                "content": {
+                    "format": "1-pager",
+                    "pages": [
+                        {
+                            "page_title": "Draft",
+                            "markdown": "In 71 seconds of combined earnings commentary, four companies worth over $9 trillion told us exactly where the AI boom goes next.\n\nMicrosoft, Meta, Amazon, and Alphabet all reported Q1 2026 results within days of each other. The consistent message: AI investments are generating real, measurable returns. Not projections. Not 'early signals.' Actual revenue acceleration.\n\nAs the AFR's Chanticleer column put it, this sets the table for an even bigger spending bonanza. When capex delivers returns, boards don't cut \u2014 they double down.\n\nHere's what most commentary misses:\n\n**The second-order signal matters more than the headline.**\n\nDespite blockbuster US tech prints, the ASX 200 opened soft. Kalkine Media flagged the muted local reaction \u2014 and it reveals a structural gap. Australia's index is underweight the direct AI beneficiaries. We absorb the risk sentiment (higher-for-longer rates to fund AI buildouts) without fully capturing the upside.\n\nThis means the divergence between AI-exposed and AI-absent portfolios is about to widen significantly.\n\nFor investors and operators, the practical implications are clear:\n\n\u2192 Hyperscaler demand lifts semiconductors, energy infrastructure, and data-centre plays globally\n\u2192 Portfolios without deliberate AI-chain exposure risk underperformance by omission\n\u2192 The 'prove it first' window is closing \u2014 returns have arrived\n\nThe AI capex cycle just shifted from faith-based to evidence-based. The second wave will be larger than the first.\n\nIs your portfolio positioned for what comes next \u2014 or still waiting for proof that already landed?"
+                        }
+                    ]
+                }
+            },
+            {
+                "anchor_source": "https://news.google.com/rss/articles/CBMitwFBVV95cUxPY3pxQmFfSmk1Y1AwNFdFa2U0RF9FcVpSS0lrN1AzbVpWWlZjQlZxaFR2MWhqeWpQQ3NJQzd5eml0cGlCYjJjcXZMOTFvakJ3dHhZZVMzTzJXSG1vNy1FbzZzZmdDUHR2ZDVqNWhNZGlTd0Q5all3ZkVTaGUtTjRfYzcycDk3VXJjQUhPREFiWFBiVF9FTFRjR0tHRFY2RHpPU2hiTUU2WTE4ZmIzOXNQOUpXWGh1YXc?oc=5",
+                "title": "The ASX 200 Closed Lower Again \u2014 But the Real Story Is Sector Rotation, Not Weakness",
+                "context": "Investing.com reported the S&P/ASX 200 closing down 0.24%, continuing a pattern of soft sessions. Cross-verification from IBT Australia confirms the same session, specifying that mining stocks were the primary drag, pulling the index to 8,666. This narrows the narrative: the headline 'market decline' obscures a sector-specific story where materials weakness masks relative resilience elsewhere.",
+                "angle": "Headline index moves are hiding a rotation story \u2014 investors reading only the number are missing the composition shift underneath.",
+                "linkedin_playbook": {
+                    "format_name": "Contrarian Institution Read",
+                    "opening_hook": "The ASX 200 dropped again yesterday. Most investors saw weakness. I saw something different.",
+                    "why_section": "When an index falls but the decline is concentrated in one sector, it's not broad-based selling \u2014 it's rotation. Professionals who allocate based on headline index moves risk misreading the market's actual message.",
+                    "unique_take": "Investing.com's headline says 'stocks lower.' IBT Australia's breakdown reveals mining stocks did the heavy lifting on the downside, dragging the index to 8,666. Strip out materials, and the session looks far less alarming. This matters because Australia's index is structurally overweight resources \u2014 a single-sector headwind can paint the entire market red while financials, healthcare, and tech hold firm. The consensus read of 'market is weak' may be precisely wrong.",
+                    "call_to_action": "When you see the ASX 200 close red, do you look at the sector breakdown \u2014 or just the number?",
+                    "why_this_works": "Contrarian Institution Read challenges lazy index-level thinking, which resonates with sophisticated finance audiences who value nuance over headlines.",
+                    "poll_options": []
+                },
+                "grounding": {
+                    "sources_used": [
+                        {
+                            "source_type": "news",
+                            "title": "Australia stocks lower at close of trade; S&P/ASX 200 down 0.24% - Investing.com",
+                            "url": "https://news.google.com/rss/articles/CBMitwFBVV95cUxPY3pxQmFfSmk1Y1AwNFdFa2U0RF9FcVpSS0lrN1AzbVpWWlZjQlZxaFR2MWhqeWpQQ3NJQzd5eml0cGlCYjJjcXZMOTFvakJ3dHhZZVMzTzJXSG1vNy1FbzZzZmdDUHR2ZDVqNWhNZGlTd0Q5all3ZkVTaGUtTjRfYzcycDk3VXJjQUhPREFiWFBiVF9FTFRjR0tHRFY2RHpPU2hiTUU2WTE4ZmIzOXNQOUpXWGh1YXc?oc=5"
+                        },
+                        {
+                            "source_type": "news",
+                            "title": "ASX 200 Dips 0.24% to 8,666 as Mining Stocks Drag Market Lower - International Business Times Australia",
+                            "url": "https://news.google.com/rss/articles/CBMikgFBVV95cUxQajZ5Rko3dTNkaF82QTRVZmNLLUhBS2RhR2F4cXgzNGw1YTBzVmdmTWFjT0E1b3gyaGlNWERvTGQ3VXZjXzBNQnRzQ1NDU29UWWFHNlJ4VkxyYkJDQ1BjSFZ3ZVZYa3dSU3JfMGhzVi1yZXVzVGRBU2V4OTdEcjBDS1haclJBeWRnWk1VTkQ1LVhaQQ?oc=5"
+                        }
+                    ]
+                },
+                "region": "Australia",
+                "source_type": "news",
+                "content": {
+                    "format": "1-pager",
+                    "pages": [
+                        {
+                            "page_title": "Draft",
+                            "markdown": "The ASX 200 dropped again yesterday. Most investors saw weakness. I saw something different.\n\nThe headline: S&P/ASX 200 down 0.24%. Another red day. The narrative writes itself \u2014 'Australian stocks fall again.'\n\nBut here's what consensus is missing.\n\nIBT Australia broke down the same session and identified mining stocks as the primary drag, pulling the index to 8,666. Strip out the materials sector, and the picture shifts considerably.\n\nThis isn't broad-based selling. It's sector-specific rotation.\n\nAustralia's index is structurally overweight resources. When iron ore or commodity sentiment softens, it paints the entire market red \u2014 even when financials, healthcare, and technology names are holding firm or advancing.\n\n**The risk of reading only the headline number:**\n\n\u2192 You mistake rotation for retreat\n\u2192 You defer allocation decisions based on a misleading signal\n\u2192 You miss that capital is moving *within* the market, not *out* of it\n\nFor institutional and self-directed investors alike, the discipline of decomposing index moves into sector contributions separates informed positioning from reactive positioning.\n\nThe ASX 200's composition means a 'down day' can mean very different things depending on where the weakness actually sits.\n\nNext time you see the index close red, ask the second question: which sectors drove it \u2014 and which ones didn't?\n\nWhen you see the ASX 200 close red, do you look at the sector breakdown \u2014 or just the number?"
+                        }
+                    ]
+                }
+            },
+            {
+                "anchor_source": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxONi1SR1J3UHBFUGtPZjBoa21iQ3VRQ0FvZFlSV2c1UTZmbU1oQURoWE55cHQ5ejloRjI1ZVNfWjVsUzlYZDJicTVRanA3aFI0QjBTVWhSWlJWelRidjFlN0hfSGZtX0tSRG1NT2VyRjNva0diU2YtS1ZaMlo0bDRPcXQxR0Q1eFRuVFI1aDBBeW1JQ2UyVEs0dk82VndudElDUmNfeTFrOGNNUUk?oc=5",
+                "title": "Eight Straight Down Days on the ASX 200 \u2014 Is This a Dip or a Regime Change?",
+                "context": "TheBull.com.au reports the ASX 200's losing streak has extended to eight consecutive sessions, with materials weakness as the primary weight on the index. UBS, via Market Index, adds a cautionary cross-check: the investment bank argues it's too early to buy the dip, suggesting the selling may not yet be exhausted. Together, these sources paint a picture where the streak is more than noise \u2014 institutional voices are advising patience, not aggression.",
+                "angle": "An eight-session losing streak demands a framework, not a reflex \u2014 and the smart money is saying 'not yet.'",
+                "linkedin_playbook": {
+                    "format_name": "Provocative Question & Poll Hybrid",
+                    "opening_hook": "The ASX 200 just posted eight consecutive losing sessions. Your move.",
+                    "why_section": "Losing streaks of this length are statistically uncommon on the ASX 200. They force a decision framework: is this mean-reversion opportunity or the early phase of a deeper correction? The answer depends on whether the drivers are cyclical (commodity prices, China demand) or structural (earnings downgrades, policy shifts).",
+                    "unique_take": "TheBull.com.au attributes the streak primarily to materials sector drag. But UBS, per Market Index, is telling clients it's too early to buy. When a major institution is explicitly waving off dip-buyers during an extended streak, it suggests the floor hasn't been tested yet. The contrarian move here might actually be patience \u2014 not action.",
+                    "call_to_action": "Eight sessions down. What's your read?",
+                    "why_this_works": "Poll hybrids drive engagement by forcing a position. Finance professionals love to signal their market view, and the contrarian setup (patience vs. buying) creates genuine debate in comments.",
+                    "poll_options": [
+                        "Buy the dip \u2014 streak ends soon",
+                        "Wait \u2014 UBS is right, too early",
+                        "Rotate \u2014 sell materials, buy elsewhere",
+                        "Hedge \u2014 protect and reassess"
+                    ]
+                },
+                "grounding": {
+                    "sources_used": [
+                        {
+                            "source_type": "tech",
+                            "title": "ASX 200 Today: Losing Streak Extends to 8, as Materials Weakness Weighs on Index - thebull.com.au",
+                            "url": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxONi1SR1J3UHBFUGtPZjBoa21iQ3VRQ0FvZFlSV2c1UTZmbU1oQURoWE55cHQ5ejloRjI1ZVNfWjVsUzlYZDJicTVRanA3aFI0QjBTVWhSWlJWelRidjFlN0hfSGZtX0tSRG1NT2VyRjNva0diU2YtS1ZaMlo0bDRPcXQxR0Q1eFRuVFI1aDBBeW1JQ2UyVEs0dk82VndudElDUmNfeTFrOGNNUUk?oc=5"
+                        },
+                        {
+                            "source_type": "news",
+                            "title": "Why UBS says it's too early to buy the ASX 200 dip - Market Index",
+                            "url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxOSElFX0F1T2dpbmZ0VFVCZjBSSzIxaEhlVjRrdU5sdFpiN3lCOUd5d2ZQVEZMTENGemE1enZSWjcxOVRmS2VmS3dTNTJ2aHRaenVMdlN6NERUZHVxVzhLZWdvS3VmdkdLc0ZaSjVIS0NGbkptQ0w4NkxnQ3dYWlJpOVc2T3E2VDFhQzRTb0dB?oc=5"
+                        }
+                    ]
+                },
+                "region": "Australia",
+                "source_type": "hybrid",
+                "content": {
+                    "format": "1-pager",
+                    "pages": [
+                        {
+                            "page_title": "Draft",
+                            "markdown": "The ASX 200 just posted eight consecutive losing sessions. Your move.\n\nEight straight down days. It's the kind of streak that forces every investor to pick a lane: buy the dip, wait it out, rotate, or hedge.\n\nTheBull.com.au attributes the extended decline primarily to materials sector weakness dragging the broader index. But here's the detail that should give dip-buyers pause:\n\n**UBS is telling clients it's too early.**\n\nPer Market Index, the investment bank argues the selling may not be exhausted yet. When a major institution is explicitly waving off bargain hunters during an eight-session streak, it's worth listening \u2014 even if you ultimately disagree.\n\nThe framework matters more than the reflex:\n\n\u2192 If the drivers are cyclical (commodity prices, China demand softness), mean-reversion is likely but timing is uncertain\n\u2192 If the drivers are structural (earnings downgrades, policy shifts), the streak could be the beginning, not the end\n\u2192 Materials-heavy indices like the ASX 200 can mislead \u2014 the streak may overstate weakness in non-resource sectors\n\nStreaks of this length are statistically uncommon. They demand a decision framework, not a gut reaction.\n\nThe contrarian move right now might actually be patience \u2014 not action.\n\nEight sessions down. What's your read?\n\n\ud83d\udd18 Buy the dip \u2014 streak ends soon\n\ud83d\udd18 Wait \u2014 UBS is right, too early\n\ud83d\udd18 Rotate \u2014 sell materials, buy elsewhere\n\ud83d\udd18 Hedge \u2014 protect and reassess"
+                        }
+                    ]
+                }
+            },
+            {
+                "anchor_source": "https://news.google.com/rss/articles/CBMisgFBVV95cUxPOGI0M2phYzViMEFmMllZbVB4MFBFYTItRDNTOTEyRnU2aERDNGxteDR4SDBNYXZ0ZS1JX3c5QVBnT1Yyb1E0YUhNOVFuVlVyTFpwZE94OG5CQS1wUnJMclQ2c2c1dzdyTW8yWERUNUdzQ3ZWTHhKSXY2QXZsN2RLaVdVWmtvbEhTZmVvUDEtMk9WZ09Iby1zdW4zTHVfaXJBdGM4VmhLN051WGhIYTdYcC1B?oc=5",
+                "title": "Oil Shock + Woolworths Profit Warning: When Two Headwinds Hit the ASX on the Same Day",
+                "context": "TechStock\u00b2 reports the ASX 200 fell again as a dual blow landed \u2014 an oil price shock and a Woolworths profit warning \u2014 hitting energy-sensitive sectors and consumer staples simultaneously. A separate TechStock\u00b2 report on an inflation shock putting the RBA back in focus confirms the compounding nature of the pressure: rising energy costs feed directly into inflation expectations, which in turn constrain the RBA's ability to cut rates. The two stories together reveal a feedback loop that tightens conditions across the board.",
+                "angle": "When oil shocks and consumer profit warnings arrive together, they create an inflation feedback loop that narrows the RBA's options \u2014 and investors' margin for error.",
+                "linkedin_playbook": {
+                    "format_name": "Before/After Results Story",
+                    "opening_hook": "Before last week, the bull case for Australian equities rested on two pillars: stable energy costs and resilient consumer spending. Both just cracked on the same day.",
+                    "why_section": "Oil shocks and consumer staples warnings rarely arrive in isolation \u2014 when they do coincide, the compounding effect on inflation expectations and central bank policy is disproportionate. For Australian investors, this combination directly challenges the rate-cut narrative that has underpinned equity valuations.",
+                    "unique_take": "TechStock\u00b2 covered both the oil-and-Woolworths session and a separate inflation-shock session. Read together, they reveal a feedback loop: rising energy costs feed into CPI, which puts the RBA back in hawkish focus, which pressures rate-sensitive equities and consumer discretionary names. The 'before' was a market pricing in easing. The 'after' is a market confronting the possibility that easing is delayed \u2014 or reversed. Woolworths issuing a profit warning in this environment is particularly telling: if the dominant grocery retailer is flagging margin pressure, the consumer is feeling it.",
+                    "call_to_action": "Has a single trading session ever forced you to rethink your macro thesis? I'd like to hear what changed your mind.",
+                    "why_this_works": "Before/After format creates narrative tension and resolution, making macro analysis feel personal and actionable rather than abstract.",
+                    "poll_options": []
+                },
+                "grounding": {
+                    "sources_used": [
+                        {
+                            "source_type": "news",
+                            "title": "Australia Stock Market Today: ASX 200 Falls Again as Oil Shock, Woolworths Warning Hit Shares - TechStock\u00b2",
+                            "url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxPOGI0M2phYzViMEFmMllZbVB4MFBFYTItRDNTOTEyRnU2aERDNGxteDR4SDBNYXZ0ZS1JX3c5QVBnT1Yyb1E0YUhNOVFuVlVyTFpwZE94OG5CQS1wUnJMclQ2c2c1dzdyTW8yWERUNUdzQ3ZWTHhKSXY2QXZsN2RLaVdVWmtvbEhTZmVvUDEtMk9WZ09Iby1zdW4zTHVfaXJBdGM4VmhLN051WGhIYTdYcC1B?oc=5"
+                        },
+                        {
+                            "source_type": "news",
+                            "title": "Australia Stock Market Today: ASX 200 Falls Again as Inflation Shock Puts RBA Back in Focus - TechStock\u00b2",
+                            "url": "https://news.google.com/rss/articles/CBMisAFBVV95cUxPRUMxUm5wZVB0ZG9talF2cmlab0pGM2FxVHVadzFmNmd1VHZ4emMya0RDd1ZiX1YzNkFNOXFEMkhPRE5QWEc0a0ZfanNDRWFBU3pXeGNNdXd5cU5VVE5FTzdCaWFrY0ttWFNPcjNKS3ZKUW1oMVBDdHVQcmZYTVJzTDNpS29ySDdNTnM3b0FWSWxqWVhSUXdaNDZkVGVnWXBPMHhIcTJjaVBSNVkxWHg1cQ?oc=5"
+                        }
+                    ]
+                },
+                "region": "Australia",
+                "source_type": "news",
+                "content": {
+                    "format": "1-pager",
+                    "pages": [
+                        {
+                            "page_title": "Draft",
+                            "markdown": "Before last week, the bull case for Australian equities rested on two pillars: stable energy costs and resilient consumer spending.\n\nBoth just cracked on the same day.\n\n**The challenge:**\nThe ASX 200 was already under pressure when two headwinds converged \u2014 an oil price shock and a Woolworths profit warning. Energy-sensitive sectors and consumer staples were hit simultaneously.\n\n**The turning point:**\nA separate session saw an inflation shock put the RBA squarely back in focus. Read together, these events reveal a feedback loop that many portfolios aren't positioned for:\n\n\u2192 Rising energy costs feed directly into CPI\n\u2192 Higher inflation expectations constrain the RBA's ability to cut\n\u2192 Rate-sensitive equities and consumer names face a double squeeze\n\n**The outcome:**\nThe 'before' was a market pricing in monetary easing. The 'after' is a market confronting the possibility that easing is delayed \u2014 or reversed entirely.\n\nWoolworths issuing a profit warning in this environment is particularly significant. When Australia's dominant grocery retailer flags margin pressure, it's a direct signal that the consumer is feeling the strain. This isn't a sector-specific issue \u2014 it's a macro canary.\n\nFor investors, the margin for error just narrowed. Portfolios built on the assumption of rate relief need stress-testing against a scenario where that relief doesn't arrive on schedule.\n\nHas a single trading session ever forced you to rethink your macro thesis? I'd like to hear what changed your mind."
+                        }
+                    ]
+                }
+            },
+            {
+                "anchor_source": "https://news.google.com/rss/articles/CBMijAFBVV95cUxORno2Ri1SUU05YlFHS3RMNXY1WFVFeS12WDhxLTVIbmJVeGwzN1M2VmV1MlFRTUFwS3dPRjdwX21Qd0RfbVhDZnNQRWl1T3JocmVJYXg5aVN4RU9Lb2Jra2lhMmVDS0lWOGJxTzlCalNEZXFERmxwUDE5ZWkxcFNuaXdKMHJjbmFzckZreQ?oc=5",
+                "title": "US Market Outlook 2026: The Risks Consensus Is Underpricing \u2014 and What It Means for Australian Allocators",
+                "context": "Mitrade's US stock market outlook for 2026 identifies key risks including elevated valuations, policy uncertainty, and concentration risk in mega-cap tech, alongside drivers like AI-fuelled earnings growth and fiscal spending. Kalkine Media's analysis of ASX 200 key triggers confirms the transmission mechanism: US market risks and drivers directly shape ASX sentiment through global fund flows, currency moves, and sector correlations. Together, the sources highlight that Australian allocators cannot treat US market risks as 'over there' \u2014 they are embedded in local portfolio outcomes.",
+                "angle": "The US market's 2026 risk profile is Australia's problem too \u2014 and most local allocators are underestimating the transmission speed.",
+                "linkedin_playbook": {
+                    "format_name": "Industry Trend Interpretation",
+                    "opening_hook": "The biggest risk to your Australian portfolio in 2026 might not originate in Australia.",
+                    "why_section": "Australian superannuation funds, SMSFs, and wealth managers have significant direct and indirect US equity exposure. When US market risks materialise \u2014 whether through valuation compression, policy disruption, or concentration unwind \u2014 the transmission to Australian portfolios is faster and deeper than most allocators model for.",
+                    "unique_take": "Mitrade's 2026 outlook flags the usual suspects: stretched valuations, mega-cap concentration, and geopolitical uncertainty. But Kalkine Media's ASX 200 trigger analysis reveals the less-discussed angle \u2014 these US risks transmit to Australia not just through direct holdings, but through currency effects, global fund flow reversals, and sector correlation spikes during stress events. The AUD/USD pair, for instance, amplifies or dampens US equity returns for unhedged Australian investors. A US correction paired with a risk-off AUD depreciation can create a double hit that diversification was supposed to prevent.",
+                    "call_to_action": "How are you stress-testing your Australian portfolio against US-originating risk scenarios this year?",
+                    "why_this_works": "Industry Trend Interpretation with a local lens turns a generic US outlook into an actionable Australian conversation, which is exactly the niche Vitti Capital occupies.",
+                    "poll_options": []
+                },
+                "grounding": {
+                    "sources_used": [
+                        {
+                            "source_type": "tech",
+                            "title": "US Stock Market Outlook 2026: Key Risks, Drivers and Investment Strategies - Mitrade",
+                            "url": "https://news.google.com/rss/articles/CBMijAFBVV95cUxORno2Ri1SUU05YlFHS3RMNXY1WFVFeS12WDhxLTVIbmJVeGwzN1M2VmV1MlFRTUFwS3dPRjdwX21Qd0RfbVhDZnNQRWl1T3JocmVJYXg5aVN4RU9Lb2Jra2lhMmVDS0lWOGJxTzlCalNEZXFERmxwUDE5ZWkxcFNuaXdKMHJjbmFzckZreQ?oc=5"
+                        },
+                        {
+                            "source_type": "tech",
+                            "title": "ASX 200 Market (ASX:XJO) Key Triggers to Watch? - Kalkine Media",
+                            "url": "https://news.google.com/rss/articles/CBMilgFBVV95cUxPSVpDT3RmR2Vkd3Z3UnUtNkl5M2lHOG5BbjlFeUczbm43OW9fZWhoeDU2RWlqSFlIWEdVU1BzUmdUS2toVnpHOW1VWnVBbzBXZE85cDlLZi1TMDNLejhGWnl5cFBNWUJ3VTBoc0MyeFlOV0NrTTNyZkZzSVNSRGNERkM1Y1NOei1EblIyUEdWRU9yZDBKVnc?oc=5"
+                        }
+                    ]
+                },
+                "region": "Mixed",
+                "source_type": "hybrid",
+                "content": {
+                    "format": "1-pager",
+                    "pages": [
+                        {
+                            "page_title": "Draft",
+                            "markdown": "The biggest risk to your Australian portfolio in 2026 might not originate in Australia.\n\nMitrade's US stock market outlook identifies a familiar but potent cocktail: elevated valuations, mega-cap concentration risk, policy uncertainty, and geopolitical friction \u2014 all sitting alongside genuine AI-driven earnings momentum.\n\nThe standard read: 'That's a US problem.'\n\nThe accurate read: it's an Australian problem too.\n\nHere's why the transmission matters more than most allocators appreciate:\n\n**1. Direct exposure is larger than it looks.** Australian super funds and SMSFs hold significant US equity positions \u2014 both directly and through global mandates.\n\n**2. Currency amplifies the hit.** A US correction typically triggers risk-off flows. The AUD depreciates. Unhedged Australian investors face a double impact: falling asset values in a falling currency.\n\n**3. Correlation spikes in stress.** Kalkine Media's analysis of ASX 200 key triggers confirms that US market moves directly shape local sentiment through global fund flows and sector correlations \u2014 correlations that increase precisely when diversification is needed most.\n\nThe practical implication: Australian allocators need to stress-test portfolios against US-originating scenarios with the same rigour they apply to domestic risks.\n\nConcentration risk in US mega-caps isn't just a Nasdaq problem. It's embedded in global indices, thematic ETFs, and managed funds that Australian investors hold every day.\n\nHow are you stress-testing your portfolio against US-originating risk scenarios this year?"
+                        }
+                    ]
+                }
+            }
+        ]
+    }
+]
