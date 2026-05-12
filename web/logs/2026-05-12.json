@@ -1,0 +1,227 @@
+[
+    {
+        "timestamp": "2026-05-12T10:03:16.808328",
+        "ideas": [
+            {
+                "anchor_source": "https://www.afr.com/technology/droneshield-under-asic-investigation-over-disclosures-share-trading-20260512-p5zvy3",
+                "title": "DroneShield's ASIC Probe Is a Governance Wake-Up Call for ASX Tech Investors",
+                "context": "ASIC is investigating DroneShield over share sales by its then-CEO and two directors in November, alongside an erroneous sales announcement to the ASX. This comes during a period where the broader ASX has shown mixed signals \u2014 BHP hitting all-time highs while the S&P/ASX 200 dipped 0.36% \u2014 suggesting investors are already rotating toward governance-safe names. The BHP strength reported by Kalkine underscores how capital flows toward companies with clean disclosure records when regulatory risk surfaces elsewhere.",
+                "angle": "Director share sales under regulatory scrutiny remind us that governance due diligence is the cheapest risk management tool in tech investing.",
+                "linkedin_playbook": {
+                    "format_name": "Signal Decoder",
+                    "opening_hook": "ASIC just opened an investigation into DroneShield over director share sales and a botched ASX announcement. This isn't just a DroneShield story \u2014 it's a signal.",
+                    "why_section": "As ASX-listed tech and defence companies attract retail and institutional capital at scale, disclosure integrity becomes the fault line between durable value and sudden drawdowns. Governance failures in high-growth names erode trust across the entire sector.",
+                    "unique_take": "While BHP hits all-time highs on the back of clean execution and transparent reporting, DroneShield's probe shows how quickly sentiment can reverse when disclosure standards slip. The signal: in a market splitting between miners with strong governance and tech names with governance questions, capital will punish opacity faster than it rewards growth.",
+                    "call_to_action": "What's your non-negotiable governance screen before investing in ASX-listed tech or defence companies?",
+                    "why_this_works": "Signal Decoder format connects a specific event to a broader market pattern, giving finance professionals a framework they can immediately apply to portfolio decisions.",
+                    "poll_options": []
+                },
+                "grounding": {
+                    "sources_used": [
+                        {
+                            "source_type": "raindrop",
+                            "title": "DroneShield faces regulator probe over disclosures, share trading",
+                            "url": "https://www.afr.com/technology/droneshield-under-asic-investigation-over-disclosures-share-trading-20260512-p5zvy3"
+                        },
+                        {
+                            "source_type": "tech",
+                            "title": "BHP Share Price Hits All-Time High: Is the ASX Mining Boom Back? - Kalkine",
+                            "url": "https://news.google.com/rss/articles/CBMingFBVV95cUxPb25PbERiR05YVHlKdkNGeFdfRVBDQXdXV0ZyZU1TS3pmYm1RX1VTOTRaWHBFRklUQThPM2tBdm9PR0NLdGx2V0t2MnNTSXlKdE41a1oxZFBtTnI2MnpQaF9rSEVvakNkT2Fmal9LMFB0YmpTZ2hMbW4wMjAydlBQVzBHam1oTk1wSHVGbW43dTdzRmtndVJWdTBTQUg4QQ?oc=5"
+                        }
+                    ]
+                },
+                "region": "Australia",
+                "source_type": "raindrop",
+                "content": {
+                    "format": "1-pager",
+                    "pages": [
+                        {
+                            "page_title": "Draft",
+                            "markdown": "ASIC just opened an investigation into DroneShield over director share sales and a botched ASX announcement. This isn't just a DroneShield story \u2014 it's a signal.\n\n**The signal:** ASIC is probing share sales by DroneShield's then-CEO and two other directors in November, alongside an erroneous sales announcement to the ASX. The regulator is asking hard questions about timing and disclosure.\n\n**The tension:** While DroneShield faces governance scrutiny, BHP is hitting all-time highs. Kalkine reports the ASX mining boom narrative is back \u2014 driven in part by companies with decades of institutional-grade disclosure practices. Capital is flowing toward transparency.\n\n**The practical implication:** For investors and operators in ASX-listed tech and defence, this is a reminder that governance isn't a compliance checkbox \u2014 it's a valuation input. When regulators move, the market reprices governance risk across the entire sector, not just the company under investigation.\n\nDroneShield built genuine capability in counter-drone technology. But capability without disclosure discipline creates fragile shareholder value.\n\nIn a market that's actively splitting between governance-strong miners and governance-questioned growth names, the cheapest risk management tool remains due diligence on director dealings and disclosure practices.\n\nThis applies well beyond DroneShield. Every ASX-listed company with insider trading windows and material contract announcements should be stress-testing their processes right now.\n\nWhat's your non-negotiable governance screen before investing in ASX-listed tech or defence companies?"
+                        }
+                    ]
+                }
+            },
+            {
+                "anchor_source": "https://www.afr.com/chanticleer/csl-has-incinerated-100b-in-two-years-the-worst-isn-t-over-20260511-p5zvlg",
+                "title": "CSL's $100B Destruction: When Blue-Chip Complacency Meets Market Reality",
+                "context": "The AFR's Chanticleer column reports CSL has destroyed approximately $100 billion in market value over two years, attributing the decline to complacency and hubris at what was once considered Australian blue-chip royalty. Cross-verification from Kalkine confirms the broader ASX pattern: banks are retreating while miners gather strength, and healthcare is a notable drag on the index. This sector-level weakness validates that CSL's decline isn't an isolated event but part of a structural rotation away from healthcare on the ASX.",
+                "angle": "CSL's fall from grace exposes the danger of treating past performance as a moat \u2014 and the ASX healthcare sector is paying the price.",
+                "linkedin_playbook": {
+                    "format_name": "Before/After Results Story",
+                    "opening_hook": "$100 billion. That's how much value CSL has incinerated in two years. From blue-chip royalty to what the AFR calls a 'bin fire.'",
+                    "why_section": "CSL was the stock Australian fund managers held to prove they could pick world-class companies. Its decline forces a reckoning not just for CSL shareholders, but for every portfolio that treated historical quality as a permanent attribute.",
+                    "unique_take": "The AFR points to complacency and hubris. But the cross-check is telling: Kalkine's ASX 200 sector data shows healthcare broadly dragging the index while miners gather strength. CSL isn't just a company story \u2014 it's the canary for an entire sector rotation. Investors who anchored to CSL's past are now learning that competitive moats require active maintenance, not passive assumption.",
+                    "call_to_action": "Have you adjusted your portfolio's healthcare weighting in the last 12 months? What triggered the change \u2014 or what's holding you back?",
+                    "why_this_works": "Before/After format turns a dramatic value destruction narrative into a relatable portfolio lesson, inviting professionals to share their own experience with fallen blue chips.",
+                    "poll_options": []
+                },
+                "grounding": {
+                    "sources_used": [
+                        {
+                            "source_type": "raindrop",
+                            "title": "CSL has incinerated $100b in two years. The worst isn't over",
+                            "url": "https://www.afr.com/chanticleer/csl-has-incinerated-100b-in-two-years-the-worst-isn-t-over-20260511-p5zvlg"
+                        },
+                        {
+                            "source_type": "news",
+                            "title": "ASX 200 Banks Retreat While Miners Gather Strength Australian Equities - Kalkine Media",
+                            "url": "https://news.google.com/rss/articles/CBMiugFBVV95cUxNVkhSMGhOV0pRQ3NBYi0taWFDOWVYdGRMUy13OTVyUTdZVzBKQ29OQzFBNllqTzZKVDhJSXU1dHlYOGhkRkNTWUJvM0tib2dQNWtTSDJPTTNxa1Fna3hqTFRWWjYzUHd0YnM1NW9qN2tKLVRHNU9ORFNFYUFWUlpKQmpOWF9MU29BVzQ0UnFIUzVCRDY1emJpUVRTb0FQcXlJQ0pmdERKVVVuYkctTmoyaEtfQlNUb2VPZ1E?oc=5"
+                        }
+                    ]
+                },
+                "region": "Australia",
+                "source_type": "raindrop",
+                "content": {
+                    "format": "1-pager",
+                    "pages": [
+                        {
+                            "page_title": "Draft",
+                            "markdown": "$100 billion. That's how much value CSL has incinerated in two years. From blue-chip royalty to what the AFR calls a 'bin fire.'\n\n**Before:** CSL was the stock every Australian fund manager held with pride. A global plasma leader, a compounder, the proof that the ASX could produce world-class companies. It was the default quality allocation.\n\n**The turning point:** The AFR's Chanticleer column points to complacency and hubris \u2014 a company that lost its edge while assuming its moat was permanent. Integration challenges, margin pressure, and a market that stopped giving benefit of the doubt.\n\n**After:** Roughly $100 billion in shareholder value destroyed. And the column argues the worst isn't over.\n\nHere's what makes this bigger than CSL: Kalkine's ASX 200 sector analysis confirms healthcare is broadly dragging the index while miners gather strength. This isn't one company stumbling \u2014 it's a sector rotation that punishes yesterday's winners.\n\nThe lesson for portfolio construction is uncomfortable but clear: quality is not a permanent attribute. It requires active verification. The companies we hold longest are often the ones we scrutinise least.\n\nCSL may recover. But the investors who treated its past performance as a forward guarantee have already paid the price.\n\nEvery portfolio has a CSL \u2014 a position held on reputation rather than current evidence.\n\nHave you adjusted your healthcare weighting in the last 12 months? What triggered the change \u2014 or what's holding you back?"
+                        }
+                    ]
+                }
+            },
+            {
+                "anchor_source": "https://news.google.com/rss/articles/CBMikAFBVV95cUxQSlBoZmRENm1POWlXdTE2TmU1LUFrT1lXLU9DazE5ckRXMXpxQktHbENMOWN2cHV0cUFGV195cUhzN1hxTkJ0c3A4ZEJTWkU2RXl5R2o1bVNseVFMaXJfa2E0VUw5cUJUQnNOc0lDVjFNdzQySDQyRWhreDM4WTEyQXVod1FyTmYtT2NROGY4amw?oc=5",
+                "title": "The ASX 200's Sector Split: Why Healthcare vs. Mining Is the Trade That Defines This Market",
+                "context": "IG's ASX 200 afternoon report for 12 May 2026 captures a market in transition, with sector divergence driving the index. Cross-verification from IBT Australia confirms the pattern: the ASX 200 dipped 0.2% as healthcare weighed on the index while miners held firm. Meanwhile, EBC Financial Group's outlook piece highlights that banks, miners, and budget risk are actively splitting the market into distinct camps. The convergence of these sources points to a market where sector selection matters more than index-level exposure.",
+                "angle": "The ASX 200 headline number is hiding a three-way sector split that demands active allocation, not passive index exposure.",
+                "linkedin_playbook": {
+                    "format_name": "Industry Trend Interpretation",
+                    "opening_hook": "The ASX 200 dropped 0.36% on Monday. But that number is lying to you.",
+                    "why_section": "Index-level returns are masking a structural divergence between healthcare (falling), miners (resilient), and banks (retreating). For allocators and advisers, this means passive ASX 200 exposure is blending winners and losers in ways that dilute returns.",
+                    "unique_take": "IG's afternoon report shows the split in real time. IBT Australia confirms healthcare dragged the index while miners held. EBC Financial Group goes further, arguing banks, miners, and budget risk are creating three distinct market regimes within one index. The implication: investors treating the ASX 200 as a single trade are underperforming those making active sector calls. This divergence isn't noise \u2014 it's the market pricing in fundamentally different macro exposures across sectors.",
+                    "call_to_action": "Are you still running broad ASX 200 exposure, or have you started tilting toward specific sectors? What's driving your allocation right now?",
+                    "why_this_works": "Industry Trend Interpretation format takes a seemingly routine market report and reframes it as a strategic allocation question, which resonates with finance professionals who make these decisions daily.",
+                    "poll_options": []
+                },
+                "grounding": {
+                    "sources_used": [
+                        {
+                            "source_type": "news",
+                            "title": "ASX 200 afternoon report: 12 May 2026 - ig.com",
+                            "url": "https://news.google.com/rss/articles/CBMikAFBVV95cUxQSlBoZmRENm1POWlXdTE2TmU1LUFrT1lXLU9DazE5ckRXMXpxQktHbENMOWN2cHV0cUFGV195cUhzN1hxTkJ0c3A4ZEJTWkU2RXl5R2o1bVNseVFMaXJfa2E0VUw5cUJUQnNOc0lDVjFNdzQySDQyRWhreDM4WTEyQXVod1FyTmYtT2NROGY4amw?oc=5"
+                        },
+                        {
+                            "source_type": "tech",
+                            "title": "ASX 200 Dips 0.2% as Healthcare Weighs While Miners Hold Firm on May 12 - International Business Times Australia",
+                            "url": "https://news.google.com/rss/articles/CBMinwFBVV95cUxPLW5tak4yOU5YQWpXQk5IaWpCTnZsRF82SXFqQ05HUmNaZTFvcXdPbk5OeXM3SDVyeXBUZUFLZzlxajdrdldOZjNMckh6Y0hwSFB6bHdja1dUM0RhNE1NLVRVNVZaZENKamdteXp1SHlsMWx3dUV1Z3d2THZNUDFtVVBOTTFUWjAxZzZvRFpQTnZ1b0pRMHRFUWU2dDdTVDg?oc=5"
+                        },
+                        {
+                            "source_type": "news",
+                            "title": "ASX 200 Outlook: Why Banks, Miners and Budget Risk Are Splitting the Market - EBC Financial Group",
+                            "url": "https://news.google.com/rss/articles/CBMidEFVX3lxTFA3cmtGUkJTdWw4WEIxRUo0eWJGUEVwb3BkMVp5UWVpUE90U1Z4bW82WTdwazVyVndHY3lMNy02TE1BZmxJVVNDZS0tRUJzLVRlZmdQdE5vTy13MlQ1cF96NWVTZ2cwVjYtWjRsT2JCb1M3cWkt?oc=5"
+                        }
+                    ]
+                },
+                "region": "Australia",
+                "source_type": "news",
+                "content": {
+                    "format": "1-pager",
+                    "pages": [
+                        {
+                            "page_title": "Draft",
+                            "markdown": "The ASX 200 dropped 0.36% on Monday. But that number is lying to you.\n\nBeneath the headline, three completely different markets are running simultaneously:\n\n\u2192 **Healthcare** is dragging the index lower, with CSL and peers under sustained pressure\n\u2192 **Miners** are holding firm, buoyed by commodity strength and BHP's momentum\n\u2192 **Banks** are retreating as budget uncertainty clouds the outlook\n\nIG's afternoon report captured this divergence in real time. IBT Australia confirmed it: the ASX 200 dipped as healthcare weighed while miners held. And EBC Financial Group's outlook piece went further \u2014 arguing banks, miners, and budget risk are actively splitting the market into distinct regimes.\n\nThis matters for anyone running Australian equity exposure.\n\nIf you're holding broad ASX 200 ETFs or index-tracking allocations, you're blending a mining bull market with a healthcare correction and a banking retreat. Your returns are the average of three very different stories.\n\nThe investors outperforming right now aren't making better index calls. They're making sector calls. They're overweighting materials, underweighting healthcare, and actively managing bank exposure around fiscal policy risk.\n\nThis isn't a temporary dislocation. When macro drivers diverge this sharply across sectors \u2014 commodity cycles, regulatory headwinds, fiscal policy \u2014 the index becomes a blunt instrument.\n\nAre you still running broad ASX 200 exposure, or have you started tilting toward specific sectors? What's driving your allocation right now?"
+                        }
+                    ]
+                }
+            },
+            {
+                "anchor_source": "https://news.google.com/rss/articles/CBMipAFBVV95cUxPd2lzUnhfckQtSzBBbURYUHhyb3lKN09VYVdYQVpRY2xFTGRzOVBhM1lHNGxfTnFMcGlfc3gtWWZTT1R2aU9VREg3aERNM0tTZzZQaVEyQnN3RURwY0dTZWpxSHZOc21SRnU4MklLejVuWXhEQ0g0UEZRMzFmY24yaXQ3UG93Tm40N0tERHAtQ2NZbXR3UTVxMXc0bEpJOWdRQnUtWQ?oc=5",
+                "title": "Iron Ore Is Still WA's Backbone \u2014 But Simandou Changes the Calculus",
+                "context": "Australian Mining reports that iron ore remains the 'backbone' of Western Australia's mining industry, reinforcing the state's economic dependence on the commodity. However, cross-verification from Discovery Alert reveals that Simandou iron ore shipments are smashing records in 2026, introducing significant new supply into the global market. Meanwhile, BHP's share price hitting all-time highs (per Kalkine) suggests the market is currently pricing in demand strength over supply risk. The tension between WA's iron ore dominance and Simandou's rising output creates a critical question about medium-term pricing power.",
+                "angle": "WA's iron ore confidence is justified today, but Simandou's record shipments are the supply-side risk that consensus is underpricing.",
+                "linkedin_playbook": {
+                    "format_name": "Contrarian Institution Read",
+                    "opening_hook": "Everyone agrees iron ore is the backbone of Western Australia's economy. Almost nobody is talking about the spine that's growing in Guinea.",
+                    "why_section": "Australia's federal and state budgets, superannuation returns, and the AUD itself are all leveraged to iron ore pricing. A structural shift in global supply isn't just a mining story \u2014 it's a macro story for every Australian investor and policymaker.",
+                    "unique_take": "Australian Mining's framing of iron ore as WA's backbone is accurate but incomplete. Discovery Alert reports Simandou shipments are smashing records in 2026 \u2014 this is the world's largest undeveloped iron ore deposit coming online at scale. BHP's all-time high share price suggests the market is pricing demand strength, not supply disruption. The contrarian read: consensus is anchored to a demand narrative while a supply shock builds. WA's iron ore revenues face medium-term compression risk that neither state budgets nor equity valuations are reflecting.",
+                    "call_to_action": "Is the market right to ignore Simandou's ramp-up, or is this the most underpriced supply risk in Australian equities?",
+                    "why_this_works": "Contrarian Institution Read challenges a widely held assumption with specific evidence, creating the kind of intellectual tension that drives comments and shares among finance professionals.",
+                    "poll_options": []
+                },
+                "grounding": {
+                    "sources_used": [
+                        {
+                            "source_type": "tech",
+                            "title": "Iron ore still the 'backbone' of Western Australia's mining industry - Australian Mining",
+                            "url": "https://news.google.com/rss/articles/CBMipAFBVV95cUxPd2lzUnhfckQtSzBBbURYUHhyb3lKN09VYVdYQVpRY2xFTGRzOVBhM1lHNGxfTnFMcGlfc3gtWWZTT1R2aU9VREg3aERNM0tTZzZQaVEyQnN3RURwY0dTZWpxSHZOc21SRnU4MklLejVuWXhEQ0g0UEZRMzFmY24yaXQ3UG93Tm40N0tERHAtQ2NZbXR3UTVxMXc0bEpJOWdRQnUtWQ?oc=5"
+                        },
+                        {
+                            "source_type": "tech",
+                            "title": "Simandou Iron Ore Shipments Smash Records in 2026 - Discovery Alert",
+                            "url": "https://news.google.com/rss/articles/CBMikgFBVV95cUxOSFdkVnpTR2ZVYWgyaE1Cd0MzWHRxaDB0cWNobE96U2FRNzNwOEpHY0t6UUw5eGM4TEQ5Ulp3S3RWNFpQamVVOUFzMjdzR2hvYjJaQzZBdDRGWkRjZmxFejZZaVpDcENFM0NvTVB1d0l3RU9NUWV5TVQ5cGFPX1VBZmJkX1lOLUgxM2dPa1IyYmdqdw?oc=5"
+                        },
+                        {
+                            "source_type": "tech",
+                            "title": "BHP Share Price Hits All-Time High: Is the ASX Mining Boom Back? - Kalkine",
+                            "url": "https://news.google.com/rss/articles/CBMingFBVV95cUxPb25PbERiR05YVHlKdkNGeFdfRVBDQXdXV0ZyZU1TS3pmYm1RX1VTOTRaWHBFRklUQThPM2tBdm9PR0NLdGx2V0t2MnNTSXlKdE41a1oxZFBtTnI2MnpQaF9rSEVvakNkT2Fmal9LMFB0YmpTZ2hMbW4wMjAydlBQVzBHam1oTk1wSHVGbW43dTdzRmtndVJWdTBTQUg4QQ?oc=5"
+                        }
+                    ]
+                },
+                "region": "Australia",
+                "source_type": "hybrid",
+                "content": {
+                    "format": "1-pager",
+                    "pages": [
+                        {
+                            "page_title": "Draft",
+                            "markdown": "Everyone agrees iron ore is the backbone of Western Australia's economy. Almost nobody is talking about the spine that's growing in Guinea.\n\nAustralian Mining reaffirmed this week that iron ore remains WA's dominant industry. BHP's share price just hit an all-time high. The consensus narrative is clear: demand is strong, Australia wins.\n\nBut here's what consensus is missing.\n\n**Simandou is no longer a future risk \u2014 it's a present one.** Discovery Alert reports that shipments from Guinea's Simandou project are smashing records in 2026. This is the world's largest undeveloped iron ore deposit, now actively ramping into a market that has priced in supply scarcity.\n\nThe maths matter:\n\u2192 WA state revenues are leveraged to iron ore royalties\n\u2192 Australian superannuation returns are heavily exposed to BHP, Rio, and Fortescue\n\u2192 The AUD itself moves with iron ore pricing\n\nIf Simandou's ramp-up compresses iron ore prices by even 10-15% over the medium term, the downstream effects ripple through budgets, portfolios, and currency.\n\nYet BHP is at all-time highs. State budget forecasts assume robust pricing. Equity analysts are focused on demand.\n\n**The risk of this contrarian read being wrong:** Chinese stimulus sustains demand above Simandou's incremental supply, and prices hold. That's possible. But it requires demand growth to outpace the largest new supply source in a generation.\n\nIs the market right to ignore Simandou's ramp-up, or is this the most underpriced supply risk in Australian equities?"
+                        }
+                    ]
+                }
+            },
+            {
+                "anchor_source": "https://news.google.com/rss/articles/CBMisAFBVV95cUxOVUxpTG92bVIzd2IzUllRUHdjRWNEZEdka1BGWHBYTE80VlM4OEkwTlMzMHF1dXkwLWlPN0VKNWdlSlJBLVpLbzZ3LTAzV0sxLTRVYVVRcnFmUGc5eDA0QVJMVWRiMGhIVkpiMWxLd1BaazZ3dnhLYW5FWDRjdzNRRXE2ekNwNVRteWRuTW5QZ28wdmlmQ2hDdGR4RTF0VWZMVGI0b2NuaWRyTlZXV0ZtTg?oc=5",
+                "title": "Budget Night Tax Shock: What Should ASX Investors Actually Fear?",
+                "context": "The Motley Fool Australia reports the ASX 200 sank ahead of budget night, with investors bracing for potential tax changes that could impact markets. Kalkine Media's cross-verification confirms the pre-budget selloff, specifically noting the tax debate is heating up and driving the ASX 200 lower. Investing.com's close-of-trade data showing the ASX 200 down 0.36% adds further confirmation that budget anxiety \u2014 not earnings fundamentals \u2014 drove the session's weakness. The convergence suggests markets are pricing in fiscal risk before details are even announced.",
+                "angle": "Pre-budget selloffs reveal more about investor positioning and fear than about actual policy \u2014 but this time the tax debate has real teeth.",
+                "linkedin_playbook": {
+                    "format_name": "Provocative Question & Poll Hybrid",
+                    "opening_hook": "The ASX 200 dropped before the budget was even delivered. Investors are pricing in a tax shock they haven't seen yet. Are they right to be scared?",
+                    "why_section": "Federal budgets in Australia have historically been 'sell the rumour, buy the fact' events. But the current tax debate \u2014 touching superannuation, capital gains, and corporate rates \u2014 has broader structural implications for portfolio construction and long-term wealth planning.",
+                    "unique_take": "The Motley Fool flagged the pre-budget selloff and tax shock fears. Kalkine confirmed the tax debate is the primary driver of market weakness, not earnings or global macro. This is unusual \u2014 Australian markets rarely sell off this hard on fiscal policy alone. It suggests investors believe this budget carries genuine structural tax reform, not just marginal adjustments. The question is whether the market is overreacting to speculation or correctly front-running a regime change in Australian tax policy.",
+                    "call_to_action": "Vote below and tell us in the comments: what's your biggest budget night concern?",
+                    "why_this_works": "Poll format captures real-time sentiment on a live event, driving both votes and comments as professionals share their positioning ahead of a market-moving catalyst.",
+                    "poll_options": [
+                        "Superannuation tax changes",
+                        "Capital gains tax increases",
+                        "Corporate tax adjustments",
+                        "Markets are overreacting \u2014 buy the dip"
+                    ]
+                },
+                "grounding": {
+                    "sources_used": [
+                        {
+                            "source_type": "news",
+                            "title": "ASX 200 sinks before tonight's budget. Are investors about to get a tax shock? - The Motley Fool Australia",
+                            "url": "https://news.google.com/rss/articles/CBMisAFBVV95cUxOVUxpTG92bVIzd2IzUllRUHdjRWNEZEdka1BGWHBYTE80VlM4OEkwTlMzMHF1dXkwLWlPN0VKNWdlSlJBLVpLbzZ3LTAzV0sxLTRVYVVRcnFmUGc5eDA0QVJMVWRiMGhIVkpiMWxLd1BaazZ3dnhLYW5FWDRjdzNRRXE2ekNwNVRteWRuTW5QZ28wdmlmQ2hDdGR4RTF0VWZMVGI0b2NuaWRyTlZXV0ZtTg?oc=5"
+                        },
+                        {
+                            "source_type": "news",
+                            "title": "ASX 200 Slips Ahead of Budget Night as Tax Debate Heats Up - Kalkine Media",
+                            "url": "https://news.google.com/rss/articles/CBMipgFBVV95cUxOS05xM3Vhc2ZldjV3Z3JWRl9zOWE2LWJXME5JVnNVUk5vdEVZX2M2dmtwRGtTcUJSbXVsdG9PRE9Wc2xRMW91VVlZMUhNYU5hUWdfSnd4bVAxNk9VQlVkbElJR0VLU2JWUUdUb0N5Mm5TckREd0lSUEVDMFJxSXE0SEMySldibnRjTklSekhtTGQ2UTdUV3VLbWVldWk1dkR3NlBTN0t3?oc=5"
+                        },
+                        {
+                            "source_type": "news",
+                            "title": "Australia stocks lower at close of trade; S&P/ASX 200 down 0.36% - Investing.com",
+                            "url": "https://news.google.com/rss/articles/CBMitwFBVV95cUxQUXppNUNoTkM2N0g1enlZbGdGT0JTbTdHdUdPVHExOFlfLWpXLWNfcjQ4UnpFckkwaUpHSUN2T1dORWg3NUhJdFlZaXNpMEZUOHcwaU5xQjlnaHNRWU90Y3A1YXFCSGx1RTJkT1Y2cnc5Y1hzMTV2Nk0yRy1LZ016bm9URzBlSVFBdFJBQWVoR2JoQk1QN1pNaC1NMVBVV2UyVzRsOTMwRWQyWm45QjBnQ2ZPNmlzQVk?oc=5"
+                        }
+                    ]
+                },
+                "region": "Australia",
+                "source_type": "news",
+                "content": {
+                    "format": "1-pager",
+                    "pages": [
+                        {
+                            "page_title": "Draft",
+                            "markdown": "The ASX 200 dropped before the budget was even delivered. Investors are pricing in a tax shock they haven't seen yet. Are they right to be scared?\n\nThe Motley Fool Australia reported the ASX 200 sank ahead of budget night, with tax changes front of mind. Kalkine confirmed it \u2014 the tax debate, not earnings or global macro, was the primary driver of market weakness.\n\nThis is unusual. Australian markets rarely sell off this hard on fiscal policy alone.\n\nHistorically, federal budgets have been 'sell the rumour, buy the fact' events. Minor tweaks, modest market reactions, business as usual by Wednesday.\n\nBut this time feels different. The debate spans:\n\u2192 Superannuation tax thresholds\n\u2192 Capital gains treatment\n\u2192 Potential corporate rate adjustments\n\nEach of these touches a different investor cohort. Super changes hit retirees and SMSFs. CGT changes hit property and equity investors. Corporate adjustments hit earnings multiples directly.\n\nThe ASX 200 closing down 0.36% on a day with no major global catalyst tells you the market believes this budget carries structural reform, not cosmetic changes.\n\nThe counter-argument: markets always fear budgets and almost always recover within a week. This could be another overreaction.\n\nBut the breadth of the tax debate suggests the risk is real this time.\n\n**Poll: What's your biggest budget night concern?**\n\ud83d\udd39 Superannuation tax changes\n\ud83d\udd39 Capital gains tax increases\n\ud83d\udd39 Corporate tax adjustments\n\ud83d\udd39 Markets are overreacting \u2014 buy the dip\n\nVote below and tell us in the comments: what's your biggest budget night concern?"
+                        }
+                    ]
+                }
+            }
+        ]
+    }
+]
