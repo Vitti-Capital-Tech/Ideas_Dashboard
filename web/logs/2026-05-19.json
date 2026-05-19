@@ -1,0 +1,217 @@
+[
+    {
+        "timestamp": "2026-05-19T10:26:12.193673",
+        "ideas": [
+            {
+                "anchor_source": "https://news.google.com/rss/articles/CBMikAFBVV95cUxOWXg4VGNoQWlLSTJnR3pHU2x4VThyS1E1UDVMcWttMG1YMHBDcjVjTWtUMjJVU09yN0ZKR2U0VWJOOFRCYlVCNkNNdDFOTUctbF83Q3ZvWWlWNHVVV0FxTFVzTnU3Vl9CQkh0WnlfaXlyNW96X2o4d3FXeFpZVTBucjFKWUM2SThMbHpJSnJFdkw?oc=5",
+                "title": "The ASX 200 Afternoon Session Is Telling a Different Story Than the Morning Headlines",
+                "context": "IG Group's afternoon report on 19 May 2026 captures intraday ASX 200 dynamics as the market digested mixed signals through the session. Kalkine Media's separate analysis notes the ASX 200 was poised to climb despite fresh tech sector pressure, confirming that broad index resilience is masking significant sector-level divergence. The tension between headline gains and underlying tech weakness suggests investors are rotating rather than uniformly buying.",
+                "angle": "Intraday sector rotation is the real story \u2014 headline index moves are hiding where capital is actually flowing.",
+                "linkedin_playbook": {
+                    "format_name": "Signal Decoder",
+                    "opening_hook": "The ASX 200 closed green today. But the afternoon session told a completely different story from the morning open.",
+                    "why_section": "For portfolio managers and active investors, headline index performance is increasingly misleading. Sector rotation within a single trading day can reverse morning positioning, and those relying on open-to-close summaries miss where capital actually moved.",
+                    "unique_take": "While IG Group's afternoon report showed the index holding gains, Kalkine's analysis reveals tech names were under fresh pressure even as the broader market climbed. This isn't a uniform rally \u2014 it's a rotation trade. Capital is leaving growth-sensitive sectors and flowing into defensives and value names. The signal for operators: watch sector-level flows, not the index number.",
+                    "call_to_action": "Are you tracking intraday sector rotation, or still relying on end-of-day index snapshots?",
+                    "why_this_works": "Signal Decoder format rewards the audience with a non-obvious insight from publicly available data, positioning Vitti Capital as a firm that reads beneath the surface.",
+                    "poll_options": []
+                },
+                "grounding": {
+                    "sources_used": [
+                        {
+                            "source_type": "news",
+                            "title": "ASX 200 afternoon report: 19 May 2026 - IG Group",
+                            "url": "https://news.google.com/rss/articles/CBMikAFBVV95cUxOWXg4VGNoQWlLSTJnR3pHU2x4VThyS1E1UDVMcWttMG1YMHBDcjVjTWtUMjJVU09yN0ZKR2U0VWJOOFRCYlVCNkNNdDFOTUctbF83Q3ZvWWlWNHVVV0FxTFVzTnU3Vl9CQkh0WnlfaXlyNW96X2o4d3FXeFpZVTBucjFKWUM2SThMbHpJSnJFdkw?oc=5"
+                        },
+                        {
+                            "source_type": "news",
+                            "title": "ASX 200 Poised To Climb Despite Fresh Tech Sector Pressure - Kalkine Media",
+                            "url": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxNb3ZpcDhzaDcyNFBfa3Q0Q3Vibm5idGlkQWFDak5uMm9RcXNVR3FSZFBwLWlvTVBUWHRVX2IwX3VMZVZzcFM2QnEtUktyUDFoLTVkSXBNc2xDUGxiV2xsODQ0ejZnMW5RYTlLazRKMWFFNXhrZHZJeVZXNHRjWUZ6bTVlaW1XNlk2cm9sZ1JoNzFKM0ZJcDM4QURfa0FVWl9lTjI4R0R2OFFUdw?oc=5"
+                        }
+                    ]
+                },
+                "region": "Australia",
+                "source_type": "news",
+                "content": {
+                    "format": "1-pager",
+                    "pages": [
+                        {
+                            "page_title": "Draft",
+                            "markdown": "The ASX 200 closed green today. But the afternoon session told a completely different story from the morning open.\n\n**The signal:** IG Group's afternoon report on 19 May captured an index holding its gains through the session. On the surface, a solid day for Australian equities.\n\n**The tension:** Kalkine Media's analysis reveals the ASX 200 was climbing *despite* fresh pressure on tech names. This isn't a broad-based rally. It's a rotation trade in disguise.\n\nHere's why that matters:\n\nCapital isn't flowing uniformly into the market. It's leaving growth-sensitive sectors \u2014 particularly tech \u2014 and repositioning into defensives and value plays. The headline number looks healthy. The underlying plumbing tells a different story.\n\nFor investors and advisers, this creates a practical problem. If you're benchmarking against the index, you might feel comfortable. But if your portfolio is tilted toward the sectors under pressure, your actual performance is diverging from the headline.\n\n**The implication:** In a rotation-driven market, sector allocation decisions matter more than market timing. Watching where capital moves *within* the index is more valuable than watching the index itself.\n\nIntraday flows are becoming the leading indicator. End-of-day summaries are the lagging one.\n\nAre you tracking intraday sector rotation, or still relying on end-of-day index snapshots?"
+                        }
+                    ]
+                }
+            },
+            {
+                "anchor_source": "https://news.google.com/rss/articles/CBMipAFBVV95cUxNV3NDTkVSSVRUTmttd0xVRTRXQ0tKQmgtWk1IdzJFWGd4T1FBaERsRXozd1dhUzNlcFg3emVJMWtWamZ0Nm9Kb0RydDE2Vm1zdzdZUVcyVXU1Ym5OX044RVhxQVNraE9SNGxCRF80dmdsN3pyelBaT0RYZHRzVktjaEtBblc4OTJJZW4zQnRyaDBsMHVWVUM3MEN6RFdsOVNEcFBqbw?oc=5",
+                "title": "Iron Ore vs Lithium: The ASX Mining Split That Reveals Two Very Different Commodity Cycles",
+                "context": "TheBull reports ASX mining stocks are taking a breather, with iron ore and lithium names splitting paths \u2014 iron ore majors holding firm while lithium producers lag. Kalkine Media's parallel coverage confirms miners are splitting direction, with iron ore giants defying the lithium drag. Meanwhile, Kalkine's separate report on short sellers circling ASX 200 stocks adds a layer: some of the bearish positioning appears concentrated in the very commodity names experiencing weakness, suggesting institutional money is actively betting against the lithium recovery narrative.",
+                "angle": "Iron ore and lithium are no longer moving as a 'resources bloc' \u2014 they represent two distinct commodity cycles with opposing demand drivers.",
+                "linkedin_playbook": {
+                    "format_name": "Contrarian Institution Read",
+                    "opening_hook": "Everyone calls them 'mining stocks' as if they're one trade. They're not. Iron ore and lithium are running two completely different playbooks right now.",
+                    "why_section": "For Australian investors, the resources sector makes up a significant portion of the ASX 200. Treating it as a monolith \u2014 buying or selling 'miners' as a group \u2014 is increasingly a source of portfolio risk. The divergence between iron ore and lithium reflects fundamentally different demand cycles: Chinese steel infrastructure vs global EV battery supply chains.",
+                    "unique_take": "Consensus treats the mining pullback as a single 'commodities breather.' But TheBull's reporting shows iron ore names are holding firm while lithium producers slide. Kalkine's short-seller data adds edge: bearish institutional positioning is concentrating in lithium and battery metals, not iron ore. The market isn't just pausing \u2014 it's repricing the lithium oversupply thesis while maintaining confidence in iron ore demand. The risk of this read being wrong? A sudden lithium supply disruption or Chinese EV policy shift could snap the divergence shut overnight.",
+                    "call_to_action": "Is your resources allocation still treating iron ore and lithium as the same trade?",
+                    "why_this_works": "Contrarian Institution Read challenges the lazy 'mining sector' groupthink, offering a differentiated lens that resonates with sophisticated Australian investors who hold significant resources exposure.",
+                    "poll_options": []
+                },
+                "grounding": {
+                    "sources_used": [
+                        {
+                            "source_type": "tech",
+                            "title": "ASX Mining Stocks Take Breather As Iron Ore and Lithium Names Split Paths - thebull.com.au",
+                            "url": "https://news.google.com/rss/articles/CBMipAFBVV95cUxNV3NDTkVSSVRUTmttd0xVRTRXQ0tKQmgtWk1IdzJFWGd4T1FBaERsRXozd1dhUzNlcFg3emVJMWtWamZ0Nm9Kb0RydDE2Vm1zdzdZUVcyVXU1Ym5OX044RVhxQVNraE9SNGxCRF80dmdsN3pyelBaT0RYZHRzVktjaEtBblc4OTJJZW4zQnRyaDBsMHVWVUM3MEN6RFdsOVNEcFBqbw?oc=5"
+                        },
+                        {
+                            "source_type": "tech",
+                            "title": "Miners Split Direction as Iron Ore Giants Defy Lithium Drag - Kalkine Media",
+                            "url": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxOY0otVFQ2dXVVM3lreE9EWmxqR1RpYTkxYjJKcUN3SmpzQ3VzZjM1TXlmWTVQaURfRk5fVFBNNGpndGgxU0tTdVIyYm40TVg4d1ZEaEdPRzdYNlVqZWp2TDhPemExc25QdWhrZnhtcGlUak94ZVcybjNCLWVjc2loUldtSnVVYjI0a2FDcWJ5dEpaTVdmZHJITVlMN3g1aHZJek53RGVKUEN3Zw?oc=5"
+                        },
+                        {
+                            "source_type": "news",
+                            "title": "Short Sellers Circle ASX 200 Stocks as Market Sentiment Shifts - Kalkine Media",
+                            "url": "https://news.google.com/rss/articles/CBMirwFBVV95cUxQVjRtaWNSR0ZFOURjMXllZWF0a3pmbFc3dUoxeWx3dWVkR09QYlZpYXVXVmVXLWNFaUVfTk1ZYVhkUlZsTHpyUWQydndCeXYxc21mSlFMMHFXM3ZzNnNvYnRMVHpMMENrMzBYQ285N3JQNFcwTUtUV0FENzNMVDZKYTZsMF9LUHdsMkt3OHNwZXJLLTJMX3VEQWdaNUJSc2VkLU55TWZmSEN4SWs0V1cw?oc=5"
+                        }
+                    ]
+                },
+                "region": "Australia",
+                "source_type": "news",
+                "content": {
+                    "format": "1-pager",
+                    "pages": [
+                        {
+                            "page_title": "Draft",
+                            "markdown": "Everyone calls them 'mining stocks' as if they're one trade. They're not.\n\nIron ore and lithium are running two completely different playbooks right now \u2014 and the divergence is widening.\n\n**What's happening:** TheBull reports ASX mining stocks are taking a breather, but the detail matters. Iron ore majors are holding firm. Lithium producers are sliding. Kalkine Media's coverage confirms the split: iron ore giants are defying the lithium drag.\n\n**What consensus is missing:**\n\nMost market commentary frames this as a broad 'resources pause.' It's not. These are two distinct commodity cycles:\n\n\u2192 **Iron ore** is underpinned by ongoing Chinese steel demand and infrastructure spending. The demand floor remains intact.\n\n\u2192 **Lithium** is grappling with oversupply concerns as new production capacity outpaces EV battery demand growth in the near term.\n\nKalkine's separate reporting on short sellers adds another dimension \u2014 bearish institutional positioning appears to be concentrating in lithium and battery metals names, not iron ore. Smart money isn't shorting 'miners.' It's shorting one specific commodity thesis.\n\n**The risk of this read being wrong?** A sudden lithium supply disruption or aggressive Chinese EV policy shift could snap the divergence shut fast.\n\nBut right now, treating resources as a monolith is a portfolio construction error hiding in plain sight.\n\nIs your resources allocation still treating iron ore and lithium as the same trade?"
+                        }
+                    ]
+                }
+            },
+            {
+                "anchor_source": "https://news.google.com/rss/articles/CBMitgFBVV95cUxPWTdRcmNrYWMxVy1tNVJaY2x4ekRlSVBOc1ZOLUdqTUlZUG9iNmNvNUhkSW51dUt4OVluQVRMT1BWZXc0YVJuLUlLRHZlODdBQ21fSm9LVnFQd25hNVZyQXR4U1c1SHFFck5oLUE1U1BINFpDV3NycXd0djVuSldNVlh3SHZkdzNjU2hJUF9ZSnhzcGdGQXlpRnUyMk5uQjZUWkR4dTBDMjZtdUlkSXhrSk5aa0xLZw?oc=5",
+                "title": "The ASX 200 Just Swung From -1.45% to +1.17% in Days \u2014 What Whiplash Markets Mean for Your Strategy",
+                "context": "Investing.com reports the ASX 200 closed up 1.17% on 19 May 2026, driven by broad-based buying. However, Investing.com's own prior coverage shows the index had fallen 1.45% just sessions earlier. This back-to-back whiplash \u2014 a sharp sell-off followed by an equally sharp rebound \u2014 confirms the market is in a high-volatility regime where single-day moves are amplified by sentiment swings rather than fundamental shifts.",
+                "angle": "Back-to-back 1%+ swings in opposite directions are not recovery \u2014 they're a volatility regime that demands a different playbook.",
+                "linkedin_playbook": {
+                    "format_name": "Before/After Results Story",
+                    "opening_hook": "Last week the ASX 200 dropped 1.45%. This week it surged 1.17%. Same market. Same stocks. Completely different narrative.",
+                    "why_section": "Volatility clustering \u2014 where large moves beget large moves in either direction \u2014 is one of the most underappreciated risks for long-term investors. It erodes compounding, triggers emotional decision-making, and punishes those without a framework for navigating it.",
+                    "unique_take": "The before: a 1.45% sell-off that had commentators warning of deeper correction. The after: a 1.17% rebound that had the same commentators calling it a recovery. Both Investing.com reports describe the same market within days. The real story isn't either move \u2014 it's the regime. When markets swing this aggressively in both directions, the challenge shifts from 'which direction' to 'how do I avoid reacting to noise.' Investors who had a rebalancing framework in place captured the dip. Those who panicked on the sell-off locked in losses before the bounce.",
+                    "call_to_action": "How did you navigate the whiplash \u2014 did you have a plan, or did the market make the decision for you?",
+                    "why_this_works": "Before/After format grounds abstract volatility concepts in a concrete, recent experience that every Australian investor just lived through, inviting personal reflection and sharing.",
+                    "poll_options": []
+                },
+                "grounding": {
+                    "sources_used": [
+                        {
+                            "source_type": "news",
+                            "title": "Australia stocks higher at close of trade; S&P/ASX 200 up 1.17% - Investing.com",
+                            "url": "https://news.google.com/rss/articles/CBMitgFBVV95cUxPWTdRcmNrYWMxVy1tNVJaY2x4ekRlSVBOc1ZOLUdqTUlZUG9iNmNvNUhkSW51dUt4OVluQVRMT1BWZXc0YVJuLUlLRHZlODdBQ21fSm9LVnFQd25hNVZyQXR4U1c1SHFFck5oLUE1U1BINFpDV3NycXd0djVuSldNVlh3SHZkdzNjU2hJUF9ZSnhzcGdGQXlpRnUyMk5uQjZUWkR4dTBDMjZtdUlkSXhrSk5aa0xLZw?oc=5"
+                        },
+                        {
+                            "source_type": "news",
+                            "title": "Australia stocks lower at close of trade; S&P/ASX 200 down 1.45% - Investing.com",
+                            "url": "https://news.google.com/rss/articles/CBMitwFBVV95cUxOMWN4b3ZpWWFFeDhCbkU4emZkQmxweHpWMEhVbmRrY3B0WUliZ29TcjZ4MDR5bnpSUnRqQnZlOGlQSTh3alRjMWV1bVBZbEVyTTl2WjAtSnpnTE5fQTZvQnJIdnBHdWJsVFVQdU54ZHhNcWhtYVZlRlBXcUpnbkJFTWxENUJqT1hydG1QSjByRUJucldnNkNEek94SEJsTVFTbzZDQXNZdHFMYW5hUDBHbmVqTEh5Wk0?oc=5"
+                        }
+                    ]
+                },
+                "region": "Australia",
+                "source_type": "news",
+                "content": {
+                    "format": "1-pager",
+                    "pages": [
+                        {
+                            "page_title": "Draft",
+                            "markdown": "Last week the ASX 200 dropped 1.45%. This week it surged 1.17%.\n\nSame market. Same stocks. Completely different narrative.\n\n**The before:** A sharp sell-off that had market commentators warning of deeper correction. Portfolios went red. Sentiment turned bearish. Some investors moved to cash.\n\n**The turning point:** Bargain hunters stepped in. Geopolitical signals shifted. Within sessions, the index reversed almost the entire loss.\n\n**The after:** A 1.17% rebound that had the same commentators calling it a recovery rally.\n\nBut here's what both narratives miss: **this isn't recovery. It's a volatility regime.**\n\nWhen markets swing 1%+ in opposite directions within days, the risk isn't direction \u2014 it's reaction. Volatility clustering erodes compounding, triggers emotional trades, and punishes investors without a framework.\n\nThe investors who navigated this well didn't predict either move. They had:\n\n\u2192 Pre-set rebalancing triggers\n\u2192 Cash reserves earmarked for dips\n\u2192 A plan that removed real-time decision-making from the equation\n\nThose who panicked on the sell-off locked in losses days before the bounce. Those who chased the rebound may be exposed if the next swing goes the other way.\n\nIn a whiplash market, process beats prediction. Every time.\n\nHow did you navigate the past week \u2014 did you have a plan, or did the market make the decision for you?"
+                        }
+                    ]
+                }
+            },
+            {
+                "anchor_source": "https://news.google.com/rss/articles/CBMinAFBVV95cUxQR2NUbVo5eXdEa1U3dUgtX2dNVUNNMjJaN0E3bjcxc2J3Y3Utakk0QXc1UnVSYkNESHFneU1ldy12VTkxeTlRcFc5Y0dvYWtGN25yMUFqMjluUG5VZmFzaUEzQzd1UXVzMmluMklEbkYwNjI5cVRKbU8wUFIwa0JJMmRYODNCVnl2RTEybjVFbTNMS2d3WmM2TnoxT0c?oc=5",
+                "title": "Gold Stocks Sink, Tech Under Pressure, But the ASX 200 Still Climbs \u2014 Which Sector Deserves Your Attention?",
+                "context": "Kalkine Media asks whether ASX 200 market moves could reshape morning trade, highlighting the growing importance of overnight signals and pre-market positioning. Their separate reporting shows gold stocks sinking amid market jitters while tech faces fresh pressure \u2014 yet the index itself continues to climb. This creates a gap: the sectors traditionally seen as defensive (gold) and growth-oriented (tech) are both under pressure, while the index is being carried by a narrower set of winners.",
+                "angle": "When both gold and tech are weak but the index rises, the market's leadership is narrower than investors realise \u2014 and that concentration is a risk.",
+                "linkedin_playbook": {
+                    "format_name": "Provocative Question & Poll Hybrid",
+                    "opening_hook": "Gold stocks are sinking. Tech is under pressure. Yet the ASX 200 keeps climbing. So who's actually driving this market?",
+                    "why_section": "Narrow market leadership is one of the most reliable precursors to increased fragility. When an index rises on the back of fewer and fewer sectors, it becomes vulnerable to a single catalyst reversing the trend. Australian investors with diversified portfolios may feel protected by index gains while their actual holdings underperform.",
+                    "unique_take": "Kalkine's reporting reveals a paradox: the two sectors investors typically lean on in different environments \u2014 gold for defence, tech for growth \u2014 are both struggling. The ASX 200's resilience is being carried by a narrower cohort, likely financials and select industrials. This concentration isn't strength \u2014 it's fragility wearing a green jersey. The question for portfolio construction isn't 'is the market up?' but 'is *my* market up?'",
+                    "call_to_action": "Which ASX sector do you think is most at risk of a correction in the next quarter?",
+                    "why_this_works": "Poll format drives engagement by inviting the audience to commit to a view, while the contrarian setup challenges the assumption that a rising index means broad market health.",
+                    "poll_options": [
+                        "Financials \u2014 stretched valuations",
+                        "Resources \u2014 commodity cycle turning",
+                        "Tech \u2014 global pressure bleeding in",
+                        "Healthcare \u2014 defensive premium fading"
+                    ]
+                },
+                "grounding": {
+                    "sources_used": [
+                        {
+                            "source_type": "tech",
+                            "title": "Could ASX 200 Market Moves Reshape Morning Trade? - Kalkine Media",
+                            "url": "https://news.google.com/rss/articles/CBMinAFBVV95cUxQR2NUbVo5eXdEa1U3dUgtX2dNVUNNMjJaN0E3bjcxc2J3Y3Utakk0QXc1UnVSYkNESHFneU1ldy12VTkxeTlRcFc5Y0dvYWtGN25yMUFqMjluUG5VZmFzaUEzQzd1UXVzMmluMklEbkYwNjI5cVRKbU8wUFIwa0JJMmRYODNCVnl2RTEybjVFbTNMS2d3WmM2TnoxT0c?oc=5"
+                        },
+                        {
+                            "source_type": "news",
+                            "title": "ASX 200 Slides as Gold Stocks Sink Amid Market Jitters - Kalkine Media",
+                            "url": "https://news.google.com/rss/articles/CBMipAFBVV95cUxQYzQxdTJWeVpTcndOYXAyUDBJajRRWlhlOU9DSTNTQkdTZjREbDdYU0dQMjBrV0hXRndidk11dEFCLVNUbmh6ZG9iaWI4dlIxVERnOFp5OUtST2NHbXJTVFBSSVZJSkV1d0FpbEFLV09Hd2h1RWZjV18yam1TTHB6SG5GZ0FRcDRBRTVBcXpjZHNsM25XRUZBakFpZVlyYjdrSzdFbg?oc=5"
+                        }
+                    ]
+                },
+                "region": "Australia",
+                "source_type": "news",
+                "content": {
+                    "format": "1-pager",
+                    "pages": [
+                        {
+                            "page_title": "Draft",
+                            "markdown": "Gold stocks are sinking. Tech is under pressure. Yet the ASX 200 keeps climbing.\n\nSo who's actually driving this market?\n\nKalkine Media's recent coverage paints a striking picture. The two sectors investors typically rely on \u2014 gold for defence, tech for growth \u2014 are both struggling simultaneously. Yet the headline index continues to post gains.\n\nThat means the rally is being carried by a narrower set of winners. Likely financials. Possibly select industrials. But not the broad-based strength the index number implies.\n\n**Why this matters:**\n\nNarrow market leadership is one of the most reliable signals of fragility. When fewer sectors carry the load, a single catalyst \u2014 an earnings miss, a policy shift, a global shock \u2014 can unwind the entire move.\n\nFor Australian investors, the practical question shifts from \"is the market up?\" to \"is *my* market up?\"\n\nIf your portfolio leans toward gold, tech, or resources, you may be underperforming the index despite the green headlines. That gap between index returns and portfolio returns is where real risk hides.\n\n**Poll: Which ASX sector do you think is most at risk of a correction in the next quarter?**\n\n\ud83d\udd39 Financials \u2014 stretched valuations\n\ud83d\udd39 Resources \u2014 commodity cycle turning\n\ud83d\udd39 Tech \u2014 global pressure bleeding in\n\ud83d\udd39 Healthcare \u2014 defensive premium fading\n\nDrop your pick below \u2014 and tell me what's driving your view."
+                        }
+                    ]
+                }
+            },
+            {
+                "anchor_source": "https://news.google.com/rss/articles/CBMijgFBVV95cUxQT0l3ZUVOeUEzNzN6NXpQOXllcUVOWXpvZzhtTUV5clNpZHl6Q0V1dE1YLThCSUkybzJzTVcxVEY5TmhDWGJPVkgta2FtSGVEcF8zVFg2dDlkbnhCRTBHZm5hcHplLUZfYTBwRkhwMDVDX0tHWk1XbWRMQWZEcGdfbDhpM3pnVXp3Mm5lWjRB?oc=5",
+                "title": "The ASX 200 Hit a 7-Week Low \u2014 Then Surged. Here's Why the 'Why' Matters More Than the Move",
+                "context": "The Motley Fool Australia reports the ASX 200 opened at a 7-week low, exploring the drivers behind the weakness. Yet IBT Australia's coverage from the same period shows the index subsequently surged 1.17% to 8,604.7, fuelled by bargain hunters and ceasefire hopes. The juxtaposition reveals that the catalyst for the rebound \u2014 geopolitical sentiment and opportunistic buying \u2014 was entirely disconnected from the fundamental concerns that caused the sell-off, raising questions about whether the recovery has durable foundations.",
+                "angle": "When the reason for a sell-off is fundamental but the reason for the rebound is sentiment, the recovery deserves scrutiny, not celebration.",
+                "linkedin_playbook": {
+                    "format_name": "Industry Trend Interpretation",
+                    "opening_hook": "The ASX 200 hit a 7-week low. Hours later, it was rallying. Everyone celebrated the bounce. Almost nobody asked the right question.",
+                    "why_section": "For long-term investors and advisers, understanding *why* markets move matters more than the move itself. A sell-off driven by fundamental concerns (earnings, rates, trade policy) that rebounds on sentiment (ceasefire hopes, bargain hunting) hasn't resolved the underlying issue \u2014 it's just papered over it with optimism.",
+                    "unique_take": "The Motley Fool's analysis of the 7-week low pointed to structural concerns weighing on the ASX 200. IBT Australia's coverage of the subsequent surge attributes the rebound to bargain hunters and geopolitical ceasefire hopes. Notice the asymmetry: the sell-off was about fundamentals, the recovery was about sentiment. These are different currencies. Sentiment-driven rebounds can evaporate as quickly as they appear, especially if the fundamental concerns \u2014 whether rate expectations, earnings downgrades, or trade uncertainty \u2014 remain unresolved. The trend to watch isn't the direction. It's the mismatch between what drives the selling and what drives the buying.",
+                    "call_to_action": "When you see a sharp rebound, do you ask what caused the recovery \u2014 or just feel relieved the red turned green?",
+                    "why_this_works": "Industry Trend Interpretation format takes a widely reported event and reframes it through a lens the audience hasn't considered, establishing thought leadership without being contrarian for its own sake.",
+                    "poll_options": []
+                },
+                "grounding": {
+                    "sources_used": [
+                        {
+                            "source_type": "news",
+                            "title": "Why is the ASX 200 starting at a 7-week low today? - The Motley Fool Australia",
+                            "url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxQT0l3ZUVOeUEzNzN6NXpQOXllcUVOWXpvZzhtTUV5clNpZHl6Q0V1dE1YLThCSUkybzJzTVcxVEY5TmhDWGJPVkgta2FtSGVEcF8zVFg2dDlkbnhCRTBHZm5hcHplLUZfYTBwRkhwMDVDX0tHWk1XbWRMQWZEcGdfbDhpM3pnVXp3Mm5lWjRB?oc=5"
+                        },
+                        {
+                            "source_type": "news",
+                            "title": "ASX 200 Surges 1.17% to 8,604.7 as Bargain Hunters and Ceasefire Hopes Spark Sharp Rebound - International Business Times Australia",
+                            "url": "https://news.google.com/rss/articles/CBMiekFVX3lxTE1GaW1xbWR6RjBodzhrTHdDQ2RmZ2Z1YzZTcWwxRG5kR2pPS05MbGVqOE5sTzlTY2xQRFgyR05uSUF1c3VYdmVVa2ZWYkJORUtzdVZuT0pGcmtDTkF0ak9OM1FySl8zOW96S041RHFoc29jSUQxTkg4X1l3?oc=5"
+                        }
+                    ]
+                },
+                "region": "Australia",
+                "source_type": "news",
+                "content": {
+                    "format": "1-pager",
+                    "pages": [
+                        {
+                            "page_title": "Draft",
+                            "markdown": "The ASX 200 hit a 7-week low. Hours later, it was rallying. Everyone celebrated the bounce.\n\nAlmost nobody asked the right question.\n\n**The sell-off:** The Motley Fool Australia explored why the ASX 200 opened at its lowest point in seven weeks. The drivers were fundamental \u2014 the kind of concerns that don't resolve in a single session.\n\n**The rebound:** IBT Australia reported the index surged 1.17% to 8,604.7, attributing the recovery to bargain hunters and ceasefire hopes.\n\nNotice the asymmetry.\n\nThe selling was driven by fundamentals. The buying was driven by sentiment. These are different currencies \u2014 and sentiment-driven recoveries have a habit of evaporating when the underlying concerns resurface.\n\n**Here's the trend worth watching:**\n\nIt's not the direction of the market. It's the *mismatch* between what causes the selling and what causes the buying. When a market drops on earnings concerns but rebounds on geopolitical optimism, the original problem hasn't been solved. It's been temporarily masked.\n\nFor investors and advisers, this creates a practical framework:\n\n\u2192 If the sell-off catalyst was fundamental, check whether the rebound addressed it\n\u2192 If the rebound catalyst was sentiment, treat the recovery as provisional\n\u2192 If there's a mismatch, the next test of support will be more revealing than the bounce\n\nWhen you see a sharp rebound, do you ask what caused the recovery \u2014 or just feel relieved the red turned green?"
+                        }
+                    ]
+                }
+            }
+        ]
+    }
+]
