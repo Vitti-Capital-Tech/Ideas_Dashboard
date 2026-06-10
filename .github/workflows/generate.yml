@@ -26,7 +26,6 @@ jobs:
       - name: Run Daily Ideas Pack Generator
         env:
           # Set ANTHROPIC_API_KEY or CLAUDE_API_KEY in repo secrets (either works)  
-          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           CLAUDE_API_KEY: ${{ secrets.CLAUDE_API_KEY }}
           ANTHROPIC_MODEL: ${{ secrets.ANTHROPIC_MODEL }}
           RAINDROP_TOKEN: ${{ secrets.RAINDROP_TOKEN }}
