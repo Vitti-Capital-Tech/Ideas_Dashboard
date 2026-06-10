@@ -629,21 +629,6 @@ export default function Home() {
           </motion.div>
         </AnimatePresence>
       </motion.div>
-
-      {/* ── Footer ── */}
-      <p className="text-muted" style={{ textAlign: 'center', marginTop: 36, fontSize: '0.85rem', opacity: 0.7 }}>
-        Made with 💙 by{' '}
-        <a
-          href="https://minianonlink.vercel.app/tusharbhardwaj"
-          target="_blank"
-          rel="noopener noreferrer"
-          style={{ color: 'var(--primary)', textDecoration: 'none', fontWeight: 500, transition: 'color 0.2s' }}
-          onMouseOver={(e) => e.target.style.color = 'var(--secondary)'}
-          onMouseOut={(e) => e.target.style.color = 'var(--primary)'}
-        >
-          Tushar Bhardwaj
-        </a>
-      </p>
     </div>
   );
 }
