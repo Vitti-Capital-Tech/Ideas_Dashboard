@@ -8,6 +8,7 @@ import {
   Sun, Moon, Clock, Copy, RefreshCw,
   Lightbulb, Globe, MapPin, BookmarkCheck, X
 } from 'lucide-react';
+import { copyToClipboard } from '@/utils/clipboard';
 
 /* ─── Custom Icons ────────────────────────────────────────────── */
 const LinkedInIcon = ({ size = 24, color = "currentColor" }) => (
@@ -87,9 +88,12 @@ const IdeaCard = ({ index, idea, delay = 0 }) => {
   const copyText = hasDraft ? draftMarkdown : (isObj ? `${title}\n\n${context}\n\n${angle}` : body);
 
   const handleCopy = () => {
-    navigator.clipboard.writeText(copyText || '');
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
+    copyToClipboard(copyText || '').then((success) => {
+      if (success) {
+        setCopied(true);
+        setTimeout(() => setCopied(false), 2000);
+      }
+    });
   };
 
   const sb = sourceBadge(src);

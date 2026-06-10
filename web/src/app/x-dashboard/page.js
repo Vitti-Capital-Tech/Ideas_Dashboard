@@ -8,6 +8,7 @@ import {
   Sun, Moon, Clock, Copy, RefreshCw,
   Lightbulb, Calendar, Sunset, X
 } from 'lucide-react';
+import { copyToClipboard } from '@/utils/clipboard';
 
 /* ─── Type Badges & Icons ──────────────────────────────────────── */
 const typeMap = {
@@ -62,9 +63,12 @@ const XCard = ({ entry, index, delay = 0 }) => {
     : '';
 
   const handleCopy = () => {
-    navigator.clipboard.writeText(entry.content || '');
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
+    copyToClipboard(entry.content || '').then((success) => {
+      if (success) {
+        setCopied(true);
+        setTimeout(() => setCopied(false), 2000);
+      }
+    });
   };
 
   return (
