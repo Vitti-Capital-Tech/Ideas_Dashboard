@@ -82,6 +82,26 @@ Claude receives the instruction: **"Anchor 1 → Idea 1, Anchor 2 → Idea 2… 
 
 `extract_first_json_array` walks bracket depth to find the first `[{...}]` or a single object, stripping ``` fences — reduces breakage from stray `[1]` footnote-style citations.
 
+### 1b. X Content Generator: `generate_x_content.py`
+
+#### Environment
+
+| Variable | Purpose |
+|----------|---------|
+| `ANTHROPIC_API_KEY` | Primary API key for Anthropic Claude |
+| `GROQ_API_KEY` | Fallback API key for Groq (Llama-3.3-70b-versatile) |
+
+#### Core functions
+
+| Function | Behavior |
+|----------|----------|
+| `generate_market_commentary()` | Fetches ASX market overview (scraped via Selenium Chrome Headless) and metal prices; runs Anthropic/Groq to write daily closing commentary and 3-post X thread. |
+| `monthly_summary()` | Scrapes monthly ASX data; runs Anthropic/Groq to write the monthly market report and X thread. Saves log to `web/logs/x_DATE.json`. |
+| `generate_morning_market_commentary()` | Runs Anthropic/Groq to write morning outlook/X thread. |
+| `send_morning_email()` | Helper that triggers the morning market commentary, printing and saving it. |
+| `save_x_to_logs(content_type, content)` | Appends `{ timestamp, type, content }` to `web/logs/x_DATE.json`. |
+| `run_scheduler()` | Resolves local Sydney timezone, AEDT/AEST Daylight Saving logic, skips weekends, and triggers appropriate generation runs based on UTC minutes. |
+
 ---
 
 ## 2. Next.js application (`web/`)
@@ -90,25 +110,37 @@ Claude receives the instruction: **"Anchor 1 → Idea 1, Anchor 2 → Idea 2… 
 
 - Resolves `logs` dir: `process.cwd()/logs` or `process.cwd()/web/logs`.
 - Computes `todayStr` = `YYYY-MM-DD` in server local time.
-- **Available dates:** scan root `*.json`; always inject `todayStr` at position 0 even if no log file exists for today yet.
+- **Available dates:** scan root `*.json` (excluding `x_*.json`); always inject `todayStr` at position 0.
 - **On initial load** (no `?date=` param): serve today's log. If today has no log, return `ideas: null` + `previousIdeas` (most recent past log) + `previousDate`.
 - **On date change** (`?date=YYYY-MM-DD`): serve that date's log only.
 - Response: `{ ideas, previousIdeas, previousDate, availableDates, selectedDate, todayStr }`.
 
+### `src/app/api/x_cache/route.js`
+
+- Resolves `logs` dir; calculates Sydney-aligned `todayStr`.
+- **Available dates:** scan root for `x_*.json` files; extracts dates and injects `todayStr` at position 0.
+- **Data payload:** serves array of X commentary entries for the selected date, or defaults to the most recent run fallback when today's log is pending.
+- Response: `{ entries, previousEntries, previousDate, availableDates, selectedDate, todayStr }`.
+
 ### `src/app/page.js`
 
-- Fetches `/api/cache`; renders **Ideas only** (Posts tab removed).
+- Fetches `/api/cache`; renders Ideas dashboard.
 - State includes `todayStr` + `previousIdeas` + `previousDate` from API response.
-- **Today pending state:** when `ideas` is null, shows a dashed purple banner ("Today's ideas haven't been generated yet") and renders `previousIdeas` cards below it.
-- **Date picker:** "Today (YYYY-MM-DD)" label is applied only when the option value equals `todayStr` (not just the most recent date).
-- **IdeaCard:** series strip; badges; LinkedIn playbook (hook, why, unique take, CTA, poll list); **lightbulb** toggles popover for `why_this_works`; pager draft; **Copy draft** button.
-- **Lightbulb popover:** solid opaque background (`--bg-popover`) prevents content bleed-through in both dark and light themes.
-- **Run Pipeline button** removed; pipeline must be triggered via GitHub Actions.
+- **Navigation:** Header includes a tab-bar navbar link switching between `/` and `/x-dashboard` using Next.js `Link` component.
+- **Today pending state:** when `ideas` is null, shows pending banner and fallback previous date ideas.
+- **IdeaCard:** playbook fields, Copy draft utility, and Lightbulb explanation popovers.
+
+### `src/app/x-dashboard/page.js`
+
+- Serves the X Content Dashboard at `/x-dashboard`.
+- Fetches `/api/x_cache` dynamically based on selected date.
+- Renders commentary blocks inside glassmorphic cards with copy buttons, clocks, and category badges (`morning`, `daily`, `monthly`).
+- Shared tab-bar navigation styling aligns perfectly with the main page.
 
 ### `src/app/globals.css`
 
-- Design tokens including `--bg-popover: #0e1a33` (dark) / `#ffffff` (light) for the lightbulb popover.
-- Glass cards, pager accordion, skeleton shimmer, date pill styles.
+- Design tokens, glass cards, skeleton shimmer, date pills, scrollbars, and layout utilities.
+- Added custom navbar tab classes (`.tab-bar`, `.tab-btn`, `.tab-btn.active`).
 
 ---
 
@@ -147,6 +179,19 @@ Minimal shape stored in logs (exact fields may vary by model run):
 }
 ```
 
+#### X Content Entry Schema
+
+Saved inside the daily array log file:
+```json
+[
+  {
+    "timestamp": "ISO-8601 String",
+    "type": "morning|daily|monthly",
+    "content": "Raw generated report/thread text (Markdown)"
+  }
+]
+```
+
 > **Note:** `series_title`, `series_thesis`, and `connections.builds_on` fields from the old series-based schema are no longer generated by the prompt. The dashboard handles their absence gracefully.
 
 ---
@@ -155,11 +200,16 @@ Minimal shape stored in logs (exact fields may vary by model run):
 
 | Path | Role |
 |------|------|
-| `generate_raindrop_posts.py` | Daily generator |
-| `web/logs/YYYY-MM-DD.json` | Dashboard input (one file per day) |
+| `generate_raindrop_posts.py` | Daily Ideas generator |
+| `generate_x_content.py` | Scheduled X Content scheduler |
+| `web/logs/YYYY-MM-DD.json` | Ideas dashboard input (one file per day) |
+| `web/logs/x_YYYY-MM-DD.json` | X dashboard input (one file per day) |
 | `web/used_bookmarks.txt` | Raindrop IDs consumed (one per line) |
-| `.github/workflows/generate.yml` | CI schedule + manual dispatch |
-| `requirements.txt` | Python deps (`anthropic`, `requests`, Google clients, etc.) |
+| `.github/workflows/generate.yml` | Daily Ideas scheduler |
+| `.github/workflows/generate_x_content.yml` | X Content scheduler (4 runs/day) |
+| `web/src/app/api/x_cache/route.js` | API for X content retrieval |
+| `web/src/app/x-dashboard/page.js` | X Content dashboard view |
+| `requirements.txt` | Python deps (`anthropic`, `requests`, `selenium`, `msal`, etc.) |
 | `docs/HLD.md` | High-level architecture |
 | `docs/LLD.md` | This file |
 

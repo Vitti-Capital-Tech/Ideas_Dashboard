@@ -21,25 +21,33 @@ The **Vitti Ideas Engine** produces **up to five independent content ideas per w
 1. **Source layer**
    - **Raindrop REST API:** fetch last 50 bookmarks (sorted newest first); filter for last 5 days; split into pinned + recent; cap at 5 total (pinned first).
    - **RSS aggregation:** separate finance and tech query feeds (Australia + global mix).
+   - **Market Scrapers:** scrapes ASX market data and ABC Bullion metal prices (AUD) via BeautifulSoup / Selenium Web Driver.
    - **Hybrid fill-up:** if Raindrop yields _N_ < 5 items, `pick_diverse_web_anchors` selects `5 - N` diverse web stories to fill the gap.
    - **Cross-verification:** each anchor row gets 1-2 related rows from the external pool (token overlap + fallback diversity).
 
 2. **Generation layer**
-   - **Anthropic Claude:** one request per day with separated `ANCHORS` JSON and `ADDITIONAL CONTEXT` pool.
-   - **Prompt model:** "one idea per anchor, in order, independently themed" — anchor 1 → idea 1, anchor 2 → idea 2, etc.
+   - **Anthropic Claude:** one request per day for Ideas with separated `ANCHORS` JSON and `ADDITIONAL CONTEXT` pool.
+   - **Groq fallback (Llama-3.3-70b):** fallback option configured for X Content if Anthropic encounters authentication/authorization failures.
+   - **Prompt models:** 
+     - Ideas: "one idea per anchor, in order, independently themed".
+     - X Content: generates morning outlooks, daily closings, or monthly summaries based on raw market scrapes.
    - **Modes:** `raindrop_plus_web` when any Raindrop items are used; `web_only` when all 5 slots are filled by web.
 
 3. **Persistence layer**
-   - **Logs:** `web/logs/YYYY-MM-DD.json` — append-only array of daily `{ timestamp, ideas }` entries.
+   - **Logs:** 
+     - Ideas logs are written to `web/logs/YYYY-MM-DD.json`.
+     - X Content logs are written to `web/logs/x_YYYY-MM-DD.json` (stores generated items with `type` metadata).
    - **Used bookmarks:** only Raindrop IDs from the current run are appended to `web/used_bookmarks.txt`.
    - **Google Docs:** prepend human-readable block to `IDEAS_DOC_ID` when credentials exist (optional).
 
 4. **Presentation layer (Next.js)**
-   - **GET `/api/cache`:** today's date is always checked first. If today has no log, returns `ideas: null` + `previousIdeas` (most recent past log) + `previousDate`. Today is always injected into `availableDates` even if no log file exists for it yet.
-   - **Dashboard:** renders a "today pending" banner when `ideas` is null; shows previous ideas below as context. Date picker labels only the real current date as "Today". Lightbulb popover uses opaque background to prevent bleed-through.
+   - **GET `/api/cache`:** today's date is always checked first. If today has no log, returns `ideas: null` + `previousIdeas` (most recent past log) + `previousDate`.
+   - **GET `/api/x_cache`:** retrieves the daily, morning, and monthly X commentaries matching the selected date (falls back to previous date if today's log is absent).
+   - **Dashboard (Ideas & X Content):** two distinct views with shared header navigation. Offers card copies, date pills, loading states, and dark/light modes.
 
 5. **Orchestration (GitHub Actions)**
-   - Cron + `workflow_dispatch`; runs Python, writes artifacts, commits `web/logs` and `used_bookmarks.txt`.
+   - **Daily Generator:** cron + `workflow_dispatch` executing `generate_raindrop_posts.py`.
+   - **X Content Scheduler:** runs 4 times/day at designated UTC hours to handle Sydney AEDT/AEST timing windows, executing `generate_x_content.py` and pushing committed logs back to git.
 
 ## 4. End-to-end flow
 

@@ -16,7 +16,10 @@ Built for **Vitti Capital**. The system runs on a schedule, saves results where 
    - A smart model (**Claude**, from Anthropic) writes **one dedicated idea per source**. If you saved 2 articles in Raindrop, those become Idea 1 and Idea 2; the remaining 3 slots are filled by distinct web stories. Each idea includes structure for LinkedIn (hook, why it matters, angle, call to action) and a **draft** you can copy.
 
 3. **Saves outputs**
-   - **Log file:** one file per day, e.g. `web/logs/2026-04-07.json`, read by your **dashboard** website.
+   - **Log files:** 
+     - Raindrop Ideas: e.g. `web/logs/2026-04-07.json`
+     - X Content & Commentary: e.g. `web/logs/x_2026-04-07.json`
+     Both are read dynamically by your **dashboard** website.
    - **Google Doc (optional):** the same ideas can be **prepended** into one Ideas document for archiving or editing.
 
 **You do not need to be technical** to understand the flow: save articles in Raindrop (they'll be picked up within 5 days), let the job run, then open the dashboard and use the drafts.
@@ -53,9 +56,9 @@ For a **technical diagram** and terms, see [docs/HLD.md](docs/HLD.md). For **fun
 |-------|------|
 | **Raindrop** | Your article library; any bookmark saved in the last 5 days qualifies (pinned items are preferred). |
 | **Web feeds** | Live finance and tech headlines — fill gaps when Raindrop has fewer than 5 new items, and always used for cross-verification. |
-| **Claude** | Writes one independent idea per anchor; independently themed, not forced into a single narrative. |
-| **GitHub Actions** | Runs the generator on a **weekday schedule (Mon-Fri)**; commits log files and `used_bookmarks.txt`. |
-| **Next.js dashboard** | Shows today's ideas (or the most recent past ideas with a "pending" banner if today hasn't run yet). Date picker lets you browse any past date. **Copy draft** copies the post text; a **lightbulb** popover explains why a given LinkedIn format fits. |
+| **Claude / LLMs** | Writes one independent idea per anchor; also generates morning outlooks, daily closings, and monthly summaries for X. |
+| **GitHub Actions** | Runs the Daily generator and the X Content scheduler on a **weekday schedule**; commits generated JSON logs to the repo. |
+| **Next.js dashboard** | Shows today's ideas and X commentary (with fallbacks to previous days if today hasn't run yet). Tab-bar Navbar allows navigating between **Ideas** and **X Content** dashboards. |
 | **Google Doc** | Optional archive of the same ideas in one document. |
 
 ---
@@ -77,16 +80,19 @@ Google Doc integration is silently skipped if credentials are absent.
 
 ### Stack
 
-- **Generator:** Python 3 (`generate_raindrop_posts.py`) — Raindrop API, RSS, Anthropic API, optional Google Docs API.
-- **Dashboard:** Next.js app under `web/` — reads `web/logs/*.json` via `/api/cache`.
-- **Automation:** `.github/workflows/generate.yml` — install deps, run generator, commit logs.
+- **Generator (Ideas):** Python 3 (`generate_raindrop_posts.py`) — Raindrop API, RSS, Anthropic API, optional Google Docs API.
+- **Generator (X Content):** Python 3 (`generate_x_content.py`) — Selenium market scraper, ABC Bullion scrapers, Anthropic/Groq APIs.
+- **Dashboard:** Next.js app under `web/` — reads `web/logs/*.json` via `/api/cache` and `/api/x_cache`.
+- **Automation:** 
+  - `.github/workflows/generate.yml` — Daily Ideas generator scheduler.
+  - `.github/workflows/generate_x_content.yml` — X Content scheduler (runs 4 times/day, matching Sydney trading sessions).
 
 ### Repository secrets (GitHub Actions)
 
 Configure in your repo **Settings → Secrets and variables → Actions**:
 
-- `ANTHROPIC_API_KEY` — Claude API key (or `CLAUDE_API_KEY`; both are supported).
-- `ANTHROPIC_MODEL` — optional; defaults to Opus-class model in code.
+- `ANTHROPIC_API_KEY` — Claude/Anthropic API key.
+- `GROQ_API_KEY` — Groq API key (used as fallback for X Content generation).
 - `RAINDROP_TOKEN` — Raindrop.io API token.
 - `GOOGLE_CREDENTIALS` — service account JSON (optional; for Google Doc sync only).
 - `IDEAS_DOC_ID` — Google Doc ID (optional; for Google Doc sync only).
@@ -97,10 +103,16 @@ From the repository root:
 
 ```bash
 pip install -r requirements.txt
+
+# Run daily ideas generator
 python generate_raindrop_posts.py
+
+# Run X content generator (simulating manual run to override timing check)
+$env:GITHUB_EVENT_NAME="workflow_dispatch"
+python generate_x_content.py
 ```
 
-Use a `.env` file for keys. To skip Google Doc locally, set `DISABLE_GOOGLE_DOC=1`.
+Use a `.env` file for keys.
 
 ### Local dashboard
 
