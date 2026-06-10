@@ -6,3 +6,8 @@ google-auth-oauthlib
 pytz
 python-dotenv
 anthropic
+msal
+pytz
+selenium
+bs4
+pandas

@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
+import Link from 'next/link';
 import {
   Settings, Newspaper, CheckCircle, AlertCircle,
   Sun, Moon, Clock, Copy, RefreshCw,
@@ -524,13 +525,13 @@ export default function Home() {
         )}
       </AnimatePresence>
 
-      {/* ── Tab Bar + Stats ── */}
+      {/* ── Navigation Tab Bar + Stats ── */}
       <motion.div
         initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.1 }}
         className="flex items-center justify-between mb-6 flex-wrap gap-4"
       >
         <div className="tab-bar">
-          <button className="tab-btn active" disabled>
+          <Link href="/" className="tab-btn active" style={{ textDecoration: 'none' }}>
             <Lightbulb size={15} />
             Ideas
             {results.ideas?.length > 0 && (
@@ -538,7 +539,11 @@ export default function Home() {
                 {results.ideas.length}
               </span>
             )}
-          </button>
+          </Link>
+          <Link href="/x-dashboard" className="tab-btn" style={{ textDecoration: 'none' }}>
+            <Newspaper size={15} />
+            X Content
+          </Link>
         </div>
         <StatsBar ideas={results.ideas} />
       </motion.div>

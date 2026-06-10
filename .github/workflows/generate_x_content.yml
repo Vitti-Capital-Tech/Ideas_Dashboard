@@ -1,0 +1,48 @@
+name: Scheduled X Content Generator
+
+on:
+  schedule:
+    # Morning Triggers (21:15 & 22:15 UTC, Sunday-Thursday -> Mon-Fri in Sydney)
+    - cron: '15 21 * * 0-4'
+    - cron: '15 22 * * 0-4'
+    # Evening Triggers (06:15 & 07:15 UTC, Monday-Friday -> Mon-Fri in Sydney)
+    - cron: '15 6 * * 1-5'
+    - cron: '15 7 * * 1-5'
+  workflow_dispatch: # Allows manual runs from GitHub UI
+
+jobs:
+  run-scheduler:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: Install Dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run Scheduler
+        env:
+          # Pass API keys for models
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+        run: python -u generate_x_content.py
+
+      - name: Commit and Push Logs
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          git config --local user.name 'github-actions[bot]'
+          git config --local user.email 'github-actions[bot]@users.noreply.github.com'
+          mkdir -p web/logs
+          git add web/logs/
+          git diff --staged --quiet && echo "Nothing to commit" && exit 0
+          git commit -m "chore: automated X content generation logs"
+          git push https://x-access-token:${GH_TOKEN}@github.com/${{ github.repository }}.git HEAD:${{ github.ref_name }}
