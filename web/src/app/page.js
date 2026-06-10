@@ -11,7 +11,7 @@ import {
 /* ─── Custom Icons ────────────────────────────────────────────── */
 const LinkedInIcon = ({ size = 24, color = "currentColor" }) => (
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width={size} height={size} fill={color}>
-    <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+    <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
   </svg>
 );
 
@@ -19,8 +19,8 @@ const LinkedInIcon = ({ size = 24, color = "currentColor" }) => (
 const sourceBadge = (src) => {
   const map = {
     raindrop: { cls: 'badge-raindrop', icon: <BookmarkCheck size={10} />, label: 'Raindrop' },
-    news:     { cls: 'badge-news',     icon: <Newspaper size={10} />,     label: 'News'     },
-    hybrid:   { cls: 'badge-hybrid',   icon: <RefreshCw size={10} />,     label: 'Hybrid'   },
+    news: { cls: 'badge-news', icon: <Newspaper size={10} />, label: 'News' },
+    hybrid: { cls: 'badge-hybrid', icon: <RefreshCw size={10} />, label: 'Hybrid' },
   };
   return map[src?.toLowerCase()] || map.news;
 };
@@ -28,8 +28,8 @@ const sourceBadge = (src) => {
 const regionBadge = (region) => {
   const isAU = region?.toLowerCase().includes('aus');
   return isAU
-    ? { cls: 'badge-au',     icon: <MapPin size={10} />, label: 'Australia' }
-    : { cls: 'badge-global', icon: <Globe size={10} />,  label: 'Global'    };
+    ? { cls: 'badge-au', icon: <MapPin size={10} />, label: 'Australia' }
+    : { cls: 'badge-global', icon: <Globe size={10} />, label: 'Global' };
 };
 
 /* ─── Skeleton Loader ─────────────────────────────────────────── */
@@ -54,19 +54,19 @@ const IdeaCard = ({ index, idea, delay = 0 }) => {
   const [showFormatWhy, setShowFormatWhy] = useState(false);
 
   // idea can be an object {title, context, angle, source_type, region} or a plain string
-  const isObj   = idea && typeof idea === 'object';
-  const title   = isObj ? idea.title   : '';
+  const isObj = idea && typeof idea === 'object';
+  const title = isObj ? idea.title : '';
   const context = isObj ? idea.context : '';
-  const angle   = isObj ? idea.angle   : '';
-  const src     = isObj ? idea.source_type : 'news';
-  const region  = isObj ? idea.region  : '';
+  const angle = isObj ? idea.angle : '';
+  const src = isObj ? idea.source_type : 'news';
+  const region = isObj ? idea.region : '';
   const seriesTitle = isObj ? idea.series_title : '';
   const seriesThesis = isObj ? idea.series_thesis : '';
   const pages = isObj ? (idea.content?.pages || []) : [];
   const format = isObj ? idea.content?.format : '';
   const sourcesUsed = isObj ? (idea.grounding?.sources_used || []) : [];
   const playbook = isObj ? (idea.linkedin_playbook || null) : null;
-  const body    = isObj ? null : String(idea);
+  const body = isObj ? null : String(idea);
 
   const draftMarkdown = isObj
     ? pages.map((p) => (p && p.markdown ? String(p.markdown).trim() : '')).filter(Boolean).join('\n\n---\n\n')
@@ -155,7 +155,7 @@ const IdeaCard = ({ index, idea, delay = 0 }) => {
       {index !== undefined && (
         <div style={{
           position: 'absolute', top: -14, left: -14, width: 28, height: 28,
-          borderRadius: '50%', background: 'linear-gradient(135deg, var(--accent), #fb7185)', 
+          borderRadius: '50%', background: 'linear-gradient(135deg, var(--accent), #fb7185)',
           color: 'white', display: 'flex', alignItems: 'center', justifyContent: 'center',
           fontSize: '0.85rem', fontWeight: 600, boxShadow: '0 4px 12px rgba(244, 114, 182, 0.4)',
           border: '3px solid var(--background)', zIndex: 10
@@ -352,7 +352,7 @@ const EmptyState = ({ icon, msg, onRetry, onRun }) => (
 /* ─── Stats Bar ───────────────────────────────────────────────── */
 const StatsBar = ({ ideas }) => {
   const items = [
-    { label: 'Content Ideas',   count: ideas?.length   || 0, color: 'var(--accent)'    },
+    { label: 'Content Ideas', count: ideas?.length || 0, color: 'var(--accent)' },
   ];
   return (
     <div className="flex gap-4 flex-wrap">
@@ -368,34 +368,34 @@ const StatsBar = ({ ideas }) => {
 
 /* ─── Main Page ───────────────────────────────────────────────── */
 export default function Home() {
-  const [results, setResults]             = useState({ ideas: null });
+  const [results, setResults] = useState({ ideas: null });
   const [previousIdeas, setPreviousIdeas] = useState(null);
-  const [previousDate, setPreviousDate]   = useState(null);
+  const [previousDate, setPreviousDate] = useState(null);
   const [availableDates, setAvailableDates] = useState([]);
-  const [selectedDate, setSelectedDate]   = useState(null);
-  const [todayStr, setTodayStr]           = useState(null);
-  const [loading, setLoading]             = useState(true);
-  const [error, setError]                 = useState(null);
-  const [theme, setTheme]                 = useState('dark');
+  const [selectedDate, setSelectedDate] = useState(null);
+  const [todayStr, setTodayStr] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const [theme, setTheme] = useState('dark');
 
   /* ── Data Fetching ──── */
   const fetchCache = async (date = null) => {
     setLoading(true);
     try {
       const url = date ? `/api/cache?date=${date}` : '/api/cache';
-      const res  = await fetch(url);
+      const res = await fetch(url);
       const data = await res.json();
 
       // Handle both old (data) and new (posts / ideas) key schemas
-      const ideasRaw = data.ideas?.ideas || data.ideas?.data  || null;
-      const prevRaw  = data.previousIdeas?.ideas || data.previousIdeas?.data || null;
+      const ideasRaw = data.ideas?.ideas || data.ideas?.data || null;
+      const prevRaw = data.previousIdeas?.ideas || data.previousIdeas?.data || null;
 
       setResults({ ideas: ideasRaw });
       setPreviousIdeas(prevRaw);
       setPreviousDate(data.previousDate || null);
       if (data.availableDates) setAvailableDates(data.availableDates);
-      if (data.selectedDate)   setSelectedDate(data.selectedDate);
-      if (data.todayStr)       setTodayStr(data.todayStr);
+      if (data.selectedDate) setSelectedDate(data.selectedDate);
+      if (data.todayStr) setTodayStr(data.todayStr);
     } catch (err) {
       console.error('Failed to load cache:', err);
     } finally {
@@ -429,7 +429,7 @@ export default function Home() {
         className="flex items-center justify-between mb-8"
       >
         <div className="flex items-center gap-4">
-          
+
           {/* Custom SVG Logo */}
           <div style={{
             width: 52, height: 52, borderRadius: 16,
@@ -440,27 +440,27 @@ export default function Home() {
             position: 'relative', overflow: 'hidden', flexShrink: 0
           }}>
             {/* Spinning gradient border effect */}
-            <div style={{ 
-              position: 'absolute', top: '-50%', left: '-50%', width: '200%', height: '200%', 
-              background: 'conic-gradient(transparent, rgba(124, 92, 252, 0.4), transparent 30%)', 
-              animation: 'spin 4s linear infinite' 
+            <div style={{
+              position: 'absolute', top: '-50%', left: '-50%', width: '200%', height: '200%',
+              background: 'conic-gradient(transparent, rgba(124, 92, 252, 0.4), transparent 30%)',
+              animation: 'spin 4s linear infinite'
             }} />
-            
+
             {/* Inner background and logo */}
-            <div style={{ 
-              position: 'absolute', inset: 2, background: 'var(--surface)', 
-              borderRadius: 14, display: 'flex', alignItems: 'center', justifyContent: 'center' 
+            <div style={{
+              position: 'absolute', inset: 2, background: 'var(--surface)',
+              borderRadius: 14, display: 'flex', alignItems: 'center', justifyContent: 'center'
             }}>
-               <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="url(#vittiGrad)" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                 <defs>
-                   <linearGradient id="vittiGrad" x1="0" y1="0" x2="1" y2="1">
-                     <stop offset="0%" stopColor="#8b5cf6" />
-                     <stop offset="100%" stopColor="#3b82f6" />
-                   </linearGradient>
-                 </defs>
-                 <path d="M5 4l7 15 7-15" />
-                 <path d="M12 19v-5" />
-               </svg>
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="url(#vittiGrad)" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <defs>
+                  <linearGradient id="vittiGrad" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0%" stopColor="#8b5cf6" />
+                    <stop offset="100%" stopColor="#3b82f6" />
+                  </linearGradient>
+                </defs>
+                <path d="M5 4l7 15 7-15" />
+                <path d="M12 19v-5" />
+              </svg>
             </div>
           </div>
 
@@ -572,7 +572,7 @@ export default function Home() {
 
             {loading ? (
               <div className="flex-col gap-4">
-                {[0,1,2].map(i => <SkeletonCard key={i} />)}
+                {[0, 1, 2].map(i => <SkeletonCard key={i} />)}
               </div>
             ) : results.ideas?.length > 0 ? (
               <div className="flex-col gap-8 mt-2">
@@ -628,10 +628,10 @@ export default function Home() {
       {/* ── Footer ── */}
       <p className="text-muted" style={{ textAlign: 'center', marginTop: 36, fontSize: '0.85rem', opacity: 0.7 }}>
         Made with 💙 by{' '}
-        <a 
-          href="https://minianonlink.vercel.app/tusharbhardwaj" 
-          target="_blank" 
-          rel="noopener noreferrer" 
+        <a
+          href="https://minianonlink.vercel.app/tusharbhardwaj"
+          target="_blank"
+          rel="noopener noreferrer"
           style={{ color: 'var(--primary)', textDecoration: 'none', fontWeight: 500, transition: 'color 0.2s' }}
           onMouseOver={(e) => e.target.style.color = 'var(--secondary)'}
           onMouseOut={(e) => e.target.style.color = 'var(--primary)'}
