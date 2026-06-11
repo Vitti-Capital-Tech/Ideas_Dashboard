@@ -2,12 +2,8 @@ name: Scheduled X Content Generator
 
 on:
   schedule:
-    # Morning Triggers (21:15 & 22:15 UTC, Sunday-Thursday -> Mon-Fri in Sydney)
-    - cron: '15 21 * * 0-4'
-    - cron: '15 22 * * 0-4'
-    # Evening Triggers (06:15 & 07:15 UTC, Monday-Friday -> Mon-Fri in Sydney)
-    - cron: '15 6 * * 1-5'
-    - cron: '15 7 * * 1-5'
+    - cron: '15 21,22 * * 0-4'
+    - cron: '15 6,7 * * 1-5'
   workflow_dispatch: # Allows manual runs from GitHub UI
 
 jobs:
