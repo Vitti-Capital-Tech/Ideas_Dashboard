@@ -5,6 +5,8 @@ from config import SYDNEY_TZ, get_today_str
 from services.llm import request_anthropic
 from services.prompts import build_daily_prompt, build_monthly_prompt, build_morning_prompt
 from services.scrapers import get_asx_market_overview, get_asx_monthly_overview, get_metal_prices
+from services.twitter import parse_thread_posts, post_thread_to_x
+
 
 
 LLM_RETRIES = 2
@@ -87,6 +89,8 @@ def monthly_summary() -> str:
     )
     if res:
         save_x_to_logs('monthly', res)
+        posts = parse_thread_posts(res)
+        post_thread_to_x(posts)
     return res
 
 
@@ -108,6 +112,8 @@ def send_morning_email():
     if commentary:
         save_x_to_logs('morning', commentary)
         print(f"📧 Morning commentary sent at {datetime.now(SYDNEY_TZ)}: {commentary}")
+        posts = parse_thread_posts(commentary)
+        post_thread_to_x(posts)
         return commentary
 
 
@@ -180,6 +186,8 @@ def run_scheduler():
             if commentary:
                 save_x_to_logs('daily', commentary)
                 print(f"📝 Daily commentary sent at {datetime.now(SYDNEY_TZ)}: {commentary}")
+                posts = parse_thread_posts(commentary)
+                post_thread_to_x(posts)
                 return commentary
         else:
             trigger_name = "Trigger A (06:15 UTC)" if minutes_utc < 435 else "Trigger B (07:15 UTC)"

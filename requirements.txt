@@ -11,3 +11,4 @@ pytz
 selenium
 bs4
 pandas
+requests-oauthlib
