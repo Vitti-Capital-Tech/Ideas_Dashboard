@@ -1,0 +1,222 @@
+[
+    {
+        "timestamp": "2026-06-13T10:08:14.559244",
+        "ideas": [
+            {
+                "anchor_source": "https://news.google.com/rss/articles/CBMitgFBVV95cUxNQVQ3RG95VVNISWdGcVhVQXZla1RLT0lxWTZtZEdleUVuUEhyV2JnbGJvY3hNOHVWVFo5djMzWnQ5SDcyTV94S2d4TWhrUTFqcF9yd0NSY0VVR3JOUHZHNjgwaVkwWXh5VjhRNE5iTmdZR1MwZldZVy1vRWZDZ25BVlNkbDRybTk5cVdscXFhWmd4Y3M3NjhDQlVHTlVnSlVubmNBWE9sWkM2cDZuRTIzRndoeG50dw?oc=5",
+                "title": "The ASX 200 Just Jumped Nearly 2% \u2014 But the Real Story Is What's Driving Selective Momentum",
+                "context": "The S&P/ASX 200 closed up 1.98%, a broad-based rally driven by easing geopolitical tensions and shifting RBA rate expectations. The cross-verify from Motley Fool highlights that within this rally, specific ASX 200 stocks leapt significantly higher on company-specific announcements, suggesting the headline index move masks a more selective, announcement-driven market beneath the surface.",
+                "angle": "Broad index rallies can disguise highly uneven stock-level performance \u2014 investors should look beneath the headline number.",
+                "linkedin_playbook": {
+                    "format_name": "Signal Decoder",
+                    "opening_hook": "The ASX 200 just posted its best session in weeks \u2014 up nearly 2%.\n\nBut the headline number is hiding something important.",
+                    "why_section": "When broad indices surge, it's tempting to assume everything is lifting equally. In reality, a handful of stocks with material announcements drove outsized gains, while others merely drifted with sentiment. For portfolio managers and self-directed investors, mistaking a sentiment-driven tide for fundamental strength is a recurring and costly error.",
+                    "unique_take": "The anchor confirms a strong close across the ASX 200, but the Motley Fool cross-verify reveals that several stocks leapt on specific corporate announcements \u2014 M&A, earnings surprises, or strategic pivots. This means the 1.98% figure is part macro relief (Iran de-escalation, RBA repricing) and part idiosyncratic alpha. The signal: in a market where macro and micro are moving simultaneously, attribution matters more than celebration.",
+                    "call_to_action": "When the index surges, do you zoom in on what's actually moving \u2014 or ride the headline?",
+                    "why_this_works": "Signal Decoder format rewards the audience with a 'look deeper' insight that positions Vitti Capital as analytically rigorous, not reactive to headlines.",
+                    "poll_options": []
+                },
+                "grounding": {
+                    "sources_used": [
+                        {
+                            "source_type": "news",
+                            "title": "Australia stocks higher at close of trade; S&P/ASX 200 up 1.98%",
+                            "url": "https://news.google.com/rss/articles/CBMitgFBVV95cUxNQVQ3RG95VVNISWdGcVhVQXZla1RLT0lxWTZtZEdleUVuUEhyV2JnbGJvY3hNOHVWVFo5djMzWnQ5SDcyTV94S2d4TWhrUTFqcF9yd0NSY0VVR3JOUHZHNjgwaVkwWXh5VjhRNE5iTmdZR1MwZldZVy1vRWZDZ25BVlNkbDRybTk5cVdscXFhWmd4Y3M3NjhDQlVHTlVnSlVubmNBWE9sWkM2cDZuRTIzRndoeG50dw?oc=5"
+                        },
+                        {
+                            "source_type": "news",
+                            "title": "3 ASX 200 stocks leaping higher this week on big announcements",
+                            "url": "https://news.google.com/rss/articles/CBMinwFBVV95cUxQNl9jVHN4d0RZNzR5cW0yQldxN2l1UkliOW1ZR3FYWWNQckE3WFpOTzRXb3RVY292RG5ya3g1OHlncEI3cHVpbndIdEhCQW1LekxlSVRPT0NaazZrd1RGbTZRWkJsbDNHSm9HZ29vVWtqRG4wR3cxQzNtN1dYQnJ1akk4WjRtS3cwaldhR2YyaUdnZ1FTX1FrREhfTXN1NDg?oc=5"
+                        }
+                    ]
+                },
+                "region": "Australia",
+                "source_type": "news",
+                "content": {
+                    "format": "1-pager",
+                    "pages": [
+                        {
+                            "page_title": "Draft",
+                            "markdown": "The ASX 200 just posted its best session in weeks \u2014 up nearly 2%.\n\nBut the headline number is hiding something important.\n\n**The signal:** A broad index rally driven by easing geopolitical tensions and collapsing RBA rate-hike odds lifted sentiment across the board. Yet when you look beneath the surface, a handful of stocks with material corporate announcements \u2014 think M&A, earnings beats, strategic pivots \u2014 drove outsized gains.\n\nThe rest? They drifted upward on the tide.\n\n**Why this matters:**\n\nIn a market where macro relief and micro catalysts are firing simultaneously, attribution is everything. A 1.98% index move tells you the mood. It doesn't tell you where the conviction capital is flowing.\n\nReports from Motley Fool this week highlighted several ASX 200 names leaping on company-specific news, reinforcing that the rally isn't uniform \u2014 it's selective beneath a feel-good headline.\n\n**The practical implication:**\n\nIf you're allocating based on \"the market is up,\" you're making a macro bet. If you're allocating based on *why specific names moved*, you're making an informed one.\n\nSentiment rallies fade. Announcement-driven re-ratings tend to stick \u2014 or at least leave a trail you can analyse.\n\nWhen the index surges, do you zoom in on what's actually moving \u2014 or ride the headline?"
+                        }
+                    ]
+                }
+            },
+            {
+                "anchor_source": "https://news.google.com/rss/articles/CBMipAFBVV95cUxOUEgyMGhWTFJVTm5iek9FQUJYSXNEb2VKZ0dBQlBYZVlFdDJySEEyaEFwM2xqdGZ1Vmg1N3E0dU1tOXRIMURJaXZENVQxYjJzUmN4Qm9FeXZXTWZfQWt5WW9DMnVMZEwtWVVqMnFablpzNktER3g2WUZEVlBwMm1nUDBlWjU0aXozTVdqdlBoZlRfXzhRNU8yM0toMEVDX3FRaHhJQw?oc=5",
+                "title": "Iron Ore Shrugs Off a War \u2014 But China's May Data Is the Real Puzzle",
+                "context": "Iron ore prices have remained remarkably stable despite the Iran conflict escalation, defying expectations that Middle East turmoil would ripple through commodity markets. However, China's May industrial and demand data presents a confusing picture that complicates the bullish case. Cross-verify sources from Discovery Alert and NAI500 confirm iron ore's resilience to geopolitical shocks but note that most other commodities swung wildly, isolating iron ore's stability as an outlier driven by China-specific supply-demand dynamics rather than broad commodity calm.",
+                "angle": "Iron ore's geopolitical immunity is less about market confidence and more about China's structural dominance of the demand equation \u2014 and that equation just got harder to read.",
+                "linkedin_playbook": {
+                    "format_name": "Contrarian Institution Read",
+                    "opening_hook": "A war breaks out in the Middle East. Oil spikes. Gold surges. Most commodities swing wildly.\n\nIron ore? Barely flinches.\n\nThe consensus says that's a sign of resilience. I think it's a sign of something more uncomfortable.",
+                    "why_section": "For Australian investors and resource-sector operators, iron ore isn't just another commodity \u2014 it's the single largest export earner. Understanding why it decouples from geopolitical risk (and what could break that pattern) is essential for portfolio construction, fiscal forecasting, and sector allocation.",
+                    "unique_take": "The anchor highlights that while iron ore defied the Iran conflict, China's May data is baffling \u2014 industrial output, property starts, and steel demand are sending contradictory signals. NAI500 confirms iron ore's outlier status versus other commodities, which swung wildly. The contrarian read: iron ore's calm isn't strength \u2014 it's China-dependency so extreme that geopolitics barely registers. The risk? When China's data finally resolves in one direction, iron ore will move violently, and the market won't be positioned for it.",
+                    "call_to_action": "Is iron ore's geopolitical immunity a feature of the market \u2014 or a vulnerability waiting to be exposed?",
+                    "why_this_works": "Contrarian Institution Read challenges a comforting narrative (iron ore is resilient) with structural analysis, earning engagement from resource-sector professionals who want depth beyond headlines.",
+                    "poll_options": []
+                },
+                "grounding": {
+                    "sources_used": [
+                        {
+                            "source_type": "tech",
+                            "title": "Column: Iron ore price remains unaffected by Iran war, but China's May data baffles",
+                            "url": "https://news.google.com/rss/articles/CBMipAFBVV95cUxOUEgyMGhWTFJVTm5iek9FQUJYSXNEb2VKZ0dBQlBYZVlFdDJySEEyaEFwM2xqdGZ1Vmg1N3E0dU1tOXRIMURJaXZENVQxYjJzUmN4Qm9FeXZXTWZfQWt5WW9DMnVMZEwtWVVqMnFablpzNktER3g2WUZEVlBwMm1nUDBlWjU0aXozTVdqdlBoZlRfXzhRNU8yM0toMEVDX3FRaHhJQw?oc=5"
+                        },
+                        {
+                            "source_type": "tech",
+                            "title": "Iron Ore Defies Middle East Turmoil While Most Commodities Swing Wildly",
+                            "url": "https://news.google.com/rss/articles/CBMipwFBVV95cUxPbDZFdTZ2OHp2T3I2TjhjN3FmZmo2empONlhuYjNkcUtxOEFFZFU0N3RWV2IydlM3eDNCajBrMkltcFFNS0RUOW04eS1kSThwTmJtaHd5QU5pdUFOOEtoQU9KdnFTV3loQzJzQkZZZjktcGpsZEFZTjhibGVYWFFGVUtfSTRJYnlPNkRMMjVqRTNGS0N1SVg2dGdGd3VmWEthSkQzcHB2aw?oc=5"
+                        },
+                        {
+                            "source_type": "tech",
+                            "title": "Iron Ore Remains Unaffected by Iran War in 2026",
+                            "url": "https://news.google.com/rss/articles/CBMijAFBVV95cUxONmhkNEZwd21WZFVyMGxyc2NlZ3BwTENFZEk5YW4xZ0RjNm5RZkFjcndyNWpWT2VINUN5Z005amh3Vi1SMFZEMVRDdzdLRlh2T0J0a3dBRTNOUEI5Qnh6b1V2UENpa2hueFFTd2gwYldLV04zb1l0d1RfRTB4Yl9IRy1KcEc4RlN4QWdoUg?oc=5"
+                        }
+                    ]
+                },
+                "region": "Mixed",
+                "source_type": "news",
+                "content": {
+                    "format": "1-pager",
+                    "pages": [
+                        {
+                            "page_title": "Draft",
+                            "markdown": "A war breaks out in the Middle East. Oil spikes. Gold surges. Most commodities swing wildly.\n\nIron ore? Barely flinches.\n\nThe consensus says that's a sign of resilience. I think it's a sign of something more uncomfortable.\n\n**What consensus misses:**\n\nIron ore's stability during the Iran conflict isn't broad commodity calm \u2014 it's an outlier. NAI500 reported that most commodities swung violently while iron ore held steady. The reason isn't market confidence. It's China-dependency so extreme that Middle Eastern geopolitics simply doesn't register in the pricing model.\n\nChina consumes roughly 70% of seaborne iron ore. The price is set in Dalian and Singapore, not in the Strait of Hormuz.\n\n**But here's the problem:**\n\nChina's May data is baffling. Industrial output, property activity, and steel demand are sending contradictory signals. The very factor that insulates iron ore from geopolitics \u2014 its singular dependence on Chinese demand \u2014 is also its greatest vulnerability.\n\nWhen that data resolves in one direction, the move won't be gradual. Markets that ignore external shocks tend to overreact to internal ones.\n\n**The risk of being wrong:** If China's stimulus lands and property stabilises, iron ore's calm was justified and the price grinds higher. But the asymmetry of the downside \u2014 a demand miss in a market priced for stability \u2014 deserves more attention than it's getting.\n\nIs iron ore's geopolitical immunity a feature of the market \u2014 or a vulnerability waiting to be exposed?"
+                        }
+                    ]
+                }
+            },
+            {
+                "anchor_source": "https://news.google.com/rss/articles/CBMiigFBVV95cUxNN2hmd3otSFZZRHBIZlNWQWhvdXIyUEoxQ2poNkdiYzhscFQwN21EeXRYTkc3aVNJMHVyd2lidjZJRUpGS0dIQi02eWt4VW5BQnlLbk9pbzJxV1h2Z1FFUWhWamM4c2FYNUVDUV92cVJMa0RFckd0UVJkM1EtZ2ZrVEkwZFZ2N1E4OEE?oc=5",
+                "title": "BHP for Passive Income? The Dividend Case Is Weaker Than You Think",
+                "context": "Motley Fool Australia examines whether BHP shares are a good buy for passive income, a perennial question for Australian income investors given BHP's historical dividend generosity. The cross-verify \u2014 highlighting ASX 200 stocks surging on specific announcements \u2014 adds tension by showing that capital gains from catalyst-driven stocks may be delivering better total returns than the traditional 'buy BHP for yield' playbook, especially as commodity cycles compress and dividend payout ratios face pressure from capex commitments.",
+                "angle": "The 'buy BHP for dividends' thesis is a legacy mental model \u2014 income investors should stress-test whether yield alone justifies concentration in a cyclical miner.",
+                "linkedin_playbook": {
+                    "format_name": "Provocative Question & Poll Hybrid",
+                    "opening_hook": "\"Just buy BHP for the dividends.\"\n\nIt's the most repeated line in Australian investing. But is it still true \u2014 or is it a legacy mental model that deserves a stress test?",
+                    "why_section": "BHP remains one of the most widely held stocks on the ASX, and its dividend is a cornerstone of many retirement portfolios. But with commodity cycles compressing, capex rising for future-facing minerals, and payout ratios under structural pressure, the passive income thesis deserves scrutiny \u2014 not blind repetition.",
+                    "unique_take": "The anchor asks whether BHP is a good passive income buy. The cross-verify shows that other ASX 200 stocks are delivering sharp capital gains on corporate catalysts \u2014 M&A, strategic pivots, earnings surprises. For income-focused investors, the question isn't just 'what's the yield?' but 'what's the total return versus alternatives?' A stock yielding 4% but flat on capital appreciation may underperform a lower-yield name that re-rates on a structural announcement. The BHP dividend narrative needs updating for a market where catalysts, not coupons, are driving returns.",
+                    "call_to_action": "Where do you stand? Vote below and tell me why in the comments.",
+                    "why_this_works": "Poll format drives engagement through low-friction participation, while the contrarian setup challenges a deeply held belief among Australian retail investors \u2014 BHP's core audience on LinkedIn.",
+                    "poll_options": [
+                        "BHP dividends are still the backbone of my income strategy",
+                        "I've shifted to total-return thinking \u2014 yield alone isn't enough",
+                        "Depends on the commodity cycle \u2014 timing matters more than narrative",
+                        "I've moved away from single-stock income plays entirely"
+                    ]
+                },
+                "grounding": {
+                    "sources_used": [
+                        {
+                            "source_type": "news",
+                            "title": "Are BHP shares a good buy for passive income?",
+                            "url": "https://news.google.com/rss/articles/CBMiigFBVV95cUxNN2hmd3otSFZZRHBIZlNWQWhvdXIyUEoxQ2poNkdiYzhscFQwN21EeXRYTkc3aVNJMHVyd2lidjZJRUpGS0dIQi02eWt4VW5BQnlLbk9pbzJxV1h2Z1FFUWhWamM4c2FYNUVDUV92cVJMa0RFckd0UVJkM1EtZ2ZrVEkwZFZ2N1E4OEE?oc=5"
+                        },
+                        {
+                            "source_type": "news",
+                            "title": "3 ASX 200 stocks leaping higher this week on big announcements",
+                            "url": "https://news.google.com/rss/articles/CBMinwFBVV95cUxQNl9jVHN4d0RZNzR5cW0yQldxN2l1UkliOW1ZR3FYWWNQckE3WFpOTzRXb3RVY292RG5ya3g1OHlncEI3cHVpbndIdEhCQW1LekxlSVRPT0NaazZrd1RGbTZRWkJsbDNHSm9HZ29vVWtqRG4wR3cxQzNtN1dYQnJ1akk4WjRtS3cwaldhR2YyaUdnZ1FTX1FrREhfTXN1NDg?oc=5"
+                        }
+                    ]
+                },
+                "region": "Australia",
+                "source_type": "news",
+                "content": {
+                    "format": "1-pager",
+                    "pages": [
+                        {
+                            "page_title": "Draft",
+                            "markdown": "\"Just buy BHP for the dividends.\"\n\nIt's the most repeated line in Australian investing. But is it still true \u2014 or is it a legacy mental model that deserves a stress test?\n\nBHP has been a cornerstone of income portfolios for decades. Franked dividends, blue-chip stability, resource exposure. The pitch writes itself.\n\n**But consider this:**\n\nThis week, several ASX 200 stocks surged on company-specific announcements \u2014 M&A, strategic pivots, earnings surprises. These catalyst-driven moves delivered in days what BHP's dividend yields in a year.\n\nThat's not an argument against dividends. It's an argument against *lazy* income investing.\n\nWith commodity cycles compressing, BHP's capex commitments rising (think future-facing minerals, decarbonisation), and payout ratios under structural pressure, the yield alone may not justify the concentration risk many Australian portfolios carry.\n\n**The real question isn't \"does BHP pay a good dividend?\"**\n\nIt's: \"Am I optimising for income \u2014 or for total return?\"\n\nA stock yielding 4% but flat on capital appreciation may quietly underperform a lower-yield name that re-rates on a material catalyst.\n\n**Where do you stand? Vote below:**\n\n\ud83d\udd35 BHP dividends are still the backbone of my income strategy\n\ud83d\udfe2 I've shifted to total-return thinking \u2014 yield alone isn't enough\n\ud83d\udfe1 Depends on the commodity cycle \u2014 timing matters more\n\ud83d\udd34 I've moved away from single-stock income plays entirely\n\nTell me why in the comments."
+                        }
+                    ]
+                }
+            },
+            {
+                "anchor_source": "https://news.google.com/rss/articles/CBMinAFBVV95cUxQNlZxUUNjcXNKM0V2SDA5OWE0MnlUS1NObzZQS0g5X290U2hPMmFISzdVRW9ZT3VHc01OZlVNOVIyYXhHd3lYMG5haGh6SE9iajZIWWdhUGplVHhuU3I4clQwNml3SURjTVRDeUtPOVdLanB3bWNkcFJOdHd4MXFQZnJrZXNHYVBUMUxkTEFaczlfY19hNlAyU0N5UW0?oc=5",
+                "title": "Regional Australia Is Watching the Same Rally \u2014 But Living a Different Economy",
+                "context": "The Kyabram Free Press covers local and regional Australian market and economic news, offering a ground-level perspective on how national financial trends land in rural communities. The cross-verify from Finimize reports that Australian stocks jumped as traders priced in the RBA's last rate hike \u2014 a macro event celebrated in Sydney and Melbourne but experienced very differently in regional towns where mortgage stress, agricultural input costs, and local employment dynamics create a separate economic reality.",
+                "angle": "The gap between metro market euphoria and regional economic experience is a blind spot for most financial commentary \u2014 and a risk for policymakers assuming uniform recovery.",
+                "linkedin_playbook": {
+                    "format_name": "Industry Trend Interpretation",
+                    "opening_hook": "The ASX is rallying. Rate hike odds are collapsing. Traders are celebrating.\n\nBut in Kyabram, Victoria \u2014 and hundreds of towns like it \u2014 the economy feels nothing like a celebration.",
+                    "why_section": "Financial media overwhelmingly reflects metro sentiment. But regional Australia \u2014 which drives agriculture, mining services, and a significant share of GDP \u2014 operates on different cycles. When the RBA pauses, metro property sentiment shifts overnight. In regional towns, the lag is measured in quarters, not days. For advisers, fund managers, and policymakers, this urban-rural disconnect is a material analytical gap.",
+                    "unique_take": "The anchor from Kyabram Free Press grounds us in regional reality, while Finimize's cross-verify celebrates the macro narrative of traders pricing in the RBA's last hike. The tension is clear: the same policy signal that lifts the ASX and eases metro mortgage anxiety takes months to filter through to regional credit conditions, farm input costs, and local employment. Financial commentary that ignores this lag risks misreading the breadth of any recovery.",
+                    "call_to_action": "If you advise clients or build portfolios outside the capital cities \u2014 how differently does the current rally feel on the ground?",
+                    "why_this_works": "Industry Trend Interpretation format works here because it reframes a well-known macro event (RBA pause, ASX rally) through an unexpected lens (regional Australia), creating a fresh angle that resonates with advisers and operators outside metro centres.",
+                    "poll_options": []
+                },
+                "grounding": {
+                    "sources_used": [
+                        {
+                            "source_type": "tech",
+                            "title": "| Kyabram Free Press",
+                            "url": "https://news.google.com/rss/articles/CBMinAFBVV95cUxQNlZxUUNjcXNKM0V2SDA5OWE0MnlUS1NObzZQS0g5X290U2hPMmFISzdVRW9ZT3VHc01OZlVNOVIyYXhHd3lYMG5haGh6SE9iajZIWWdhUGplVHhuU3I4clQwNml3SURjTVRDeUtPOVdLanB3bWNkcFJOdHd4MXFQZnJrZXNHYVBUMUxkTEFaczlfY19hNlAyU0N5UW0?oc=5"
+                        },
+                        {
+                            "source_type": "news",
+                            "title": "Australian Stocks Jumped As Traders Priced In The RBA's Last Hike",
+                            "url": "https://news.google.com/rss/articles/CBMimAFBVV95cUxOUVNnWENkZEJOMHhNRFRSQkhsTkhZZm1BZmhBOXQ0NEtiTVRfbi0tMGdCWHpCLTBfS2gwMWY4TEp3OXlBaXpRekRLQUFoQmxwQ1p4Q3R5LVRfLV8zQjA0RXJZTWY2QngxekVVYlVKaUVpdUF0VTRWQ2VyQmdLcXJOWUZ1Z3hwV2czSFkxZkhBWXpVZVlFZWdEZA?oc=5"
+                        }
+                    ]
+                },
+                "region": "Australia",
+                "source_type": "news",
+                "content": {
+                    "format": "1-pager",
+                    "pages": [
+                        {
+                            "page_title": "Draft",
+                            "markdown": "The ASX is rallying. Rate hike odds are collapsing. Traders are celebrating.\n\nBut in Kyabram, Victoria \u2014 and hundreds of towns like it \u2014 the economy feels nothing like a celebration.\n\n**Here's the trend no one's talking about:**\n\nFinancial media frames the RBA's likely pause as universally positive. Traders price it in instantly. Metro property sentiment shifts overnight. The ASX surges.\n\nBut in regional Australia, the transmission mechanism is completely different.\n\nMortgage relief takes quarters to flow through. Agricultural input costs remain elevated. Local employers \u2014 often small businesses \u2014 don't adjust hiring based on futures curves.\n\n**Why this matters more than you think:**\n\nRegional Australia isn't a footnote. It drives agriculture, mining services, and a meaningful share of national GDP. When we talk about \"the economy recovering,\" we're often talking about Sydney and Melbourne recovering.\n\nThe Kyabram Free Press \u2014 a regional outlet \u2014 covers the same national market story. But the lived experience of its readers is materially different from the Finimize audience celebrating the macro pivot.\n\n**The blind spot:**\n\nAdvisers building portfolios, fund managers modelling consumer spending, and policymakers assuming uniform recovery all risk the same error \u2014 projecting metro sentiment onto a country that doesn't move in lockstep.\n\nThe rally is real. The question is whether its benefits are as broadly shared as the headlines suggest.\n\nIf you advise clients or build portfolios outside the capital cities \u2014 how differently does the current rally feel on the ground?"
+                        }
+                    ]
+                }
+            },
+            {
+                "anchor_source": "https://news.google.com/rss/articles/CBMiTkFVX3lxTFBWMmFVaWdCcFFzSXRSNDhINWVaal9PYlVLUEx3MUtYLW9ERDF5Zm0zNUM2SDYweXNYNW51YXBBckFwdDBkckhfQlZHT3U5UQ?oc=5",
+                "title": "The ASX 200 Was Stuck for Months \u2014 Then Three Catalysts Broke the Range",
+                "context": "Kalkine's ASX 200 tracker shows the index testing new levels after an extended period of range-bound trading, with futures pointing to continued strength. The cross-verify from Kalkine Media explains why the ASX 200 could end the week strong, citing a confluence of catalysts: collapsing RBA rate hike odds, easing Iran tensions, and positive Wall Street leads. A second cross-verify from Motley Fool highlights individual stock announcements adding fuel. Together, they paint a picture of a market that broke out of consolidation not on one catalyst but on three arriving simultaneously.",
+                "linkedin_playbook": {
+                    "format_name": "Before/After Results Story",
+                    "opening_hook": "For months, the ASX 200 went nowhere.\n\nRange-bound. Choppy. Frustrating for anyone with a directional view.\n\nThen, in a single week, three catalysts arrived at once \u2014 and the range broke.",
+                    "why_section": "Understanding what breaks a trading range matters for timing, risk management, and conviction. Markets don't move on single catalysts \u2014 they move when multiple forces align. Recognising that pattern in real time separates reactive trading from informed positioning.",
+                    "unique_take": "The anchor tracks the ASX 200's technical levels and futures positioning. The cross-verify from Kalkine Media identifies the three catalysts \u2014 RBA repricing, geopolitical de-escalation, and positive offshore leads \u2014 while Motley Fool adds that company-specific announcements provided additional momentum. The lesson isn't that one event moved the market. It's that range-bound markets store energy, and when multiple catalysts converge, the breakout is sharper than any single factor would predict. This is a pattern worth filing for the next consolidation phase.",
+                    "call_to_action": "Have you noticed this pattern in your own portfolio \u2014 long periods of nothing, then everything moves at once? What triggered your last breakout trade or allocation shift?",
+                    "why_this_works": "Before/After format creates narrative tension (stuck \u2192 breakout) that mirrors the audience's lived experience of frustrating range-bound markets, making the insight feel personal and actionable.",
+                    "poll_options": []
+                },
+                "grounding": {
+                    "sources_used": [
+                        {
+                            "source_type": "news",
+                            "title": "ASX 200 Today | S&P/ASX 200 Index, A200 Futures, Chart & Stocks",
+                            "url": "https://news.google.com/rss/articles/CBMiTkFVX3lxTFBWMmFVaWdCcFFzSXRSNDhINWVaal9PYlVLUEx3MUtYLW9ERDF5Zm0zNUM2SDYweXNYNW51YXBBckFwdDBkckhfQlZHT3U5UQ?oc=5"
+                        },
+                        {
+                            "source_type": "news",
+                            "title": "Why the ASX 200 Could End the Week on a Strong Note",
+                            "url": "https://news.google.com/rss/articles/CBMioAFBVV95cUxPczYzaExKd3FaaEpveGFtZHUzcDcybGthaEFEamdlX2hoaEU4TnZ1LVVOdXZ5RFlraEV1WnVlYTEtSlpHUTJwelh2cnZYcUViTmlpWG9FZEViWHpSR2I5TnFXRFE1SWJHZkhUY3FZYkdITmZmY0hlaHNPdXZfWHZMN3BuNHlCV0IxRFRjdlUzVmtOMkJaLVNRaUZtWE9BVTNX?oc=5"
+                        },
+                        {
+                            "source_type": "news",
+                            "title": "3 ASX 200 stocks leaping higher this week on big announcements",
+                            "url": "https://news.google.com/rss/articles/CBMinwFBVV95cUxQNl9jVHN4d0RZNzR5cW0yQldxN2l1UkliOW1ZR3FYWWNQckE3WFpOTzRXb3RVY292RG5ya3g1OHlncEI3cHVpbndIdEhCQW1LekxlSVRPT0NaazZrd1RGbTZRWkJsbDNHSm9HZ29vVWtqRG4wR3cxQzNtN1dYQnJ1akk4WjRtS3cwaldhR2YyaUdnZ1FTX1FrREhfTXN1NDg?oc=5"
+                        }
+                    ]
+                },
+                "region": "Australia",
+                "source_type": "news",
+                "content": {
+                    "format": "1-pager",
+                    "pages": [
+                        {
+                            "page_title": "Draft",
+                            "markdown": "For months, the ASX 200 went nowhere.\n\nRange-bound. Choppy. Frustrating for anyone with a directional view.\n\nThen, in a single week, three catalysts arrived at once \u2014 and the range broke.\n\n**Before:**\nThe index had been consolidating, trapped between technical support and resistance. Futures were flat. Conviction was low. Every rally faded, every dip found buyers. Classic range compression.\n\n**The turning point \u2014 three catalysts converging:**\n\n1. **RBA repricing.** Markets rapidly priced out further rate hikes, with some now pricing cuts. That shift alone eased pressure on rate-sensitive sectors.\n\n2. **Geopolitical de-escalation.** Iran peace deal signals reduced the risk premium that had been capping upside.\n\n3. **Positive offshore leads.** Wall Street strength gave Asian markets \u2014 including the ASX \u2014 permission to break higher.\n\n**After:**\nThe ASX 200 surged nearly 2% in a single session, with individual stocks adding fuel through company-specific announcements.\n\n**The pattern worth remembering:**\n\nRange-bound markets store energy. They don't break on one catalyst \u2014 they break when multiple forces align simultaneously. The breakout is always sharper than any single factor would predict.\n\nThis isn't unique to this week. It's a recurring market behaviour. And recognising it in real time \u2014 rather than explaining it in hindsight \u2014 is where the edge lives.\n\nHave you noticed this pattern in your own portfolio? What triggered your last breakout allocation shift?"
+                        }
+                    ]
+                },
+                "angle": "The anchor tracks the ASX 200's technical levels and futures positioning. The cross-verify from Kalkine Media identifies the three catalysts \u2014 RBA repricing, geopolitical de-escalation, and positive offshore leads \u2014 while Motley Fool adds that company-specific announcements provided additional momentum. The lesson isn't that one event moved the market. It's that range-bound markets store energy, and when multiple catalysts converge, the breakout is sharper than any single factor would predict. This is a pattern worth filing for the next consolidation phase."
+            }
+        ]
+    }
+]
