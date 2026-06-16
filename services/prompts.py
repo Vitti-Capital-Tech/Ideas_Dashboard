@@ -33,7 +33,7 @@ def build_daily_prompt(today_str: str, market_overview_text, metals_data):
         ---
 
         Write a 3-post X (Twitter) thread summarising today's ASX session. Strict rules for all posts:
-        - No hashtags, no emojis, no exclamation marks.
+        - No emojis or exclamation marks. Include 1-2 relevant hashtags (like #ASX, #ausbiz, #stocks) or cashtags (like $BHP) where appropriate, keeping the character limit in mind.
         - No "The ASX" or time-based openers like "Today".
         - Every post must contain at least one specific number with units.
         - Sharp and data-driven — confident, specific, and compressed.
@@ -84,7 +84,7 @@ def build_monthly_prompt(today_str: str, market_overview_text):
         ---
 
         Write a 3-post X (Twitter) thread summarising the month's ASX performance. Strict rules for all posts:
-        - No hashtags, no emojis, no exclamation marks.
+        - No emojis or exclamation marks. Include 1-2 relevant hashtags (like #ASX, #ausbiz, #finance) or cashtags (like $BHP) where appropriate, keeping the character limit in mind.
         - No "This month" or time-based openers.
         - Every post must contain at least one specific number with units.
         - Sharp and data-driven — confident, specific, and compressed.
@@ -129,7 +129,7 @@ def build_morning_prompt(today_str: str):
         Prepare the weekly ASX X (Twitter) thread for the week of {today_str} (Sydney time).
 
         Write a 3-post X (Twitter) thread setting up the week ahead on the ASX. Strict rules for all posts:
-        - No hashtags, no emojis, no exclamation marks.
+        - No emojis or exclamation marks. Include 1-2 relevant hashtags (like #ASX, #ausbiz, #investing) or cashtags (like $BHP) where appropriate, keeping the character limit in mind.
         - No "This week" or time-based openers.
         - Every post must contain at least one specific number with units.
         - Sharp and data-driven — confident, specific, and compressed.
