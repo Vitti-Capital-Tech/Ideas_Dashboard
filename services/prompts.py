@@ -41,13 +41,13 @@ def build_daily_prompt(today_str: str, market_overview_text, metals_data):
         - Write only the post text for each — no labels, no quotation marks, no preamble.
         - Separate each post with a blank line and label them Post 1, Post 2, Post 3.
 
-        Post 1 — The Hook (max 280 characters):
+        Post 1 — The Hook (max 250 characters):
         Lead with the index level and % move. Follow with the single clearest reason why — one macro driver or dominant theme. This post must standalone as a complete insight for readers who won't click through.
 
-        Post 2 — The Detail (max 280 characters):
+        Post 2 — The Detail (max 250 characters):
         Name the top and bottom sector with exact % moves. Add one standout stock — ticker, move, and the specific reason. Give readers the texture of the session.
 
-        Post 3 — The Forward Look (max 280 characters):
+        Post 3 — The Forward Look (max 250 characters):
         Identify the one thing to watch tomorrow or this week — a commodity price level, overnight US futures signal, or key data release. Frame it as a specific number or threshold, not a vague observation.
         """
     }
@@ -93,13 +93,13 @@ def build_monthly_prompt(today_str: str, market_overview_text):
         - Write only the post text for each — no labels, no quotation marks, no preamble.
         - Separate each post with a blank line and label them Post 1, Post 2, Post 3.
 
-        Post 1 — The Scorecard (max 280 characters):
+        Post 1 — The Scorecard (max 250 characters):
         Lead with the ASX 200 monthly return and closing level. Name the best and worst performing sector with exact % moves. This post must standalone as a complete monthly summary for readers who won't click through.
 
-        Post 2 — The Story (max 280 characters):
+        Post 2 — The Story (max 250 characters):
         Explain what drove the month — the dominant macro event, commodity move, or RBA decision that shaped the index. Name the standout stock move with ticker, % change, and the specific catalyst.
 
-        Post 3 — The Forward Look (max 280 characters):
+        Post 3 — The Forward Look (max 250 characters):
         Identify the single biggest opportunity and the single biggest risk heading into next month. Anchor each to a specific number, date, or threshold — not a vague observation.
         """
     }
@@ -139,13 +139,13 @@ def build_morning_prompt(today_str: str):
         - Write only the post text for each — no labels, no quotation marks, no preamble.
         - Separate each post with a blank line and label them Post 1, Post 2, Post 3.
 
-        Post 1 — The Macro Setup (max 280 characters):
+        Post 1 — The Macro Setup (max 250 characters):
         Lead with last week's closing level and the dominant theme carrying into this week. State your overall directional view — bullish, cautious, or mixed — and the single number that justifies it.
 
-        Post 2 — Sectors and Stocks in Focus (max 280 characters):
+        Post 2 — Sectors and Stocks in Focus (max 250 characters):
         Name the two sectors most likely to move this week with the specific catalyst for each. Add one stock to watch with ticker and the reason it matters, anchored to a number.
 
-        Post 3 — The Calendar Risk (max 280 characters):
+        Post 3 — The Calendar Risk (max 250 characters):
         Identify the single most important event on the macro calendar this week — name it, date it, and state what the market is pricing in. Frame the asymmetric outcome: what happens to the ASX if it surprises in either direction.
         """
     }
