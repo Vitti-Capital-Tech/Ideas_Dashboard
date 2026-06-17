@@ -27,6 +27,31 @@ def parse_thread_posts(content: str) -> list[str]:
     return posts
 
 
+def _sanitize_cashtags(text: str) -> str:
+    """
+    Ensures a post contains at most one cashtag. If multiple cashtags are present,
+    keep the first cashtag as-is and remove the leading '$' from subsequent cashtags
+    so they are not interpreted as cashtags by the X API.
+    """
+    # Find all cashtags like $SYMBOL or $SYMB.123
+    matches = re.findall(r"\$[A-Za-z0-9_.]+", text)
+    if len(matches) <= 1:
+        return text
+
+    # Replace subsequent cashtags by removing the leading '$'
+    count = 0
+
+    def _repl(m):
+        nonlocal count
+        count += 1
+        val = m.group(0)
+        if count == 1:
+            return val
+        return val[1:]
+
+    return re.sub(r"\$[A-Za-z0-9_.]+", _repl, text)
+
+
 def post_thread_to_x(posts: list[str]) -> list[str]:
     """
     Posts a list of strings as a threaded reply to X (Twitter) using API v2.
@@ -47,7 +72,12 @@ def post_thread_to_x(posts: list[str]) -> list[str]:
     url = "https://api.twitter.com/2/tweets"
 
     for i, post_text in enumerate(posts):
-        payload = {"text": post_text}
+        # Sanitize cashtags to avoid X API "maximum of one cashtag" errors
+        sanitized_text = _sanitize_cashtags(post_text)
+        if sanitized_text != post_text:
+            print(f"⚠️ Multiple cashtags detected in post {i+1}; sanitized to avoid API error.")
+
+        payload = {"text": sanitized_text}
         
         # If it's a thread (subsequent posts), reply to the previous tweet
         if previous_tweet_id:
