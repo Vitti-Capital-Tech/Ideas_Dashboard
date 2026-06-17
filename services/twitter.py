@@ -3,6 +3,11 @@ import re
 import json
 import requests
 from requests_oauthlib import OAuth1
+import time
+from dotenv import load_dotenv
+
+
+load_dotenv()
 
 # Use same Sydney Timezone from config if imported, else fallback
 try:
@@ -74,27 +79,88 @@ def post_thread_to_x(posts: list[str]) -> list[str]:
     for i, post_text in enumerate(posts):
         # Sanitize cashtags to avoid X API "maximum of one cashtag" errors
         sanitized_text = _sanitize_cashtags(post_text)
+
+        # Remove hidden unicode characters that can sometimes cause API issues
+        sanitized_text = re.sub(r'[\u200b\u200c\u200d\ufeff]', '', sanitized_text)
+
         if sanitized_text != post_text:
             print(f"⚠️ Multiple cashtags detected in post {i+1}; sanitized to avoid API error.")
 
         payload = {"text": sanitized_text}
-        
+
         # If it's a thread (subsequent posts), reply to the previous tweet
         if previous_tweet_id:
-            payload["reply"] = {"in_reply_to_tweet_id": previous_tweet_id}
+            payload["reply"] = {
+                "in_reply_to_tweet_id": previous_tweet_id
+            }
 
         try:
-            response = requests.post(url, json=payload, auth=auth)
+            print("\n" + "=" * 80)
+            print(f"🚀 Posting Tweet {i+1}/{len(posts)}")
+            print("=" * 80)
+
+            print(f"Tweet Length: {len(sanitized_text)}")
+            print(f"Tweet Content:\n{repr(sanitized_text)}")
+
+            if previous_tweet_id:
+                print(f"🔗 Replying To Tweet ID: {previous_tweet_id}")
+
+            print("Payload:")
+            print(json.dumps(payload, indent=2))
+
+            response = requests.post(
+                url,
+                json=payload,
+                auth=auth,
+                timeout=30
+            )
+
+            print(f"Response Status: {response.status_code}")
+            print(f"Response Body: {response.text}")
+
             response.raise_for_status()
+
             res_data = response.json()
+
+            print("Parsed Response:")
+            print(json.dumps(res_data, indent=2))
+
             tweet_id = res_data["data"]["id"]
+
+            print(f"Tweet ID Returned: {tweet_id}")
+            print(f"Tweet ID Type: {type(tweet_id)}")
+
             tweet_ids.append(tweet_id)
+
             print(f"✅ Posted tweet {i+1}/{len(posts)} to X. ID: {tweet_id}")
+
             previous_tweet_id = tweet_id
-        except Exception as e:
-            print(f"❌ Failed to post tweet {i+1} to X: {e}")
-            if 'response' in locals() and response is not None:
-                print(f"Response: {response.text}")
+
+            # Give X a few seconds to register the tweet before replying
+            if i < len(posts) - 1:
+                print("⏳ Waiting 3 seconds before next thread post...")
+                time.sleep(3)
+
+        except requests.exceptions.HTTPError as e:
+            print(f"❌ HTTP Error posting tweet {i+1}: {e}")
+
+            if response is not None:
+                print(f"Status Code: {response.status_code}")
+                print(f"Headers: {dict(response.headers)}")
+                print(f"Response Body: {response.text}")
+
+            print("Failed Payload:")
+            print(json.dumps(payload, indent=2))
             break
 
+        except Exception as e:
+            print(f"❌ Unexpected error posting tweet {i+1}: {e}")
+
+            print("Failed Payload:")
+            print(json.dumps(payload, indent=2))
+
+            if 'response' in locals() and response is not None:
+                print(f"Response Body: {response.text}")
+
+            break
     return tweet_ids
