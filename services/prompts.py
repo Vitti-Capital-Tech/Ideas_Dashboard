@@ -34,7 +34,7 @@ def build_daily_prompt(today_str: str, market_overview_text, metals_data):
 
         Write a 3-post X (Twitter) thread summarising today's ASX session. Strict rules for all posts:
         - No emojis or exclamation marks.
-        - Include at most one cashtag (e.g., $BHP) and 1-2 high-visibility professional hashtags at the end of each post (e.g., #ASX, #ausbiz, #stocks).
+        - Include 1-2 high-visibility professional hashtags at the end of each post (e.g., #ASX, #ausbiz, #stocks). Do not include any cashtags.
         - No "The ASX" or time-based openers like "Today".
         - Every post must contain at least one specific number with units.
         - Sharp and data-driven — confident, specific, and compressed.
@@ -86,7 +86,7 @@ def build_monthly_prompt(today_str: str, market_overview_text):
 
         Write a 3-post X (Twitter) thread summarising the month's ASX performance. Strict rules for all posts:
         - No emojis or exclamation marks.
-        - Include at most one cashtag (e.g., $BHP) and 1-2 high-visibility professional hashtags at the end of each post (e.g., #ASX, #ausbiz, #finance).
+        - Include 1-2 high-visibility professional hashtags at the end of each post (e.g., #ASX, #ausbiz, #finance). Do not include any cashtags.
         - No "This month" or time-based openers.
         - Every post must contain at least one specific number with units.
         - Sharp and data-driven — confident, specific, and compressed.
@@ -132,7 +132,7 @@ def build_morning_prompt(today_str: str):
 
         Write a 3-post X (Twitter) thread setting up the week ahead on the ASX. Strict rules for all posts:
         - No emojis or exclamation marks.
-        - Include at most one cashtag (e.g., $BHP) and 1-2 high-visibility professional hashtags at the end of each post (e.g., #ASX, #ausbiz, #investing).
+        - Include 1-2 high-visibility professional hashtags at the end of each post (e.g., #ASX, #ausbiz, #investing). Do not include any cashtags.
         - No "This week" or time-based openers.
         - Every post must contain at least one specific number with units.
         - Sharp and data-driven — confident, specific, and compressed.
