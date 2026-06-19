@@ -333,6 +333,10 @@ def fetch_trending_finance_news(count=8, within_hours=48):
         "https://news.google.com/rss/search?q=Australia+ASX200+stock+market+trading+when:2d&hl=en-AU&gl=AU&ceid=AU:en",
         "https://news.google.com/rss/search?q=Reserve+Bank+of+Australia+RBA+interest+rates+economy+when:2d&hl=en-AU&gl=AU&ceid=AU:en",
         "https://news.google.com/rss/search?q=global+stock+markets+S%26P500+Wall+Street+when:2d&hl=en-US&gl=US&ceid=US:en",
+        # African Finance/Business
+        "https://news.google.com/rss/search?q=Africa+finance+economy+business+investment+when:2d&hl=en-US&gl=US&ceid=US:en",
+        "https://news.google.com/rss/search?q=Africa+stock+exchange+markets+banking+finance+when:2d&hl=en-US&gl=US&ceid=US:en",
+        "https://news.google.com/rss/search?q=Africa+banking+fintech+investment+economy+when:2d&hl=en-US&gl=US&ceid=US:en",
     ]
 
     cutoff = datetime.now(timezone.utc) - timedelta(hours=within_hours)
@@ -363,7 +367,7 @@ def fetch_trending_finance_news(count=8, within_hours=48):
                     "excerpt": desc[:400],
                     "url": link,
                     "source_type": "news",
-                    "region": "Australia" if "AU:en" in feed_url or "Australia" in feed_url else "Global",
+                    "region": "Australia" if "AU:en" in feed_url or "Australia" in feed_url else ("Africa" if "Africa" in feed_url else "Global"),
                     "published_at": pub.isoformat() if pub else None,
                 })
         except Exception:
@@ -394,6 +398,8 @@ def fetch_trending_tech_news(count=6, within_hours=48):
         "https://news.google.com/rss/search?q=Australia+commodities+iron+ore+gold+trading+when:2d&hl=en-AU&gl=AU&ceid=AU:en",
         "https://news.google.com/rss/search?q=forex+AUD+USD+currency+trading+markets+when:2d&hl=en-US&gl=US&ceid=US:en",
         "https://news.google.com/rss/search?q=crypto+Bitcoin+algorithmic+trading+quant+when:2d&hl=en-US&gl=US&ceid=US:en",
+        # African tech/innovation
+        "https://news.google.com/rss/search?q=Africa+tech+startups+innovation+when:2d&hl=en-US&gl=US&ceid=US:en",
     ]
 
     cutoff = datetime.now(timezone.utc) - timedelta(hours=within_hours)
@@ -423,7 +429,7 @@ def fetch_trending_tech_news(count=6, within_hours=48):
                     "excerpt": desc[:400],
                     "url": link,
                     "source_type": "tech",
-                    "region": "Australia" if "AU:en" in feed_url or "Australia" in feed_url else "Global",
+                    "region": "Australia" if "AU:en" in feed_url or "Australia" in feed_url else ("Africa" if "Africa" in feed_url else "Global"),
                     "published_at": pub.isoformat() if pub else None,
                 })
         except Exception:

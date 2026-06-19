@@ -42,6 +42,8 @@
   --tag-hybrid-fg: #f9a8d4;
   --tag-au: rgba(45, 212, 191, 0.12);
   --tag-au-fg: #5eead4;
+  --tag-africa: rgba(245, 158, 11, 0.12);
+  --tag-africa-fg: #fb923c;
 
   --border-radius: 14px;
   --radius-sm: 8px;
@@ -409,6 +411,11 @@ h4 {
 .badge-au {
   background: var(--tag-au);
   color: var(--tag-au-fg);
+}
+
+.badge-africa {
+  background: var(--tag-africa);
+  color: var(--tag-africa-fg);
 }
 
 .badge-global {

@@ -28,10 +28,13 @@ const sourceBadge = (src) => {
 };
 
 const regionBadge = (region) => {
-  const isAU = region?.toLowerCase().includes('aus');
-  return isAU
-    ? { cls: 'badge-au', icon: <MapPin size={10} />, label: 'Australia' }
-    : { cls: 'badge-global', icon: <Globe size={10} />, label: 'Global' };
+  const rLower = region?.toLowerCase() || '';
+  if (rLower.includes('aus')) {
+    return { cls: 'badge-au', icon: <MapPin size={10} />, label: 'Australia' };
+  } else if (rLower.includes('africa')) {
+    return { cls: 'badge-africa', icon: <MapPin size={10} />, label: 'Africa' };
+  }
+  return { cls: 'badge-global', icon: <Globe size={10} />, label: 'Global' };
 };
 
 /* ─── Skeleton Loader ─────────────────────────────────────────── */
