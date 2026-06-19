@@ -21,7 +21,7 @@
 | Function | Behavior |
 |----------|----------|
 | `fetch_raindrop_bookmarks(within_days=5, max_items=5)` | GET last 50 raindrops sorted newest-first; skip IDs in `web/used_bookmarks.txt`; skip items older than `within_days`; split into `pinned[]` + `recent[]`; return `(pinned + recent)[:max_items]`. |
-| `fetch_trending_finance_news()` / `fetch_trending_tech_news()` | Google News RSS-style URLs; dedupe by title; respect recency window. |
+| `fetch_trending_finance_news()` / `fetch_trending_tech_news()` | Google News RSS-style URLs (covering Australia, Global, and Africa); respects recency window. Retrieves feeds separately and interleaves items (round-robin) before deduping/capping to prevent earlier feeds from crowding out others. |
 | `pick_diverse_web_anchors(finance, tech, count)` | Alternate between finance/tech pools + dedupe keys; used to fill gap when Raindrop returns fewer than 5 items. |
 | `attach_cross_verification(anchors, external_items, per_anchor)` | Score token overlap; attach up to `per_anchor` external items to each anchor; fill from pool if weak overlap. |
 | `dedupe_source_list(items)` | Dedupe by URL or title before sending to Claude. |
@@ -141,6 +141,7 @@ Claude receives the instruction: **"Anchor 1 → Idea 1, Anchor 2 → Idea 2… 
 
 - Design tokens, glass cards, skeleton shimmer, date pills, scrollbars, and layout utilities.
 - Added custom navbar tab classes (`.tab-bar`, `.tab-btn`, `.tab-btn.active`).
+- Added Africa tag CSS variables and badge styling (`.badge-africa`).
 
 ---
 
@@ -168,7 +169,7 @@ Minimal shape stored in logs (exact fields may vary by model run):
       { "source_type": "raindrop|news|tech|web", "title": "string", "url": "string" }
     ]
   },
-  "region": "Australia|Global|Mixed",
+  "region": "Australia|Global|Africa|Mixed",
   "source_type": "raindrop|news|hybrid",
   "content": {
     "format": "1-pager",

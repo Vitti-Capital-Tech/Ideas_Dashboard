@@ -20,7 +20,7 @@ The **Vitti Ideas Engine** produces **up to five independent content ideas per w
 
 1. **Source layer**
    - **Raindrop REST API:** fetch last 50 bookmarks (sorted newest first); filter for last 5 days; split into pinned + recent; cap at 5 total (pinned first).
-   - **RSS aggregation:** separate finance and tech query feeds (Australia + global mix).
+   - **RSS aggregation:** separate finance and tech query feeds (Australia + global + Africa mix).
    - **Market Scrapers:** scrapes ASX market data and ABC Bullion metal prices (AUD) via BeautifulSoup / Selenium Web Driver.
    - **Hybrid fill-up:** if Raindrop yields _N_ < 5 items, `pick_diverse_web_anchors` selects `5 - N` diverse web stories to fill the gap.
    - **Cross-verification:** each anchor row gets 1-2 related rows from the external pool (token overlap + fallback diversity).
