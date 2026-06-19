@@ -340,9 +340,10 @@ def fetch_trending_finance_news(count=8, within_hours=48):
     ]
 
     cutoff = datetime.now(timezone.utc) - timedelta(hours=within_hours)
-    items = []
+    feed_items_lists = []
 
     for feed_url in feeds:
+        feed_items = []
         try:
             resp = requests.get(feed_url, timeout=30)
             if resp.status_code != 200 or not resp.text:
@@ -362,7 +363,7 @@ def fetch_trending_finance_news(count=8, within_hours=48):
                     continue
                 if not title:
                     continue
-                items.append({
+                feed_items.append({
                     "title": title,
                     "excerpt": desc[:400],
                     "url": link,
@@ -372,6 +373,15 @@ def fetch_trending_finance_news(count=8, within_hours=48):
                 })
         except Exception:
             continue
+        feed_items_lists.append(feed_items)
+
+    # Interleave items from all feeds (round-robin)
+    items = []
+    max_len = max(len(lst) for lst in feed_items_lists) if feed_items_lists else 0
+    for idx in range(max_len):
+        for lst in feed_items_lists:
+            if idx < len(lst):
+                items.append(lst[idx])
 
     # De-dupe by title
     seen = set()
@@ -403,8 +413,9 @@ def fetch_trending_tech_news(count=6, within_hours=48):
     ]
 
     cutoff = datetime.now(timezone.utc) - timedelta(hours=within_hours)
-    items = []
+    feed_items_lists = []
     for feed_url in feeds:
+        feed_items = []
         try:
             resp = requests.get(feed_url, timeout=30)
             if resp.status_code != 200 or not resp.text:
@@ -424,7 +435,7 @@ def fetch_trending_tech_news(count=6, within_hours=48):
                     continue
                 if not title:
                     continue
-                items.append({
+                feed_items.append({
                     "title": title,
                     "excerpt": desc[:400],
                     "url": link,
@@ -434,6 +445,15 @@ def fetch_trending_tech_news(count=6, within_hours=48):
                 })
         except Exception:
             continue
+        feed_items_lists.append(feed_items)
+
+    # Interleave items from all feeds (round-robin)
+    items = []
+    max_len = max(len(lst) for lst in feed_items_lists) if feed_items_lists else 0
+    for idx in range(max_len):
+        for lst in feed_items_lists:
+            if idx < len(lst):
+                items.append(lst[idx])
 
     seen = set()
     deduped = []
