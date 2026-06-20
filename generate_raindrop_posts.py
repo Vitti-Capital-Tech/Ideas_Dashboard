@@ -924,18 +924,33 @@ if __name__ == "__main__":
 
     # -- 1. Raindrop: pinned bookmarks saved in the last 5 days ---------------
     print("\nFetching Raindrop bookmarks (pinned, last 5 days)...")
-    raindrop_items = fetch_raindrop_bookmarks(within_days=5, max_items=IDEAS_PER_DAY)
+    raindrop_items = fetch_raindrop_bookmarks(within_days=5, max_items=10) # fetch up to 10 to cover both pools
     print(f"Found {len(raindrop_items)} qualifying Raindrop item(s) (pinned + <=5 days old).")
 
-    # Enrich excerpts for Raindrop items that have no snippet
+    # Enrich excerpts and classify Raindrop items by region
     for bm in raindrop_items:
         bm["source_type"] = "raindrop"
         if not bm.get("excerpt") and bm.get("url"):
             snip = fetch_url_snippet(bm["url"])
             if snip:
                 bm["excerpt"] = snip[:500]
+        
+        # Check URL, title, or excerpt for Africa clues
+        url_lower = (bm.get("url") or "").lower()
+        title_lower = (bm.get("title") or "").lower()
+        excerpt_lower = (bm.get("excerpt") or "").lower()
+        if "africa" in url_lower or "africa" in title_lower or "africa" in excerpt_lower:
+            bm["region"] = "Africa"
+        else:
+            if "australia" in url_lower or "australia" in title_lower or "asx" in url_lower or "asx" in title_lower:
+                bm["region"] = "Australia"
+            else:
+                bm["region"] = "Global"
 
-    # -- 2. Live web RSS -- always fetch for cross-verification + potential fill
+    raindrop_africa = [bm for bm in raindrop_items if bm.get("region") == "Africa"]
+    raindrop_au_global = [bm for bm in raindrop_items if bm.get("region") != "Africa"]
+
+    # -- 2. Live web RSS -- always fetch for cross-verification + potential fill -----
     print("\nFetching trending finance news via RSS...")
     finance_items = fetch_trending_finance_news(count=14, within_hours=48)
     print(f"Found {len(finance_items)} finance items.")
@@ -950,98 +965,134 @@ if __name__ == "__main__":
         print("[error] No web sources available (RSS empty). Cannot cross-verify. Exiting.")
         exit(1)
 
-    # -- 3. Build anchor list -- Raindrop first, top up with web if needed ----
-    n_rain = len(raindrop_items)
-    deficit = IDEAS_PER_DAY - n_rain  # how many web fill-ins we need
+    web_africa = [x for x in external_items if x.get("region") == "Africa"]
+    web_au_global = [x for x in external_items if x.get("region") != "Africa"]
 
-    used_ids = []        # only Raindrop IDs get marked as used
-    web_fill_items = []  # web items used as anchors (not marked used)
+    # -- 3a. Build anchor list for AU/Global -----------------------------------------
+    n_rain_au_global = len(raindrop_au_global)
+    deficit_au_global = IDEAS_PER_DAY - n_rain_au_global
 
-    if deficit > 0:
-        # Pick diverse web stories to fill the gap
-        rain_urls = {bm.get("url") or bm.get("title", "") for bm in raindrop_items}
-        candidate_pool = [x for x in external_items
-                          if (x.get("url") or x.get("title", "")) not in rain_urls]
-        web_fill_items = pick_diverse_web_anchors(
-            [x for x in candidate_pool if x.get("source_type") == "news"],
-            [x for x in candidate_pool if x.get("source_type") == "tech"],
-            count=deficit,
+    web_fill_au_global = []
+    if deficit_au_global > 0:
+        rain_urls_au_global = {bm.get("url") or bm.get("title", "") for bm in raindrop_au_global}
+        candidate_pool_au_global = [x for x in web_au_global
+                                    if (x.get("url") or x.get("title", "")) not in rain_urls_au_global]
+        web_fill_au_global = pick_diverse_web_anchors(
+            [x for x in candidate_pool_au_global if x.get("source_type") == "news"],
+            [x for x in candidate_pool_au_global if x.get("source_type") == "tech"],
+            count=deficit_au_global,
         )
-        if len(web_fill_items) < deficit:
-            # If still short, just take whatever is available
-            web_fill_items = candidate_pool[:deficit]
-        print(f"[info] Filling {deficit} slot(s) with web anchors "
-              f"({len(web_fill_items)} selected).")
+        if len(web_fill_au_global) < deficit_au_global:
+            web_fill_au_global = candidate_pool_au_global[:deficit_au_global]
+        print(f"[info] Filling {deficit_au_global} AU/Global slot(s) with web anchors ({len(web_fill_au_global)} selected).")
 
-    # Combined anchor list: Raindrop items + web fill-ins
-    anchor_items = raindrop_items + web_fill_items
+    anchor_items_au_global = raindrop_au_global + web_fill_au_global
 
-    if not anchor_items:
-        print("[error] No anchors available at all (Raindrop empty, web RSS also empty).")
+    # -- 3b. Build anchor list for Africa --------------------------------------------
+    n_rain_africa = len(raindrop_africa)
+    deficit_africa = IDEAS_PER_DAY - n_rain_africa
+
+    web_fill_africa = []
+    if deficit_africa > 0:
+        rain_urls_africa = {bm.get("url") or bm.get("title", "") for bm in raindrop_africa}
+        candidate_pool_africa = [x for x in web_africa
+                                 if (x.get("url") or x.get("title", "")) not in rain_urls_africa]
+        web_fill_africa = pick_diverse_web_anchors(
+            [x for x in candidate_pool_africa if x.get("source_type") == "news"],
+            [x for x in candidate_pool_africa if x.get("source_type") == "tech"],
+            count=deficit_africa,
+        )
+        if len(web_fill_africa) < deficit_africa:
+            web_fill_africa = candidate_pool_africa[:deficit_africa]
+        print(f"[info] Filling {deficit_africa} Africa slot(s) with web anchors ({len(web_fill_africa)} selected).")
+
+    anchor_items_africa = raindrop_africa + web_fill_africa
+
+    if not anchor_items_au_global and not anchor_items_africa:
+        print("[error] No anchors available at all for either AU/Global or Africa.")
         exit(1)
 
-    # IDs to mark used -- Raindrop only
+    # Accumulate all Raindrop IDs to mark as used
     used_ids = [bm.get("id") for bm in raindrop_items if bm.get("id")]
 
-    # Set source mode
-    source_mode = "raindrop_plus_web" if n_rain > 0 else "web_only"
-    print(f"\n[info] Source mode: {source_mode} "
-          f"| Raindrop anchors: {n_rain} | Web fill-ins: {len(web_fill_items)}")
-
-    # Attach cross-verification sources (from the external pool) to every anchor
-    anchor_url_set = {a.get("url") or a.get("title") for a in anchor_items}
-    verify_pool = dedupe_source_list(
-        [x for x in external_items if (x.get("url") or x.get("title")) not in anchor_url_set]
-        + external_items
+    # Attach cross-verification sources to every anchor
+    # AU/Global
+    anchor_url_set_au_global = {a.get("url") or a.get("title") for a in anchor_items_au_global}
+    verify_pool_au_global = dedupe_source_list(
+        [x for x in web_au_global if (x.get("url") or x.get("title")) not in anchor_url_set_au_global]
+        + web_au_global
     )
-    anchor_items = attach_cross_verification(anchor_items, verify_pool, per_anchor=2)
+    anchor_items_au_global = attach_cross_verification(anchor_items_au_global, verify_pool_au_global, per_anchor=2)
 
-    # Full source list passed to Claude (anchors + all web context for breadth)
-    sources = dedupe_source_list(list(anchor_items) + external_items)
-
-    if not sources:
-        print("[error] No real context available. Exiting.")
-        exit(0)
-
-    # -- 4. Generate up to IDEAS_PER_DAY connected ideas via Claude -----------
-    print(f"\nGenerating today's connected idea pack (up to {IDEAS_PER_DAY}) "
-          f"[mode={source_mode}]...")
-    raw = generate_daily_connected_ideas(
-        sources, ideas_per_day=IDEAS_PER_DAY, source_mode=source_mode
+    # Africa
+    anchor_url_set_africa = {a.get("url") or a.get("title") for a in anchor_items_africa}
+    verify_pool_africa = dedupe_source_list(
+        [x for x in web_africa if (x.get("url") or x.get("title")) not in anchor_url_set_africa]
+        + web_africa
     )
+    anchor_items_africa = attach_cross_verification(anchor_items_africa, verify_pool_africa, per_anchor=2)
 
-    used_fallback = False
-    if not raw and FALLBACK_ON_LLM_FAILURE:
-        used_fallback = True
-        print("[warn] Using fallback idea generator (FALLBACK_ON_LLM_FAILURE=1).")
-        raw = fallback_connected_ideas(sources, ideas_per_day=IDEAS_PER_DAY)
+    # -- 4a. Generate AU/Global connected ideas via Claude ---------------------------
+    ideas_au_global = []
+    used_fallback_au_global = False
+    if anchor_items_au_global:
+        source_mode_au_global = "raindrop_plus_web" if n_rain_au_global > 0 else "web_only"
+        print(f"\n[info] AU/Global - Source mode: {source_mode_au_global} | Raindrop: {n_rain_au_global} | Web: {len(web_fill_au_global)}")
+        sources_au_global = dedupe_source_list(list(anchor_items_au_global) + web_au_global)
+        
+        raw_au_global = generate_daily_connected_ideas(
+            sources_au_global, ideas_per_day=len(anchor_items_au_global), source_mode=source_mode_au_global
+        )
+        if not raw_au_global and FALLBACK_ON_LLM_FAILURE:
+            used_fallback_au_global = True
+            print("[warn] Using fallback idea generator for AU/Global (FALLBACK_ON_LLM_FAILURE=1).")
+            raw_au_global = fallback_connected_ideas(sources_au_global, ideas_per_day=len(anchor_items_au_global))
 
-    all_ideas_structured = parse_and_filter_ideas(raw)
-    
-    # Force region tag to match the anchor's region for predictability
-    anchor_regions = {a.get("url"): a.get("region") for a in anchor_items if a.get("url")}
-    for idea in all_ideas_structured:
-        anc_url = idea.get("anchor_source")
-        if anc_url and anc_url in anchor_regions:
-            idea["region"] = anchor_regions[anc_url]
-            
-    all_ideas_structured = all_ideas_structured[:IDEAS_PER_DAY]
-    n_ideas = len(all_ideas_structured)
-    print(f"\nTotal ideas after filtering: {n_ideas} (target {IDEAS_PER_DAY})")
+        ideas_au_global = parse_and_filter_ideas(raw_au_global)
+        
+        # Force region mapping for AU/Global
+        anchor_regions_au_global = {a.get("url"): a.get("region") for a in anchor_items_au_global if a.get("url")}
+        for idea in ideas_au_global:
+            anc_url = idea.get("anchor_source")
+            if anc_url and anc_url in anchor_regions_au_global:
+                idea["region"] = anchor_regions_au_global[anc_url]
+        ideas_au_global = ideas_au_global[:IDEAS_PER_DAY]
 
-    # Allow fewer than IDEAS_PER_DAY — 5 is a cap, not a hard minimum.
-    # Only warn; never exit because we collected fewer than expected.
-    if n_ideas < IDEAS_PER_DAY and not used_fallback:
-        print(f"[warn] Collected {n_ideas}/{IDEAS_PER_DAY} ideas — "
-              "proceeding with whatever was gathered.")
+    # -- 4b. Generate Africa connected ideas via Claude ------------------------------
+    ideas_africa = []
+    used_fallback_africa = False
+    if anchor_items_africa:
+        source_mode_africa = "raindrop_plus_web" if n_rain_africa > 0 else "web_only"
+        print(f"\n[info] Africa - Source mode: {source_mode_africa} | Raindrop: {n_rain_africa} | Web: {len(web_fill_africa)}")
+        sources_africa = dedupe_source_list(list(anchor_items_africa) + web_africa)
+        
+        raw_africa = generate_daily_connected_ideas(
+            sources_africa, ideas_per_day=len(anchor_items_africa), source_mode=source_mode_africa
+        )
+        if not raw_africa and FALLBACK_ON_LLM_FAILURE:
+            used_fallback_africa = True
+            print("[warn] Using fallback idea generator for Africa (FALLBACK_ON_LLM_FAILURE=1).")
+            raw_africa = fallback_connected_ideas(sources_africa, ideas_per_day=len(anchor_items_africa))
+
+        ideas_africa = parse_and_filter_ideas(raw_africa)
+        
+        # Force region to Africa for all parsed ideas in this category
+        for idea in ideas_africa:
+            idea["region"] = "Africa"
+        ideas_africa = ideas_africa[:IDEAS_PER_DAY]
+
+    # Combine results
+    all_ideas_structured = ideas_au_global + ideas_africa
+    used_fallback = used_fallback_au_global or used_fallback_africa
+
+    print(f"\nTotal combined ideas: {len(all_ideas_structured)} (AU/Global: {len(ideas_au_global)}, Africa: {len(ideas_africa)})")
 
     if not all_ideas_structured:
         print("[error] No ideas passed the quality filter. Exiting.")
         exit(0)
 
     if used_fallback:
-        print("[warn] Fallback output is for debugging only. "
-              "Skipping Google Doc write, log write, and bookmark consumption.")
+        print("[warn] Fallback output is for debugging only. Skipping Google Doc write, log write, and bookmark consumption.")
         exit(1)
 
     # -- 5. Write to Google Docs ----------------------------------------------
