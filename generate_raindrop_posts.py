@@ -682,7 +682,7 @@ GLOBAL QUALITY RULES:
 - Cross-verification is mandatory: each idea must explicitly state how the cross_verify item confirms, contradicts, or narrows the anchor angle.
 - Context: tight research synthesis — what the anchor says + what the cross_verify adds. Do not pad.
 - Draft (markdown): publishable LinkedIn post, 150-280 words. Professional, thought-leadership tone. No clickbait. No invented statistics.
-- Australian finance lens where relevant; global where not.
+- Australian or African finance lens where relevant; global where not.
 - Each idea MUST use a DIFFERENT LinkedIn format (no repeats across the {ideas_per_day} ideas).
 
 LINKEDIN FORMATS (use each at most once):
@@ -715,7 +715,7 @@ Schema:
         {{"source_type": "raindrop|news|tech|web", "title": "...", "url": "..."}}
       ]
     }},
-    "region": "Australia|Global|Mixed",
+    "region": "Australia|Global|Africa|Mixed",
     "source_type": "raindrop|news|hybrid",
     "content": {{
       "format": "1-pager",
@@ -1017,6 +1017,14 @@ if __name__ == "__main__":
         raw = fallback_connected_ideas(sources, ideas_per_day=IDEAS_PER_DAY)
 
     all_ideas_structured = parse_and_filter_ideas(raw)
+    
+    # Force region tag to match the anchor's region for predictability
+    anchor_regions = {a.get("url"): a.get("region") for a in anchor_items if a.get("url")}
+    for idea in all_ideas_structured:
+        anc_url = idea.get("anchor_source")
+        if anc_url and anc_url in anchor_regions:
+            idea["region"] = anchor_regions[anc_url]
+            
     all_ideas_structured = all_ideas_structured[:IDEAS_PER_DAY]
     n_ideas = len(all_ideas_structured)
     print(f"\nTotal ideas after filtering: {n_ideas} (target {IDEAS_PER_DAY})")
