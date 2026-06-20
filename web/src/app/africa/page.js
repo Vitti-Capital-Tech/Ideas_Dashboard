@@ -58,7 +58,6 @@ const IdeaCard = ({ index, idea, delay = 0 }) => {
   const [openPage, setOpenPage] = useState(null);
   const [showFormatWhy, setShowFormatWhy] = useState(false);
 
-  // idea can be an object {title, context, angle, source_type, region} or a plain string
   const isObj = idea && typeof idea === 'object';
   const title = isObj ? idea.title : '';
   const context = isObj ? idea.context : '';
@@ -236,7 +235,6 @@ const IdeaCard = ({ index, idea, delay = 0 }) => {
             </div>
           )}
 
-          {/* Title / research: hide when draft exists (avoids repeating the same story as Pager) */}
           {!hasDraft && (
             <>
               <div className="section-label">Title</div>
@@ -343,24 +341,10 @@ const IdeaCard = ({ index, idea, delay = 0 }) => {
   );
 };
 
-/* ─── Empty State ─────────────────────────────────────────────── */
-const EmptyState = ({ icon, msg, onRetry, onRun }) => (
-  <div className="empty-state flex-col items-center gap-4">
-    <div className="empty-icon">{icon}</div>
-    <div className="text-center">
-      <p className="text-muted" style={{ fontSize: '1rem', marginBottom: 12 }}>{msg}</p>
-      <div className="flex gap-3 justify-center">
-        {onRetry && <button onClick={onRetry} className="btn-secondary">Reload</button>}
-        {onRun && <button onClick={onRun} className="btn-primary">Run Pipeline</button>}
-      </div>
-    </div>
-  </div>
-);
-
 /* ─── Stats Bar ───────────────────────────────────────────────── */
 const StatsBar = ({ ideas }) => {
   const items = [
-    { label: 'Content Ideas', count: ideas?.length || 0, color: 'var(--accent)' },
+    { label: 'Africa Content Ideas', count: ideas?.length || 0, color: 'var(--accent)' },
   ];
   return (
     <div className="flex gap-4 flex-wrap">
@@ -375,7 +359,7 @@ const StatsBar = ({ ideas }) => {
 };
 
 /* ─── Main Page ───────────────────────────────────────────────── */
-export default function Home() {
+export default function AfricaHome() {
   const [results, setResults] = useState({ ideas: null });
   const [previousIdeas, setPreviousIdeas] = useState(null);
   const [previousDate, setPreviousDate] = useState(null);
@@ -394,7 +378,6 @@ export default function Home() {
       const res = await fetch(url);
       const data = await res.json();
 
-      // Handle both old (data) and new (posts / ideas) key schemas
       const ideasRaw = data.ideas?.ideas || data.ideas?.data || null;
       const prevRaw = data.previousIdeas?.ideas || data.previousIdeas?.data || null;
 
@@ -428,12 +411,12 @@ export default function Home() {
     document.body.classList.toggle('light-theme', next === 'light');
   };
 
-  // Filter out Africa for the home page (AU/Global)
+  // Filter ONLY Africa for this page
   const filteredIdeas = results.ideas
-    ? results.ideas.filter(idea => idea.region?.toLowerCase() !== 'africa')
+    ? results.ideas.filter(idea => idea.region?.toLowerCase() === 'africa')
     : null;
   const filteredPreviousIdeas = previousIdeas
-    ? previousIdeas.filter(idea => idea.region?.toLowerCase() !== 'africa')
+    ? previousIdeas.filter(idea => idea.region?.toLowerCase() === 'africa')
     : null;
 
   // Calculate counts for dynamic badges
@@ -554,7 +537,7 @@ export default function Home() {
         className="flex items-center justify-between mb-6 flex-wrap gap-4"
       >
         <div className="tab-bar">
-          <Link href="/" className="tab-btn active" style={{ textDecoration: 'none' }}>
+          <Link href="/" className="tab-btn" style={{ textDecoration: 'none' }}>
             <Lightbulb size={15} />
             AU/Global Ideas
             {auGlobalCount > 0 && (
@@ -563,7 +546,7 @@ export default function Home() {
               </span>
             )}
           </Link>
-          <Link href="/africa" className="tab-btn" style={{ textDecoration: 'none' }}>
+          <Link href="/africa" className="tab-btn active" style={{ textDecoration: 'none' }}>
             <Globe size={15} />
             Africa Ideas
             {africaCount > 0 && (
@@ -601,9 +584,9 @@ export default function Home() {
             style={{ position: 'relative', zIndex: 1 }}
           >
             <div style={{ marginBottom: 24 }}>
-              <h2 style={{ marginBottom: 4 }}>AU/Global Ideas</h2>
+              <h2 style={{ marginBottom: 4 }}>African Finance & News Ideas</h2>
               <p className="text-muted" style={{ fontSize: '0.85rem' }}>
-                Connected finance ideas/day for Australia and Global markets, grounded in bookmarks + trending news
+                Connected finance ideas/day for African markets, grounded in bookmarks + trending news
               </p>
             </div>
 
@@ -634,12 +617,12 @@ export default function Home() {
                   <div>
                     <p style={{ fontWeight: 600, color: 'var(--foreground)', marginBottom: 4 }}>
                       {selectedDate === todayStr || !selectedDate
-                        ? `Today's AU/Global ideas haven't been generated yet (${todayStr}).`
-                        : `No AU/Global ideas found for ${selectedDate}.`}
+                        ? `Today's African ideas haven't been generated yet (${todayStr}).`
+                        : `No African ideas found for ${selectedDate}.`}
                     </p>
                     {filteredPreviousIdeas?.length > 0 && (
                       <p style={{ fontSize: '0.85rem', color: 'var(--muted)' }}>
-                        In the meantime, here are the last AU/Global ideas from <strong>{previousDate}</strong>.
+                        In the meantime, here are the last African ideas from <strong>{previousDate}</strong>.
                       </p>
                     )}
                   </div>

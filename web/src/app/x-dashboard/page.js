@@ -6,7 +6,7 @@ import Link from 'next/link';
 import {
   Newspaper, CheckCircle, AlertCircle,
   Sun, Moon, Clock, Copy, RefreshCw,
-  Lightbulb, Calendar, Sunset, X
+  Lightbulb, Calendar, Sunset, X, Globe
 } from 'lucide-react';
 import { copyToClipboard } from '@/utils/clipboard';
 
@@ -158,6 +158,22 @@ export default function XDashboard() {
   const [error, setError] = useState(null);
   const [theme, setTheme] = useState('dark');
 
+  const [ideasCount, setIdeasCount] = useState({ auGlobal: 0, africa: 0 });
+
+  const fetchIdeasCounts = async (date = null) => {
+    try {
+      const url = date ? `/api/cache?date=${date}` : '/api/cache';
+      const res = await fetch(url);
+      const data = await res.json();
+      const ideasRaw = data.ideas?.ideas || data.ideas?.data || [];
+      const auGlobal = ideasRaw.filter(idea => idea.region?.toLowerCase() !== 'africa').length;
+      const africa = ideasRaw.filter(idea => idea.region?.toLowerCase() === 'africa').length;
+      setIdeasCount({ auGlobal, africa });
+    } catch (err) {
+      console.error('Failed to load ideas for count:', err);
+    }
+  };
+
   /* ── Data Fetching ──── */
   const fetchCache = async (date = null) => {
     setLoading(true);
@@ -172,6 +188,9 @@ export default function XDashboard() {
       if (data.availableDates) setAvailableDates(data.availableDates);
       if (data.selectedDate) setSelectedDate(data.selectedDate);
       if (data.todayStr) setTodayStr(data.todayStr);
+
+      // Fetch ideas count in the background
+      fetchIdeasCounts(date || data.selectedDate);
     } catch (err) {
       console.error('Failed to load X cache:', err);
       setError('Could not fetch generated content logs.');
@@ -308,9 +327,23 @@ export default function XDashboard() {
         <div className="tab-bar">
           <Link href="/" className="tab-btn" style={{ textDecoration: 'none' }}>
             <Lightbulb size={15} />
-            Ideas
+            AU/Global Ideas
+            {ideasCount.auGlobal > 0 && (
+              <span className="badge badge-count" style={{ padding: '1px 6px', fontSize: '0.65rem' }}>
+                {ideasCount.auGlobal}
+              </span>
+            )}
           </Link>
-          <Link href="/x-dashboard" className="tab-btn active" style={{ textDecoration: 'none' }}>
+          <Link href="/africa" className="tab-btn" style={{ textDecoration: 'none' }}>
+            <Globe size={15} />
+            Africa Ideas
+            {ideasCount.africa > 0 && (
+              <span className="badge badge-count" style={{ padding: '1px 6px', fontSize: '0.65rem' }}>
+                {ideasCount.africa}
+              </span>
+            )}
+          </Link>
+          {/* <Link href="/x-dashboard" className="tab-btn active" style={{ textDecoration: 'none' }}>
             <Newspaper size={15} />
             X Content
             {entries?.length > 0 && (
@@ -318,7 +351,7 @@ export default function XDashboard() {
                 {entries.length}
               </span>
             )}
-          </Link>
+          </Link> */}
         </div>
       </motion.div>
 
