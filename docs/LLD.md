@@ -95,7 +95,7 @@ Claude receives the instruction: **"Anchor 1 → Idea 1, Anchor 2 → Idea 2… 
 
 | Function | Behavior |
 |----------|----------|
-| `generate_market_commentary()` | Fetches ASX market overview (scraped via Selenium Chrome Headless) and metal prices; runs Anthropic/Groq to write daily closing commentary and 3-post X thread. |
+| `generate_market_commentary()` | Fetches ASX market overview (scraped via Selenium Chrome Headless) and metal prices; runs Anthropic/Groq to write daily closing commentary and 5-post X thread. |
 | `monthly_summary()` | Scrapes monthly ASX data; runs Anthropic/Groq to write the monthly market report and X thread. Saves log to `web/logs/x_DATE.json`. |
 | `generate_morning_market_commentary()` | Runs Anthropic/Groq to write morning outlook/X thread. |
 | `send_morning_email()` | Helper that triggers the morning market commentary, printing and saving it. |

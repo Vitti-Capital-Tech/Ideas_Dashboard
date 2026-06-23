@@ -20,11 +20,11 @@ except ImportError:
 def parse_thread_posts(content: str) -> list[str]:
     """
     Parses the generated LLM text into separate thread posts.
-    Splits by 'Post 1', 'Post 2', 'Post 3' (case-insensitive).
+    Splits by 'Post X' where X is any number (case-insensitive).
     """
     posts = []
-    # Split by 'Post [1-3]' with optional colon, dash, or spaces
-    parts = re.split(r'(?i)post\s*[1-3][\s\-—:]*', content)
+    # Split by 'Post [0-9]+' with optional colon, dash, or spaces
+    parts = re.split(r'(?i)post\s*[0-9]+[\s\-—:]*', content)
     for part in parts:
         trimmed = part.strip()
         if trimmed:
