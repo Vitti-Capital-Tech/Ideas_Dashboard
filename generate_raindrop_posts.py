@@ -19,7 +19,7 @@ GOOGLE_DOC_ID = os.getenv("IDEAS_DOC_ID")
 # Support both env var names (local .env currently uses CLAUDE_API_KEY).
 ANTHROPIC_API_KEY = os.getenv("ANTHROPIC_API_KEY") or os.getenv("CLAUDE_API_KEY")
 # Use Opus 4.6 by default as requested (can be overridden via ANTHROPIC_MODEL).
-ANTHROPIC_MODEL = os.getenv("ANTHROPIC_MODEL", "claude-opus-4-6")
+ANTHROPIC_MODEL = os.getenv("ANTHROPIC_MODEL", "claude-sonnet-4-6")
 
 anthropic_client = Anthropic(api_key=ANTHROPIC_API_KEY) if ANTHROPIC_API_KEY else None
 
