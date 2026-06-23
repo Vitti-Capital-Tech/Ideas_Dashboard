@@ -88,7 +88,7 @@ def monthly_summary() -> str:
         retry_delay_sec=LLM_RETRY_DELAY_SEC,
     )
     if res:
-        # save_x_to_logs('monthly', res)
+        save_x_to_logs('monthly', res)
         posts = parse_thread_posts(res)
         post_thread_to_x(posts)
     return res
@@ -110,7 +110,7 @@ def send_morning_email():
     today_str = datetime.now(SYDNEY_TZ).strftime("%Y-%m-%d")
     commentary = generate_morning_market_commentary()
     if commentary:
-        # save_x_to_logs('morning', commentary)
+        save_x_to_logs('morning', commentary)
         print(f"📧 Morning commentary sent at {datetime.now(SYDNEY_TZ)}: {commentary}")
         posts = parse_thread_posts(commentary)
         post_thread_to_x(posts)
@@ -184,7 +184,7 @@ def run_scheduler():
             print("🟢 Evening window, generating daily commentary")
             commentary = generate_market_commentary()
             if commentary:
-                # save_x_to_logs('daily', commentary)
+                save_x_to_logs('daily', commentary)
                 print(f"📝 Daily commentary sent at {datetime.now(SYDNEY_TZ)}: {commentary}")
                 posts = parse_thread_posts(commentary)
                 post_thread_to_x(posts)

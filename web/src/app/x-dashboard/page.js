@@ -343,7 +343,7 @@ export default function XDashboard() {
               </span>
             )}
           </Link>
-          {/* <Link href="/x-dashboard" className="tab-btn active" style={{ textDecoration: 'none' }}>
+          <Link href="/x-dashboard" className="tab-btn active" style={{ textDecoration: 'none' }}>
             <Newspaper size={15} />
             X Content
             {entries?.length > 0 && (
@@ -351,7 +351,7 @@ export default function XDashboard() {
                 {entries.length}
               </span>
             )}
-          </Link> */}
+          </Link>
         </div>
       </motion.div>
 

@@ -572,10 +572,10 @@ export default function Home() {
               </span>
             )}
           </Link>
-          {/* <Link href="/x-dashboard" className="tab-btn" style={{ textDecoration: 'none' }}>
+          <Link href="/x-dashboard" className="tab-btn" style={{ textDecoration: 'none' }}>
             <Newspaper size={15} />
             X Content
-          </Link> */}
+          </Link>
         </div>
         <StatsBar ideas={filteredIdeas} />
       </motion.div>
