@@ -34,68 +34,92 @@ def _parse_sector_label(label_text: str):
 def get_metal_prices():
     """
     Fetches metal prices in AUD from ABC Bullion.
-    Uses the direct AJAX feed for better reliability and explicit currency selection.
+    Uses the direct JSON API for high reliability and speed, 
+    with a robust Selenium scraper as a fallback.
     """
-
-    # Currency ID 2 is AUD, 1 is USD.
-    aud_feed_url = f"{ABCBULLION_URL.rstrip('/')}/price/hfeeds?currency_id=2"
-    
+    # 1. Direct JSON API attempt
     try:
-        response = requests.get(aud_feed_url, timeout=10)
-        response.raise_for_status()
-        soup = BeautifulSoup(response.text, "html.parser")
+        headers = {
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
+        }
+        aud_url = f"{ABCBULLION_URL.rstrip('/')}/api/metals/prices/aud"
+        usd_url = f"{ABCBULLION_URL.rstrip('/')}/api/metals/prices/usd"
+        
+        response_aud = requests.get(aud_url, headers=headers, timeout=10)
+        response_aud.raise_for_status()
+        data_aud = response_aud.json()
         
         metals = {}
-        # The feed returns a series of <li> elements
-        for item in soup.find_all("li"):
-            try:
-                h5 = item.find("h5")
-                p = item.find("p")
-                if h5 and p:
-                    title = h5.get_text(strip=True)
-                    value = p.get_text(strip=True)
-                    # Clean up the value (e.g., "$3,614.45/oz " -> "3,614.45/oz")
-                    value = value.replace("$", "").strip()
-                    metals[title] = {
-                        "price": value,
-                        "currency": "AUD"
-                    }
-            except:
-                continue
-        
+        for metal_key, api_key in [("Gold", "gold"), ("Silver", "silver"), ("Platinum", "platinum"), ("Palladium", "palladium")]:
+            price_val = data_aud["prices"][api_key]["ask"]["value"]
+            metals[metal_key] = {
+                "price": f"{price_val:,.2f}/oz",
+                "currency": "AUD"
+            }
+            
+        # Try to get USD prices to calculate FX rate
+        try:
+            response_usd = requests.get(usd_url, headers=headers, timeout=10)
+            response_usd.raise_for_status()
+            data_usd = response_usd.json()
+            gold_usd = data_usd["prices"]["gold"]["ask"]["value"]
+            gold_aud = data_aud["prices"]["gold"]["ask"]["value"]
+            fx_rate = round(gold_usd / gold_aud, 4)
+            metals["FX RATE"] = f"{fx_rate:.4f}"
+        except Exception as fx_err:
+            print(f"⚠️ Could not calculate FX rate from API: {fx_err}")
+            metals["FX RATE"] = "N/A"
+            
         if metals:
-            # Check for FX Rate which is usually in the last li or has a different structure
-            # but in our direct feed test it was just another li.
             return metals
-
+            
     except Exception as e:
-        print(f"⚠️ Direct feed fetch failed: {e}. Falling back to Selenium.")
+        print(f"⚠️ Direct API fetch failed: {e}. Falling back to Selenium.")
 
-    # Fallback to Selenium if direct request fails or returns nothing
+    # 2. Fallback to Selenium
     driver = _create_chrome_driver(headless_arg="--headless")
     try:
         driver.get(ABCBULLION_URL)
-        # Wait for the price element to be populated
-        wait = WebDriverWait(driver, 10)
-        wait.until(EC.presence_of_element_located((By.CSS_SELECTOR, "#hprice li h5")))
+        wait = WebDriverWait(driver, 15)
+        # Wait for the skeleton loaders to be replaced by actual price text (3 p tags inside store/gold link)
+        wait.until(lambda d: len(d.find_elements(By.CSS_SELECTOR, 'a[href*="/store/gold"] p')) >= 3)
         
         soup = BeautifulSoup(driver.page_source, "html.parser")
         metals = {}
-        price_list = soup.select("#hprice li")
-        for item in price_list:
+        for metal_key, metal_name in [("Gold", "gold"), ("Silver", "silver"), ("Platinum", "platinum"), ("Palladium", "palladium")]:
             try:
-                title = item.find("h5").get_text(strip=True)
-                value = item.find("p").get_text(strip=True).replace("$", "").strip()
-                metals[title] = {
-                    "price": value,
-                    "currency": "AUD"
-                }   
-            except:
-                pass
-
-        fx = soup.select_one(".exchangeRate p a")
-        fx_rate = fx.get_text(strip=True) if fx else "N/A"
-        metals["FX RATE"] = fx_rate
+                link = soup.find("a", href=lambda x: x and f"/store/{metal_name}" in x)
+                if link:
+                    ps = link.find_all("p")
+                    if len(ps) >= 3:
+                        price_val = ps[1].get_text(strip=True)
+                        metals[metal_key] = {
+                            "price": f"{price_val}/oz" if "/oz" not in price_val else price_val,
+                            "currency": "AUD"
+                        }
+            except Exception as scrape_err:
+                print(f"⚠️ Failed to scrape {metal_key} in Selenium fallback: {scrape_err}")
+        
+        # Fallback FX rate attempt using API (if it was a temporary scrape issue on AUD page)
+        try:
+            headers = {
+                "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
+            }
+            usd_url = f"{ABCBULLION_URL.rstrip('/')}/api/metals/prices/usd"
+            response_usd = requests.get(usd_url, headers=headers, timeout=5)
+            data_usd = response_usd.json()
+            gold_usd = data_usd["prices"]["gold"]["ask"]["value"]
+            # Extract numerical gold price from scraped metals
+            if "Gold" in metals:
+                gold_aud_str = metals["Gold"]["price"].replace("/oz", "").replace(",", "").strip()
+                gold_aud = float(gold_aud_str)
+                fx_rate = round(gold_usd / gold_aud, 4)
+                metals["FX RATE"] = f"{fx_rate:.4f}"
+            else:
+                metals["FX RATE"] = "N/A"
+        except Exception:
+            metals["FX RATE"] = "N/A"
+            
         return metals
     finally:
         driver.quit()
