@@ -67,14 +67,14 @@ def get_metal_prices():
             fx_rate = round(gold_usd / gold_aud, 4)
             metals["FX RATE"] = f"{fx_rate:.4f}"
         except Exception as fx_err:
-            print(f"⚠️ Could not calculate FX rate from API: {fx_err}")
+            print(f"[WARN] Could not calculate FX rate from API: {fx_err}")
             metals["FX RATE"] = "N/A"
             
         if metals:
             return metals
             
     except Exception as e:
-        print(f"⚠️ Direct API fetch failed: {e}. Falling back to Selenium.")
+        print(f"[WARN] Direct API fetch failed: {e}. Falling back to Selenium.")
 
     # 2. Fallback to Selenium
     driver = _create_chrome_driver(headless_arg="--headless")
@@ -98,7 +98,7 @@ def get_metal_prices():
                             "currency": "AUD"
                         }
             except Exception as scrape_err:
-                print(f"⚠️ Failed to scrape {metal_key} in Selenium fallback: {scrape_err}")
+                print(f"[WARN] Failed to scrape {metal_key} in Selenium fallback: {scrape_err}")
         
         # Fallback FX rate attempt using API (if it was a temporary scrape issue on AUD page)
         try:
@@ -126,6 +126,95 @@ def get_metal_prices():
 
 
 def get_asx_market_overview():
+    """
+    Fetches the daily ASX market overview, top gainers/decliners, and sector performance.
+    Tries the direct JSON/SVG APIs first for speed and reliability, falling back to Selenium.
+    """
+    headers = {
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "Accept": "application/json",
+        "Origin": "https://www.asx.com.au",
+        "Referer": "https://www.asx.com.au/"
+    }
+    
+    # 1. API-based Fetch Attempt
+    try:
+        data = {}
+        
+        # A. Market Overview (Smart Text)
+        url_markets = "https://cdn-api.markitdigital.com/apiman-gateway/ASX/asx-research/1.0/home/markets?days=1&isBoldSmartText=true"
+        r = requests.get(url_markets, headers=headers, timeout=10)
+        r.raise_for_status()
+        markets_json = r.json()
+        raw_text = markets_json.get("data", {}).get("smartText", "")
+        # Strip HTML tags like <b> to match the Selenium .text property
+        clean_text = re.sub(r"<[^>]+>", "", raw_text).strip()
+        data["market_overview"] = clean_text if clean_text else None
+        
+        # B. Top 5 Gainers and Decliners
+        top5_data = {"gains": [], "declines": []}
+        url_top5 = "https://asx.api.markitdigital.com/asx-research/1.0/home/top-five?rows=10"
+        r = requests.get(url_top5, headers=headers, timeout=10)
+        r.raise_for_status()
+        top5_json = r.json()
+        
+        # Gainers
+        for item in top5_json.get("data", {}).get("gainers", [])[:5]:
+            val = item.get("value", 0)
+            chg = item.get("Todaychange", 0)
+            last_p = item.get("lastPrice", 0)
+            top5_data["gains"].append({
+                "ticker": item.get("symbol", ""),
+                "name": item.get("displayName", ""),
+                "last_price": f"{last_p:.3f}" if isinstance(last_p, (int, float)) else str(last_p),
+                "change_dollar": f"{chg:.3f}" if isinstance(chg, (int, float)) else str(chg),
+                "change_pct": f"{val:.3f}%" if isinstance(val, (int, float)) else str(val)
+            })
+            
+        # Declines
+        for item in top5_json.get("data", {}).get("declines", [])[:5]:
+            val = item.get("value", 0)
+            chg = item.get("Todaychange", 0)
+            last_p = item.get("lastPrice", 0)
+            top5_data["declines"].append({
+                "ticker": item.get("symbol", ""),
+                "name": item.get("displayName", ""),
+                "last_price": f"{last_p:.3f}" if isinstance(last_p, (int, float)) else str(last_p),
+                "change_dollar": f"{chg:.3f}" if isinstance(chg, (int, float)) else str(chg),
+                "change_pct": f"{val:.3f}%" if isinstance(val, (int, float)) else str(val)
+            })
+        data["top5_asx200"] = top5_data
+        
+        # C. Sectors Heatmap
+        sectors = []
+        url_sectors = "https://cdn-api.markitdigital.com/apiman-gateway/ASX/asx-research/1.0/home/sectors?days=1&height=450&width=780"
+        r = requests.get(url_sectors, headers=headers, timeout=10)
+        r.raise_for_status()
+        sectors_json = r.json()
+        chart_svg = sectors_json.get("data", {}).get("chart", "")
+        
+        soup = BeautifulSoup(chart_svg, "html.parser")
+        rects = soup.find_all("rect", attrs={"data-json": True})
+        for rect in rects:
+            json_data = rect.get("data-json")
+            if json_data:
+                try:
+                    parsed = json.loads(json_data)
+                    label_text = parsed.get("Label", "")
+                    sector_entry = _parse_sector_label(label_text)
+                    if sector_entry:
+                        sectors.append(sector_entry)
+                except:
+                    continue
+        data["sectors"] = sectors
+        
+        print("[SUCCESS] Scraped ASX Data Successfully via API")
+        return data
+        
+    except Exception as e:
+        print(f"[WARN] ASX API fetch failed: {e}. Falling back to Selenium.")
+
+    # 2. Fallback to original Selenium scraper
     driver = _create_chrome_driver(headless_arg="--headless")
     try:
         driver.get(ASX_EQUITY_MARKET_URL)
@@ -195,13 +284,67 @@ def get_asx_market_overview():
         except:
             data["sectors"] = []
 
-        print("🟢 Scraped ASX Data Successfully")
+        print("[SUCCESS] Scraped ASX Data Successfully via Selenium Fallback")
         return data
     finally:
         driver.quit()
 
 
 def get_asx_monthly_overview():
+    """
+    Fetches the monthly ASX market overview and sector performance.
+    Tries the direct JSON/SVG APIs first for speed and reliability, falling back to Selenium.
+    """
+    headers = {
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "Accept": "application/json",
+        "Origin": "https://www.asx.com.au",
+        "Referer": "https://www.asx.com.au/"
+    }
+    
+    # 1. API-based Fetch Attempt
+    try:
+        data = {}
+        
+        # A. Monthly Market Overview (Smart Text with days=30)
+        url_markets = "https://cdn-api.markitdigital.com/apiman-gateway/ASX/asx-research/1.0/home/markets?days=30&isBoldSmartText=true"
+        r = requests.get(url_markets, headers=headers, timeout=10)
+        r.raise_for_status()
+        markets_json = r.json()
+        raw_text = markets_json.get("data", {}).get("smartText", "")
+        clean_text = re.sub(r"<[^>]+>", "", raw_text).strip()
+        data["market_overview"] = clean_text if clean_text else None
+        
+        # B. Monthly Sectors Heatmap (days=30)
+        sectors = []
+        url_sectors = "https://cdn-api.markitdigital.com/apiman-gateway/ASX/asx-research/1.0/home/sectors?days=30&height=450&width=780"
+        r = requests.get(url_sectors, headers=headers, timeout=10)
+        r.raise_for_status()
+        sectors_json = r.json()
+        chart_svg = sectors_json.get("data", {}).get("chart", "")
+        
+        soup = BeautifulSoup(chart_svg, "html.parser")
+        rects = soup.find_all("rect", attrs={"data-json": True})
+        for rect in rects:
+            json_data = rect.get("data-json")
+            if json_data:
+                try:
+                    parsed = json.loads(json_data)
+                    label_text = parsed.get("Label", "")
+                    sector_entry = _parse_sector_label(label_text)
+                    if sector_entry:
+                        sectors.append(sector_entry)
+                except:
+                    continue
+        data["sectors"] = sectors
+        
+        print("[SUCCESS] Scraped ASX Monthly Data Successfully via API")
+        return data
+        
+    except Exception as e:
+        print(f"[WARN] ASX Monthly API fetch failed: {e}. Falling back to Selenium.")
+
+    # 2. Fallback to original Selenium scraper
     driver = _create_chrome_driver(headless_arg="--headless=new")
     wait = WebDriverWait(driver, 20)
     data = {}
@@ -216,9 +359,9 @@ def get_asx_monthly_overview():
             )
             accept_btn.click()
             time.sleep(2)
-            print("🟢 Accepted cookie/privacy modal")
+            print("[INFO] Accepted cookie/privacy modal")
         except:
-            print("ℹ️ No cookie/privacy modal detected")
+            print("[INFO] No cookie/privacy modal detected")
 
         def set_dropdown(dropdown_element, value):
             driver.execute_script(
@@ -248,9 +391,9 @@ def get_asx_monthly_overview():
                 )
             )
             data["market_overview"] = overview_element.text.strip()
-            print("🟢 Market Overview fetched")
+            print("[INFO] Market Overview fetched")
         except Exception as e:
-            print("❌ Market Overview error:", e)
+            print("[ERROR] Market Overview error:", e)
             data["market_overview"] = None
 
         try:
@@ -285,12 +428,12 @@ def get_asx_monthly_overview():
                         continue
 
             data["sectors"] = sectors
-            print(f"🟢 {len(sectors)} sectors fetched for 1 Month")
+            print(f"[INFO] {len(sectors)} sectors fetched for 1 Month")
         except Exception as e:
-            print("❌ Sectors Heatmap error:", e)
+            print("[ERROR] Sectors Heatmap error:", e)
             data["sectors"] = []
 
-        print("🟢 Scraped ASX Monthly Data Successfully")
+        print("[SUCCESS] Scraped ASX Monthly Data Successfully via Selenium Fallback")
         return data
     finally:
         driver.quit()
