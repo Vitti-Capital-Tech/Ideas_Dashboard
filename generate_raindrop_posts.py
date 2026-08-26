@@ -144,10 +144,26 @@ def fetch_raindrop_bookmarks(within_days=5, max_items=5):
           f"{len(qualified)} selected (last {within_days} days)")
     return qualified
 
+# Models that still accept sampling params (temperature/top_p/top_k).
+# Opus 4.7+ and Sonnet 5 reject them with a 400, so we omit them there.
+_SAMPLING_OK_MODELS = (
+    "claude-sonnet-4-6", "claude-opus-4-6",
+    "claude-opus-4-5", "claude-sonnet-4-5", "claude-haiku-4-5",
+)
+
+
 def _call_claude(prompt, temperature=0.4, max_tokens=4000):
     if not anthropic_client:
         print("[error] ANTHROPIC_API_KEY (or CLAUDE_API_KEY) is missing!")
         return ""
+
+    # anthropic>=1.0 dropped temperature/top_p/top_k from messages.create(); the API
+    # still honours them on older models, so pass it through extra_body instead.
+    extra_body = (
+        {"temperature": temperature}
+        if ANTHROPIC_MODEL in _SAMPLING_OK_MODELS
+        else None
+    )
 
     last_err = None
     for attempt in range(1, 4):
@@ -155,8 +171,8 @@ def _call_claude(prompt, temperature=0.4, max_tokens=4000):
             msg = anthropic_client.messages.create(
                 model=ANTHROPIC_MODEL,
                 max_tokens=max_tokens,
-                temperature=temperature,
                 messages=[{"role": "user", "content": prompt}],
+                extra_body=extra_body,
             )
             parts = []
             for block in getattr(msg, "content", []) or []:
