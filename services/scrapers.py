@@ -10,7 +10,7 @@ from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
 
-from config import ABCBULLION_URL, ASX_EQUITY_MARKET_URL
+from config import ASX_EQUITY_MARKET_URL
 
 
 def _create_chrome_driver(headless_arg: str = "--headless"):
@@ -33,96 +33,69 @@ def _parse_sector_label(label_text: str):
 
 def get_metal_prices():
     """
-    Fetches metal prices in AUD from ABC Bullion.
-    Uses the direct JSON API for high reliability and speed, 
-    with a robust Selenium scraper as a fallback.
+    Fetches metal prices in AUD and the AUD/USD FX rate using yfinance.
+    Uses Yahoo Finance futures tickers for Gold, Silver, Platinum, and Palladium
+    (in USD) and converts to AUD using the live AUDUSD=X rate.
     """
-    # 1. Direct JSON API attempt
-    try:
-        headers = {
-            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
-        }
-        aud_url = f"{ABCBULLION_URL.rstrip('/')}/api/metals/prices/aud"
-        usd_url = f"{ABCBULLION_URL.rstrip('/')}/api/metals/prices/usd"
-        
-        response_aud = requests.get(aud_url, headers=headers, timeout=10)
-        response_aud.raise_for_status()
-        data_aud = response_aud.json()
-        
-        metals = {}
-        for metal_key, api_key in [("Gold", "gold"), ("Silver", "silver"), ("Platinum", "platinum"), ("Palladium", "palladium")]:
-            price_val = data_aud["prices"][api_key]["ask"]["value"]
-            metals[metal_key] = {
-                "price": f"{price_val:,.2f}/oz",
-                "currency": "AUD"
-            }
-            
-        # Try to get USD prices to calculate FX rate
-        try:
-            response_usd = requests.get(usd_url, headers=headers, timeout=10)
-            response_usd.raise_for_status()
-            data_usd = response_usd.json()
-            gold_usd = data_usd["prices"]["gold"]["ask"]["value"]
-            gold_aud = data_aud["prices"]["gold"]["ask"]["value"]
-            fx_rate = round(gold_usd / gold_aud, 4)
-            metals["FX RATE"] = f"{fx_rate:.4f}"
-        except Exception as fx_err:
-            print(f"[WARN] Could not calculate FX rate from API: {fx_err}")
-            metals["FX RATE"] = "N/A"
-            
-        if metals:
-            return metals
-            
-    except Exception as e:
-        print(f"[WARN] Direct API fetch failed: {e}. Falling back to Selenium.")
+    import yfinance as yf
 
-    # 2. Fallback to Selenium
-    driver = _create_chrome_driver(headless_arg="--headless")
+    # Yahoo Finance tickers for metal futures (USD per troy oz) and FX
+    tickers = {
+        "Gold": "GC=F",
+        "Silver": "SI=F",
+        "Platinum": "PL=F",
+        "Palladium": "PA=F",
+    }
+    fx_ticker = "AUDUSD=X"
+
+    metals = {}
     try:
-        driver.get(ABCBULLION_URL)
-        wait = WebDriverWait(driver, 15)
-        # Wait for the skeleton loaders to be replaced by actual price text (3 p tags inside store/gold link)
-        wait.until(lambda d: len(d.find_elements(By.CSS_SELECTOR, 'a[href*="/store/gold"] p')) >= 3)
-        
-        soup = BeautifulSoup(driver.page_source, "html.parser")
-        metals = {}
-        for metal_key, metal_name in [("Gold", "gold"), ("Silver", "silver"), ("Platinum", "platinum"), ("Palladium", "palladium")]:
+        # Fetch AUD/USD exchange rate
+        fx_data = yf.Ticker(fx_ticker)
+        fx_hist = fx_data.history(period="1d")
+        if fx_hist.empty:
+            print("[WARN] Could not fetch AUDUSD=X rate from yfinance")
+            audusd_rate = None
+        else:
+            audusd_rate = float(fx_hist["Close"].iloc[-1])
+
+        for metal_name, ticker in tickers.items():
             try:
-                link = soup.find("a", href=lambda x: x and f"/store/{metal_name}" in x)
-                if link:
-                    ps = link.find_all("p")
-                    if len(ps) >= 3:
-                        price_val = ps[1].get_text(strip=True)
-                        metals[metal_key] = {
-                            "price": f"{price_val}/oz" if "/oz" not in price_val else price_val,
-                            "currency": "AUD"
-                        }
-            except Exception as scrape_err:
-                print(f"[WARN] Failed to scrape {metal_key} in Selenium fallback: {scrape_err}")
-        
-        # Fallback FX rate attempt using API (if it was a temporary scrape issue on AUD page)
-        try:
-            headers = {
-                "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
-            }
-            usd_url = f"{ABCBULLION_URL.rstrip('/')}/api/metals/prices/usd"
-            response_usd = requests.get(usd_url, headers=headers, timeout=5)
-            data_usd = response_usd.json()
-            gold_usd = data_usd["prices"]["gold"]["ask"]["value"]
-            # Extract numerical gold price from scraped metals
-            if "Gold" in metals:
-                gold_aud_str = metals["Gold"]["price"].replace("/oz", "").replace(",", "").strip()
-                gold_aud = float(gold_aud_str)
-                fx_rate = round(gold_usd / gold_aud, 4)
-                metals["FX RATE"] = f"{fx_rate:.4f}"
-            else:
-                metals["FX RATE"] = "N/A"
-        except Exception:
+                t = yf.Ticker(ticker)
+                hist = t.history(period="1d")
+                if hist.empty:
+                    print(f"[WARN] No data for {metal_name} ({ticker})")
+                    continue
+                price_usd = float(hist["Close"].iloc[-1])
+
+                if audusd_rate and audusd_rate > 0:
+                    price_aud = price_usd / audusd_rate
+                    metals[metal_name] = {
+                        "price": f"{price_aud:,.2f}/oz",
+                        "currency": "AUD",
+                    }
+                else:
+                    # Fallback: report in USD if FX unavailable
+                    metals[metal_name] = {
+                        "price": f"{price_usd:,.2f}/oz",
+                        "currency": "USD",
+                    }
+            except Exception as metal_err:
+                print(f"[WARN] Failed to fetch {metal_name}: {metal_err}")
+
+        # FX rate (expressed as USD per 1 AUD, i.e. AUDUSD)
+        if audusd_rate:
+            metals["FX RATE"] = f"{audusd_rate:.4f}"
+        else:
             metals["FX RATE"] = "N/A"
-            
-        return metals
-    finally:
-        driver.quit()
+
+        print("[SUCCESS] Fetched metal prices via yfinance")
+
+    except Exception as e:
+        print(f"[ERROR] yfinance metal prices fetch failed: {e}")
+        metals["FX RATE"] = "N/A"
+
+    return metals
 
 
 def get_asx_market_overview():
